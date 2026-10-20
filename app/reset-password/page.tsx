@@ -6,6 +6,7 @@ import { Eye, EyeOff, Lock } from "lucide-react";
 import { toast } from "sonner";
 
 import { updatePassword } from "@/lib/authService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -164,11 +165,16 @@ export default function ResetPasswordPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-black py-3 font-semibold text-white transition hover:bg-gray-800 disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-black py-3 font-semibold text-white transition hover:bg-gray-800 disabled:opacity-60"
           >
-            {loading
-              ? "Updating..."
-              : "Update Password"}
+            {loading ? (
+              <>
+                <LoadingAnimation size="xs" />
+                <span>Updating...</span>
+              </>
+            ) : (
+              "Update Password"
+            )}
           </button>
 
         </form>

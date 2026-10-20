@@ -1,19 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const menu = [
   {
+    name: "Home",
+    href: "/",
+  },
+  {
     name: "Shop",
-    href: "/collections",
+    href: "/shop",
   },
   {
     name: "New",
-    href: "/collections?sort=new",
-  },
-  {
-    name: "Collections",
-    href: "/collections",
+    href: "/new",
   },
   {
     name: "About",
@@ -30,27 +31,38 @@ export default function DesktopMenu({
 }: {
   scrolled: boolean;
 }) {
-  return (
-    <nav className="hidden items-center gap-12 lg:flex">
-      {menu.map((item) => (
-        <Link
-          key={item.name}
-          href={item.href}
-          className={`group relative text-sm font-medium uppercase tracking-[0.25em] transition duration-300 ${
-            scrolled
-              ? "text-black hover:text-black"
-              : "text-white hover:text-white"
-          }`}
-        >
-          {item.name}
+  const pathname = usePathname();
 
-          <span
-            className={`absolute -bottom-2 left-0 h-[2px] w-0 transition-all duration-300 group-hover:w-full ${
-              scrolled ? "bg-black" : "bg-white"
+  return (
+    <nav className="hidden items-center gap-8 lg:flex xl:gap-10">
+      {menu.map((item) => {
+        const isActive =
+          item.href === "/"
+            ? pathname === "/"
+            : item.href === "/shop"
+              ? pathname === "/shop" || pathname.startsWith("/collections")
+              : pathname.startsWith(item.href);
+
+        return (
+          <Link
+            key={item.name}
+            href={item.href}
+            className={`group relative py-1 text-xs font-semibold uppercase tracking-[0.25em] transition duration-300 ${
+              isActive
+                ? "text-white"
+                : "text-white/70 hover:text-white"
             }`}
-          />
-        </Link>
-      ))}
+          >
+            {item.name}
+
+            <span
+              className={`absolute -bottom-1.5 left-0 h-[2px] bg-[#1677FF] shadow-[0_0_8px_#1677FF] transition-all duration-300 ${
+                isActive ? "w-full" : "w-0 group-hover:w-full"
+              }`}
+            />
+          </Link>
+        );
+      })}
     </nav>
   );
 }

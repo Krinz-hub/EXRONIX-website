@@ -23,36 +23,37 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    "https://www.zaynastudio.store"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.com"
   ),
 
   title: {
-    default: "Zayna Studio | Wear the Grace",
-    template: "%s | Zayna Studio",
+    default: "EXRONIX | Engineered Beyond Limits",
+    template: "%s | EXRONIX",
   },
 
   description:
-    "Discover premium oversized clothing from Zayna Studio. Crafted for comfort, quality, and timeless style. Wear the Grace.",
+    "EXRONIX — High-precision 3D printing, functional prototypes, and custom engineering manufacturing. Engineered Beyond Limits.",
 
   keywords: [
-    "Zayna Studio",
-    "Zayna",
-    "Oversized T-Shirt",
-    "Streetwear Nepal",
-    "Clothing Brand Nepal",
-    "Premium Clothing",
-    "Fashion Nepal",
-    "Wear the Grace",
+    "EXRONIX",
+    "3D Printing",
+    "Precision 3D Printing",
+    "Functional Prototypes",
+    "Additive Manufacturing",
+    "Custom Fabrication",
+    "Engineered Beyond Limits",
+    "3D Models",
+    "Mechanical Components",
   ],
 
   authors: [
     {
-      name: "Zayna Studio",
+      name: "EXRONIX",
     },
   ],
 
-  creator: "Zayna Studio",
-  publisher: "Zayna Studio",
+  creator: "EXRONIX",
+  publisher: "EXRONIX",
 
   robots: {
     index: true,
@@ -61,14 +62,14 @@ export const metadata: Metadata = {
 
   openGraph: {
     title:
-      "Zayna Studio | Wear the Grace",
+      "EXRONIX | Engineered Beyond Limits",
 
     description:
-      "Premium oversized clothing designed for confidence and everyday comfort.",
+      "Premium-quality 3D printing, precision models, and custom engineering manufacturing. Engineered into reality.",
 
-    url: "https://www.zaynastudio.store",
+    url: "https://www.exronix.com",
 
-    siteName: "Zayna Studio",
+    siteName: "EXRONIX",
 
     locale: "en_US",
 
@@ -79,7 +80,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Zayna Studio",
+        alt: "EXRONIX — Engineered Beyond Limits",
       },
     ],
   },
@@ -88,10 +89,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
 
     title:
-      "Zayna Studio | Wear the Grace",
+      "EXRONIX | Engineered Beyond Limits",
 
     description:
-      "Premium oversized clothing designed for confidence and comfort.",
+      "High-precision 3D printing, functional prototypes, and custom manufacturing.",
 
     images: ["/og-image.png"],
   },
@@ -102,6 +103,8 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
 };
+
+import FixedScrollVideoBackground from "@/components/FixedScrollVideoBackground";
 
 export default function RootLayout({
   children,
@@ -122,7 +125,7 @@ export default function RootLayout({
               (function () {
                 try {
                   var theme =
-                    localStorage.getItem("zayna-theme");
+                    localStorage.getItem("zayna-theme") || "dark";
 
                   if (theme === "dark") {
                     document.documentElement.classList.add("dark");
@@ -138,18 +141,28 @@ export default function RootLayout({
         />
       </head>
 
-      <body className="min-h-screen bg-background text-foreground">
-        <ThemeProvider>
-          <AuthProvider>
-            <CartProvider>
-              <Navbar />
+      <body className="min-h-screen bg-[#050608] text-[#F5F7FA] antialiased selection:bg-[#1677FF] selection:text-white">
+        {/* =====================================================
+            CINEMATIC FIXED SCROLL-DRIVEN VIDEO BACKGROUND
+            Remains pinned to the viewport. Never scrolls with page content.
+        ===================================================== */}
+        <FixedScrollVideoBackground />
 
-              {children}
+        <div className="relative z-10 flex min-h-screen flex-col">
+          <ThemeProvider>
+            <AuthProvider>
+              <CartProvider>
+                <Navbar />
 
-              <Footer />
-            </CartProvider>
-          </AuthProvider>
-        </ThemeProvider>
+                <div className="flex-1">
+                  {children}
+                </div>
+
+                <Footer />
+              </CartProvider>
+            </AuthProvider>
+          </ThemeProvider>
+        </div>
 
         <Toaster
           position="top-right"

@@ -8,6 +8,7 @@ import {
   getProducts,
   updateProductStock,
 } from "@/lib/productService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type Product = {
   id: number;
@@ -332,10 +333,8 @@ export default function InventoryPage() {
         {/* Loading */}
 
         {loading ? (
-          <div className="rounded-2xl bg-white p-12 text-center shadow">
-            <p className="text-gray-500">
-              Loading inventory...
-            </p>
+          <div className="rounded-2xl bg-white p-12 text-center shadow flex items-center justify-center">
+            <LoadingAnimation size="md" text="LOADING INVENTORY" subtext="EXRONIX WAREHOUSE TELEMETRY" />
           </div>
         ) : filteredProducts.length === 0 ? (
           <div className="rounded-2xl bg-white p-12 text-center shadow">

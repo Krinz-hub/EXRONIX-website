@@ -51,8 +51,8 @@ export default function AdminHeader({
               Admin
             </h2>
 
-            <p className="text-sm text-gray-500">
-              ZAYNA
+            <p className="text-sm font-semibold text-[#1677FF]">
+              EXRONIX
             </p>
 
           </div>

@@ -11,6 +11,7 @@ import {
   getWishlist,
   removeFromWishlist,
 } from "@/lib/wishlistService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type WishlistProduct = {
   product_id: number;
@@ -166,7 +167,7 @@ export default function WishlistPage() {
             </h1>
 
             <p className="mt-2 text-sm text-gray-500 sm:text-base">
-              Your favourite ZAYNA products.
+              Your saved EXRONIX models and components.
             </p>
           </div>
 
@@ -175,10 +176,8 @@ export default function WishlistPage() {
           ================================================= */}
 
           {loadingWishlist ? (
-            <div className="rounded-2xl bg-white p-10 text-center shadow sm:p-16">
-              <p className="text-gray-500">
-                Loading wishlist...
-              </p>
+            <div className="rounded-2xl liquid-glass border border-white/15 p-10 text-center backdrop-blur-xl sm:p-16">
+              <LoadingAnimation size="md" text="RETRIEVING WISHLIST" />
             </div>
 
           ) : wishlist.length === 0 ? (
@@ -198,7 +197,7 @@ export default function WishlistPage() {
               </h2>
 
               <p className="mx-auto mt-3 max-w-md text-sm text-gray-500 sm:text-base">
-                Save your favourite ZAYNA products here.
+                Save your favourite EXRONIX prints and components here.
               </p>
 
               <Link

@@ -146,20 +146,21 @@ export default function AdminLoginPage() {
 
         <div className="mb-8 flex flex-col items-center">
 
-          <Image
-            src="/images/logo.jpeg"
-            alt="ZAYNA"
-            width={80}
-            height={80}
-            priority
-            className="rounded-xl object-contain"
-          />
+          <div className="relative h-12 w-32 mb-2">
+            <Image
+              src="/images/exronix-logo.png"
+              alt="EXRONIX"
+              fill
+              priority
+              className="object-contain"
+            />
+          </div>
 
-          <h1 className="mt-4 text-3xl font-bold">
-            ZAYNA
+          <h1 className="mt-2 text-3xl font-black tracking-wider text-black">
+            EXRONIX
           </h1>
 
-          <p className="mt-2 text-gray-500">
+          <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-[#1677FF]">
             Admin Portal
           </p>
 
@@ -186,7 +187,7 @@ export default function AdminLoginPage() {
             <input
               id="admin-email"
               type="email"
-              placeholder="admin@zaynastudio.store"
+              placeholder="admin@exronix.store"
               value={email}
               onChange={(e) =>
                 setEmail(e.target.value)
@@ -264,7 +265,7 @@ export default function AdminLoginPage() {
 
         <p className="mt-8 text-center text-sm leading-6 text-gray-500">
           Only authorized administrators can
-          access the ZAYNA dashboard.
+          access the EXRONIX dashboard.
         </p>
 
       </div>

@@ -128,7 +128,7 @@ export default function ProfileDropdown() {
       ===================================== */}
 
       {open && (
-        <div className="absolute right-0 top-14 z-[99999] w-80 overflow-hidden rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-2xl">
+        <div className="liquid-glass absolute right-0 top-14 z-[99999] w-80 overflow-hidden rounded-2xl border border-white/10 text-white shadow-2xl shadow-black/80">
 
           {user ? (
             <>
@@ -136,7 +136,7 @@ export default function ProfileDropdown() {
                   USER HEADER
               ================================= */}
 
-              <div className="border-b bg-gray-50 p-5">
+              <div className="border-b border-white/10 bg-[#050608]/40 p-5">
                 <div className="flex items-center gap-4">
 
                   {user.user_metadata?.avatar ? (
@@ -145,20 +145,20 @@ export default function ProfileDropdown() {
                       alt={displayName}
                       width={56}
                       height={56}
-                      className="h-14 w-14 rounded-full object-cover"
+                      className="h-14 w-14 rounded-full object-cover ring-2 ring-[#1677FF]/40"
                     />
                   ) : (
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black text-lg font-bold text-white">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1677FF] text-lg font-bold text-white shadow-md shadow-[#1677FF]/30">
                       {initials}
                     </div>
                   )}
 
                   <div className="min-w-0">
-                    <h2 className="truncate text-lg font-bold text-black">
+                    <h2 className="truncate text-lg font-bold text-white">
                       {displayName}
                     </h2>
 
-                    <p className="break-all text-sm text-gray-500">
+                    <p className="break-all text-xs text-gray-400">
                       {user.email}
                     </p>
                   </div>
@@ -170,14 +170,14 @@ export default function ProfileDropdown() {
                   MENU
               ================================= */}
 
-              <div className="space-y-1 p-2 text-gray-800">
+              <div className="space-y-1 p-2 text-gray-200">
 
                 {/* My Profile */}
 
                 <Link
                   href="/profile"
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-gray-800 transition hover:bg-gray-100 hover:text-black"
+                  className="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-white/10 hover:text-[#1677FF]"
                 >
                   <UserCircle size={20} />
 
@@ -191,7 +191,7 @@ export default function ProfileDropdown() {
                 <Link
                   href="/orders"
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-gray-800 transition hover:bg-gray-100 hover:text-black"
+                  className="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-white/10 hover:text-[#1677FF]"
                 >
                   <Package size={20} />
 
@@ -205,7 +205,7 @@ export default function ProfileDropdown() {
                 <Link
                   href="/wishlist"
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-gray-800 transition hover:bg-gray-100 hover:text-black"
+                  className="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-white/10 hover:text-[#1677FF]"
                 >
                   <Heart size={20} />
 
@@ -219,7 +219,7 @@ export default function ProfileDropdown() {
                 <Link
                   href="/settings"
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-gray-800 transition hover:bg-gray-100 hover:text-black"
+                  className="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-white/10 hover:text-[#1677FF]"
                 >
                   <Settings size={20} />
 
@@ -230,14 +230,14 @@ export default function ProfileDropdown() {
 
                 {/* Divider */}
 
-                <div className="my-2 border-t" />
+                <div className="my-2 border-t border-white/10" />
 
                 {/* Logout */}
 
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-medium text-red-600 transition hover:bg-red-50"
+                  className="flex w-full items-center gap-3 rounded-xl px-4 py-3 font-medium text-red-400 transition hover:bg-red-500/10"
                 >
                   <LogOut size={20} />
 
@@ -255,13 +255,12 @@ export default function ProfileDropdown() {
 
             <div className="p-6">
 
-              <h2 className="text-center text-xl font-bold text-black">
-                Welcome to ZAYNA
+              <h2 className="text-center text-xl font-bold text-white">
+                Welcome to EXRONIX
               </h2>
 
-              <p className="mt-2 text-center text-sm text-gray-500">
-                Login to your account to continue
-                shopping.
+              <p className="mt-2 text-center text-sm text-gray-400">
+                Login to your account to view your prints and manage orders.
               </p>
 
               {/* Login */}
@@ -269,7 +268,7 @@ export default function ProfileDropdown() {
               <Link
                 href="/login"
                 onClick={() => setOpen(false)}
-                className="mt-6 block rounded-xl bg-black py-3 text-center font-semibold text-white transition hover:bg-gray-800"
+                className="mt-6 block rounded-xl bg-[#1677FF] py-3 text-center font-semibold text-white shadow-lg shadow-[#1677FF]/25 transition hover:bg-[#1677FF]/90"
               >
                 Login
               </Link>
@@ -279,7 +278,7 @@ export default function ProfileDropdown() {
               <Link
                 href="/signup"
                 onClick={() => setOpen(false)}
-                className="mt-3 block rounded-xl border border-gray-300 py-3 text-center font-semibold text-gray-900 transition hover:bg-gray-50"
+                className="mt-3 block rounded-xl border border-white/20 bg-white/5 py-3 text-center font-semibold text-white transition hover:bg-white/10"
               >
                 Create Account
               </Link>

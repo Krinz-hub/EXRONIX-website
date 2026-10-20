@@ -10,6 +10,7 @@ import {
 import { getLowStockProducts } from "@/lib/productService";
 
 import RevenueChart from "@/components/admin/RevenueChart";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 /* =========================================
    ANALYTICS TYPE
@@ -139,15 +140,7 @@ export default function AnalyticsPage() {
   if (loading || !analytics) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-gray-100 px-6">
-        <div className="rounded-2xl bg-white px-10 py-8 text-center shadow">
-          <p className="text-lg font-semibold">
-            Loading Analytics...
-          </p>
-
-          <p className="mt-2 text-sm text-gray-500">
-            Please wait while we load your store data.
-          </p>
-        </div>
+        <LoadingAnimation size="lg" text="LOADING ANALYTICS" subtext="EXRONIX STORE TELEMETRY" />
       </main>
     );
   }

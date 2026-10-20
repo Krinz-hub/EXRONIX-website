@@ -45,10 +45,10 @@ export async function generateMetadata({
 
     description:
       product.description ||
-      `Buy ${product.name} from Zayna Studio.`,
+      `Buy ${product.name} from EXRONIX — Engineered Beyond Limits.`,
 
     alternates: {
-      canonical: `https://www.zaynastudio.store/products/${product.id}`,
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store"}/products/${product.id}`,
     },
 
     openGraph: {
@@ -56,9 +56,9 @@ export async function generateMetadata({
 
       description:
         product.description ||
-        "Premium clothing from Zayna Studio.",
+        "Precision 3D printed model from EXRONIX — Engineered Beyond Limits.",
 
-      url: `https://www.zaynastudio.store/products/${product.id}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store"}/products/${product.id}`,
 
       images: productImages.map(
         (image) => ({
@@ -79,7 +79,7 @@ export async function generateMetadata({
 
       description:
         product.description ||
-        "Premium clothing from Zayna Studio.",
+        "Precision 3D printed model from EXRONIX — Engineered Beyond Limits.",
 
       images: productImages,
     },
@@ -156,7 +156,7 @@ export default async function ProductPage({
         "Brand",
 
       name:
-        "Zayna Studio",
+        "EXRONIX",
     },
 
     offers: {
@@ -164,7 +164,7 @@ export default async function ProductPage({
         "Offer",
 
       url:
-        `https://www.zaynastudio.store/products/${product.id}`,
+        `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store"}/products/${product.id}`,
 
       priceCurrency:
         "NPR",

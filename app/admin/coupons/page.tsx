@@ -7,6 +7,7 @@ import {
   getCoupons,
   deleteCoupon,
 } from "@/lib/couponService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type Coupon = {
   id: number;
@@ -150,10 +151,8 @@ export default function CouponsPage() {
         {/* Loading */}
 
         {loading ? (
-          <div className="rounded-2xl bg-white p-12 text-center shadow">
-            <p className="text-gray-500">
-              Loading coupons...
-            </p>
+          <div className="rounded-2xl bg-white p-12 text-center shadow flex items-center justify-center">
+            <LoadingAnimation size="md" text="LOADING COUPONS" subtext="EXRONIX PROMOTIONS" />
           </div>
         ) : coupons.length === 0 ? (
           <div className="rounded-2xl bg-white p-12 text-center shadow">

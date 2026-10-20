@@ -50,9 +50,7 @@ export default function NavIcons({
     0
   );
 
-  const iconColor = scrolled
-    ? "text-black"
-    : "text-white";
+  const iconColor = "text-white";
 
   return (
     <>
@@ -62,7 +60,7 @@ export default function NavIcons({
         {/* Search */}
         <button
           onClick={() => setOpenSearch(true)}
-          className="transition-all duration-300 hover:scale-110"
+          className="transition-all duration-300 hover:scale-110 hover:text-[#1677FF]"
         >
           <Search className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
         </button>
@@ -70,12 +68,12 @@ export default function NavIcons({
         {/* Wishlist */}
         <Link
           href="/wishlist"
-          className="relative transition-all duration-300 hover:scale-110"
+          className="relative transition-all duration-300 hover:scale-110 hover:text-[#1677FF]"
         >
           <Heart className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
 
           {wishlistCount > 0 && (
-            <span className="absolute -right-1.5 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[9px] font-bold text-white sm:-right-2 sm:-top-2 sm:h-5 sm:w-5 sm:text-[10px]">
+            <span className="absolute -right-1.5 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#1677FF] text-[9px] font-bold text-white shadow-[0_0_8px_#1677FF] sm:-right-2 sm:-top-2 sm:h-5 sm:w-5 sm:text-[10px]">
               {wishlistCount}
             </span>
           )}
@@ -84,12 +82,12 @@ export default function NavIcons({
         {/* Cart */}
         <Link
           href="/cart"
-          className="relative transition-all duration-300 hover:scale-110"
+          className="relative transition-all duration-300 hover:scale-110 hover:text-[#1677FF]"
         >
           <ShoppingBag className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
 
           {cartCount > 0 && (
-            <span className="absolute -right-1.5 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[9px] font-bold text-white sm:-right-2 sm:-top-2 sm:h-5 sm:w-5 sm:text-[10px]">
+            <span className="absolute -right-1.5 -top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#1677FF] text-[9px] font-bold text-white shadow-[0_0_8px_#1677FF] sm:-right-2 sm:-top-2 sm:h-5 sm:w-5 sm:text-[10px]">
               {cartCount}
             </span>
           )}

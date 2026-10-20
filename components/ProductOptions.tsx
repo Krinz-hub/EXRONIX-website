@@ -37,11 +37,11 @@ export default function ProductOptions({
       {colors.length > 0 && (
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-base font-semibold sm:text-lg">
-              Select Color
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+              Select Finish
             </h3>
 
-            <span className="text-sm text-gray-500">
+            <span className="text-xs font-semibold text-[#1677FF]">
               {selectedColor}
             </span>
           </div>
@@ -54,8 +54,8 @@ export default function ProductOptions({
                 onClick={() => changeColor(color)}
                 className={`min-h-11 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all active:scale-95 sm:px-5 ${
                   selectedColor === color
-                    ? "border-black bg-black text-white"
-                    : "border-gray-200 bg-white hover:bg-gray-100"
+                    ? "border-[#1677FF] bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] font-semibold"
+                    : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {color}
@@ -68,25 +68,25 @@ export default function ProductOptions({
       {sizes.length > 0 && (
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-base font-semibold sm:text-lg">
-              Select Size
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+              Select Variant / Spec
             </h3>
 
-            <span className="text-sm text-gray-500">
+            <span className="text-xs font-semibold text-[#1677FF]">
               {selectedSize}
             </span>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
+          <div className="flex flex-wrap gap-2.5 sm:gap-3">
             {sizes.map((size) => (
               <button
                 key={size}
                 type="button"
                 onClick={() => changeSize(size)}
-                className={`min-h-11 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all active:scale-95 sm:min-w-16 sm:px-5 ${
+                className={`min-h-11 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all active:scale-95 sm:px-5 ${
                   selectedSize === size
-                    ? "border-black bg-black text-white"
-                    : "border-gray-200 bg-white hover:bg-gray-100"
+                    ? "border-[#1677FF] bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] font-semibold"
+                    : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {size}

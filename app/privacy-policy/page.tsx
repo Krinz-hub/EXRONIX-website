@@ -75,7 +75,7 @@ export default function PrivacyPolicyPage() {
             </p>
 
             <p className="mt-4 font-semibold">
-              support@zaynastudio.store
+              support@exronix.store
             </p>
           </div>
 

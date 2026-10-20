@@ -6,6 +6,7 @@ import {
   Coupon,
   updateCoupon,
 } from "@/lib/couponService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type Props = {
   coupon: Coupon | null;
@@ -300,9 +301,16 @@ export default function EditCouponModal({
             type="button"
             onClick={handleSave}
             disabled={loading}
-            className="rounded-xl bg-black px-6 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex items-center justify-center gap-2 rounded-xl bg-black px-6 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {loading ? "Saving..." : "Save Changes"}
+            {loading ? (
+              <>
+                <LoadingAnimation size="xs" />
+                <span>Saving...</span>
+              </>
+            ) : (
+              "Save Changes"
+            )}
           </button>
         </div>
       </div>

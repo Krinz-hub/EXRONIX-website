@@ -44,13 +44,13 @@ export async function POST(req: Request) {
 
 <div style="max-width:650px;margin:40px auto;background:#ffffff;border-radius:12px;overflow:hidden;">
 
-<div style="background:#000;padding:40px;text-align:center;">
-<h1 style="color:#fff;margin:0;">
-ZAYNA STUDIO
+<div style="background:#050608;padding:40px;text-align:center;border-bottom:2px solid #1677FF;">
+<h1 style="color:#ffffff;margin:0;letter-spacing:2px;">
+EXRONIX
 </h1>
 
-<p style="color:#ddd;margin-top:10px;">
-Wear the Grace
+<p style="color:#1677FF;margin-top:10px;font-size:12px;letter-spacing:1px;font-weight:bold;">
+ENGINEERED BEYOND LIMITS
 </p>
 </div>
 
@@ -61,10 +61,10 @@ Hi ${customer},
 </h2>
 
 <p>
-Thank you for shopping with
-<b>Zayna Studio.</b>
+Thank you for your order with
+<b>EXRONIX.</b>
 
-Your order has been placed successfully.
+Your order has been placed successfully and is being queued for precision processing.
 </p>
 
 <h3>
@@ -124,10 +124,10 @@ ${address}
 <div style="margin-top:40px;text-align:center;">
 
 <a
-href="https://www.zaynastudio.store/orders/${orderId}"
+href="${process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store"}/orders/${orderId}"
 style="
 display:inline-block;
-background:#000;
+background:#1677FF;
 color:#fff;
 padding:14px 30px;
 text-decoration:none;
@@ -154,15 +154,17 @@ We'll notify you again when your order ships.
 </html>
 `;
 
+    const fromEmail = process.env.EMAIL_FROM || "EXRONIX <orders@exronix.store>";
+
     await resend.emails.send({
-      from: "Zayna Studio <orders@zaynastudio.store>",
+      from: fromEmail,
       to: email,
-      subject: `Your Order #${orderId} is Confirmed 🎉`,
+      subject: `Your EXRONIX Order #${orderId} is Confirmed 🚀`,
       html,
     });
     await resend.emails.send({
-  from: " Zayna Studio <orders@zaynastudio.store>",
-  to: "zaynaofficial07@gmail.com", // Change if you use another admin email
+  from: fromEmail,
+  to: process.env.ADMIN_EMAIL || "support@exronix.store",
   subject: `🛒 New Order #${orderId}`,
   html: `
     <h2>New Order Received</h2>
@@ -200,16 +202,17 @@ We'll notify you again when your order ships.
     <br>
 
     <a
-      href="https://www.zaynastudio.store/admin/orders"
+      href="${process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store"}/admin/orders"
       style="
-      background:black;
+      background:#1677FF;
       color:white;
       padding:12px 20px;
       text-decoration:none;
       border-radius:8px;
+      font-weight:bold;
       "
     >
-      Open Admin Dashboard
+      Open EXRONIX Admin Portal
     </a>
   `,
 });

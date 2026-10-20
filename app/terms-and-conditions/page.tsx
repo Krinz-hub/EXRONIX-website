@@ -19,7 +19,7 @@ export default function TermsPage() {
             </h2>
 
             <p className="text-gray-600">
-              By accessing and using Zayna Studio, you agree
+              By accessing and using EXRONIX, you agree
               to comply with these Terms & Conditions.
             </p>
           </div>
@@ -53,8 +53,8 @@ export default function TermsPage() {
             </h2>
 
             <p className="text-gray-600">
-              All designs, logos, product images, graphics,
-              and content belong to Zayna Studio and may not
+              All designs, logos, product images, 3D models, graphics,
+              and content belong to EXRONIX and may not
               be copied or reproduced without permission.
             </p>
           </div>
@@ -65,7 +65,7 @@ export default function TermsPage() {
             </h2>
 
             <p className="text-gray-600">
-              Zayna Studio is not responsible for delays
+              EXRONIX is not responsible for delays
               caused by courier services, natural disasters,
               or other circumstances beyond our control.
             </p>
@@ -81,7 +81,7 @@ export default function TermsPage() {
             </p>
 
             <p className="mt-2 font-semibold">
-              support@zaynastudio.store
+              support@exronix.store
             </p>
           </div>
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getReviews } from "@/lib/reviewService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type ProductRatingProps = {
   productId: number;
@@ -65,9 +66,9 @@ export default function ProductRating({
 
   if (loading) {
     return (
-      <div className="mt-4 flex items-center gap-2 sm:mt-5 sm:gap-3">
-        <div className="h-5 w-24 animate-pulse rounded bg-gray-200" />
-        <div className="h-4 w-24 animate-pulse rounded bg-gray-200" />
+      <div className="mt-4 flex items-center gap-2.5 sm:mt-5 text-xs text-white/50">
+        <LoadingAnimation size="xs" />
+        <span className="font-mono uppercase tracking-wider text-[11px] text-white/40">CALCULATING METRICS</span>
       </div>
     );
   }

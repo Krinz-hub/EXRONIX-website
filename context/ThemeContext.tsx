@@ -26,7 +26,7 @@ export function ThemeProvider({
   const [theme, setThemeState] =
     useState<Theme>(() => {
       if (typeof window === "undefined") {
-        return "light";
+        return "dark";
       }
 
       const saved =
@@ -39,7 +39,7 @@ export function ThemeProvider({
         return saved;
       }
 
-      return "light";
+      return "dark";
     });
 
   /*

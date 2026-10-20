@@ -9,6 +9,7 @@ import {
 } from "@/lib/addressService";
 
 import { useAuth } from "@/context/AuthContext";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type Props = {
   open: boolean;
@@ -228,9 +229,16 @@ export default function AddressModal({
           <button
             onClick={handleSave}
             disabled={loading}
-            className="rounded-xl bg-black px-8 py-3 font-semibold text-white disabled:opacity-60"
+            className="flex items-center justify-center gap-2 rounded-xl bg-black px-8 py-3 font-semibold text-white disabled:opacity-60"
           >
-            {loading ? "Saving..." : "Save"}
+            {loading ? (
+              <>
+                <LoadingAnimation size="xs" />
+                <span>Saving...</span>
+              </>
+            ) : (
+              "Save"
+            )}
           </button>
 
         </div>

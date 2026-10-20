@@ -22,6 +22,7 @@ import {
 } from "@/lib/storeSettingsService";
 
 import { supabase } from "@/lib/supabase";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function AdminSettingsPage() {
     const { user } = useAuth();
@@ -225,9 +226,7 @@ const [changingPassword, setChangingPassword] =
   if (loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <p className="text-gray-500">
-          Loading settings...
-        </p>
+        <LoadingAnimation size="lg" text="LOADING SETTINGS" subtext="EXRONIX SYSTEM CONFIG" />
       </div>
     );
   }
@@ -258,7 +257,7 @@ const [changingPassword, setChangingPassword] =
         </h1>
 
         <p className="mt-2 text-gray-500">
-          Manage your Zayna Studio store configuration.
+          Manage your EXRONIX store configuration.
         </p>
 
       </div>

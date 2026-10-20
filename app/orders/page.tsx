@@ -12,6 +12,7 @@ import {
 import { getMyOrders } from "@/lib/orderService";
 import { useAuth } from "@/context/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type Order = {
   id: number;
@@ -94,10 +95,8 @@ export default function OrdersPage() {
 
           {/* Loading */}
           {loadingOrders ? (
-            <div className="rounded-2xl bg-white p-10 text-center shadow sm:p-16">
-              <p className="text-base text-gray-500 sm:text-lg">
-                Loading your orders...
-              </p>
+            <div className="rounded-2xl liquid-glass border border-white/15 p-10 text-center backdrop-blur-xl sm:p-16">
+              <LoadingAnimation size="md" text="RETRIEVING ORDERS" />
             </div>
 
           ) : orders.length === 0 ? (

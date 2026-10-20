@@ -7,6 +7,7 @@ import Link from "next/link";
 import OrderTimeline from "@/components/orders/OrderTimeline";
 import { useAuth } from "@/context/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 import {
   getOrder,
@@ -88,10 +89,8 @@ export default function OrderDetails({
   if (loading) {
     return (
       <ProtectedRoute>
-        <main className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
-          <p className="text-gray-500">
-            Loading order...
-          </p>
+        <main className="flex min-h-screen items-center justify-center px-4 py-24">
+          <LoadingAnimation size="lg" text="RETRIEVING ORDER" subtext="EXRONIX SECURE LOGISTICS" />
         </main>
       </ProtectedRoute>
     );
@@ -389,12 +388,12 @@ export default function OrderDetails({
 
                 <p className="mt-2 text-sm leading-6 text-gray-500">
                   If you have any questions about your
-                  order, please contact ZAYNA support.
+                  order, please contact EXRONIX support.
                 </p>
 
                 <Link
                   href="/contact"
-                  className="mt-4 inline-flex rounded-lg bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-800"
+                  className="mt-4 inline-flex rounded-lg bg-[#1677FF] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1677FF]/90 shadow-[0_0_15px_rgba(22,119,255,0.3)]"
                 >
                   Contact Support
                 </Link>

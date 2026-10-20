@@ -171,3 +171,67 @@
     min-height: 100vh;
   }
 }
+
+/* =====================================================
+   EXRONIX — LIQUID GLASS & BRAND STYLES
+   Colors: Near-black #050608, Graphite #12151B, Electric Blue #1677FF, White #F5F7FA
+===================================================== */
+
+.liquid-glass {
+  background: rgba(14, 18, 25, 0.62);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.liquid-glass-subtle {
+  background: rgba(14, 18, 25, 0.42);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+.liquid-glass-nav {
+  background: rgba(8, 11, 16, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.liquid-glass-card {
+  background: rgba(14, 18, 25, 0.58);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-card:hover {
+  background: rgba(20, 26, 38, 0.72);
+  border-color: rgba(22, 119, 255, 0.55);
+  box-shadow: 0 20px 48px -4px rgba(22, 119, 255, 0.3), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+  transform: translateY(-4px);
+}
+
+.liquid-glass-section {
+  background: rgba(8, 10, 15, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Accessible fallback for non-backdrop-filter environments */
+@supports not (backdrop-filter: blur(1px)) {
+  .liquid-glass,
+  .liquid-glass-subtle,
+  .liquid-glass-nav,
+  .liquid-glass-card,
+  .liquid-glass-section {
+    background: #12151B;
+  }
+}

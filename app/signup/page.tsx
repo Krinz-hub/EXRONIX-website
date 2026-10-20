@@ -7,6 +7,7 @@ import { toast } from "sonner";
 
 import { signUp } from "@/lib/authService";
 import { useAuth } from "@/context/AuthContext";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -64,11 +65,11 @@ export default function SignupPage() {
 
   if (loading) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
-        <p className="text-gray-500">
-          Loading...
-        </p>
-      </main>
+      <LoadingAnimation
+        fullScreen
+        text="SETTING UP ACCOUNT"
+        subtext="EXRONIX STORE"
+      />
     );
   }
 
@@ -88,7 +89,7 @@ export default function SignupPage() {
             </h1>
 
             <p className="mt-2 text-sm text-gray-500 sm:text-base">
-              Join ZAYNA and start shopping.
+              Join EXRONIX — Engineered Beyond Limits.
             </p>
 
           </div>

@@ -1,4 +1,5 @@
 import { supabase } from "./supabase";
+import { products as sampleProducts } from "@/components/data/products";
 
 /* =====================================================
    PRODUCT TYPE
@@ -358,31 +359,30 @@ function mapProduct(
 ===================================================== */
 
 export async function getProducts(): Promise<Product[]> {
-  const {
-    data,
-    error,
-  } = await supabase
-    .from("products")
-    .select("*")
-    .order("id", {
-      ascending: true,
-    });
+  try {
+    const {
+      data,
+      error,
+    } = await supabase
+      .from("products")
+      .select("*")
+      .order("id", {
+        ascending: true,
+      });
 
-  if (error) {
-    console.error(
-      "Get Products Error:",
-      error
+    if (error || !data || data.length === 0) {
+      return (sampleProducts as unknown as Product[]) ?? [];
+    }
+
+    return (data ?? []).map(
+      (product) =>
+        mapProduct(
+          product as ProductRow
+        )
     );
-
-    return [];
+  } catch {
+    return (sampleProducts as unknown as Product[]) ?? [];
   }
-
-  return (data ?? []).map(
-    (product) =>
-      mapProduct(
-        product as ProductRow
-      )
-  );
 }
 
 /* =====================================================
@@ -403,31 +403,25 @@ export async function getProductById(
     return null;
   }
 
-  const {
-    data,
-    error,
-  } = await supabase
-    .from("products")
-    .select("*")
-    .eq("id", productId)
-    .maybeSingle();
+  try {
+    const {
+      data,
+      error,
+    } = await supabase
+      .from("products")
+      .select("*")
+      .eq("id", productId)
+      .maybeSingle();
 
-  if (error) {
-    console.error(
-      "Get Product By ID Error:",
-      error
-    );
+    if (!error && data) {
+      return mapProduct(
+        data as ProductRow
+      );
+    }
+  } catch {}
 
-    return null;
-  }
-
-  if (!data) {
-    return null;
-  }
-
-  return mapProduct(
-    data as ProductRow
-  );
+  const fallback = sampleProducts.find((p) => p.id === productId);
+  return (fallback as unknown as Product) || null;
 }
 
 /* =====================================================

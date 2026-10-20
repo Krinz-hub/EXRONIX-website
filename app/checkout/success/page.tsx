@@ -18,8 +18,8 @@ export default function SuccessPage() {
         </h1>
 
         <p className="mt-4 text-gray-500">
-          Thank you for shopping with ZAYNA.
-          Your order has been received successfully.
+          Thank you for ordering with EXRONIX.
+          Your precision order has been received successfully.
         </p>
 
         <div className="mt-8 rounded-xl bg-gray-100 p-5">
@@ -28,13 +28,13 @@ export default function SuccessPage() {
           </p>
 
           <h2 className="mt-2 text-xl font-bold text-yellow-600">
-            Pending
+            Processing
           </h2>
         </div>
 
         <Link
           href="/orders"
-          className="mt-8 block rounded-xl bg-black py-4 font-semibold text-white transition hover:bg-gray-800"
+          className="mt-8 block rounded-xl bg-[#1677FF] py-4 font-semibold text-white shadow-[0_0_20px_rgba(22,119,255,0.35)] transition hover:bg-[#1677FF]/90"
         >
           View My Orders
         </Link>

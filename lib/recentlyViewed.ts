@@ -1,4 +1,4 @@
-const STORAGE_KEY = "zayna_recently_viewed";
+const STORAGE_KEY = "exronix_recently_viewed";
 
 export function saveRecentlyViewed(product: any) {
   if (!product) return;
@@ -20,7 +20,9 @@ export function saveRecentlyViewed(product: any) {
 export function getRecentlyViewed() {
   if (typeof window === "undefined") return [];
 
-  const data = localStorage.getItem(STORAGE_KEY);
+  const data =
+    localStorage.getItem(STORAGE_KEY) ||
+    localStorage.getItem("zayna_recently_viewed");
 
   return data ? JSON.parse(data) : [];
 }

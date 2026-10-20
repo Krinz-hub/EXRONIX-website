@@ -4,15 +4,14 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   ShoppingBag,
-  Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
 
 import { getProductById } from "@/lib/productService";
 import { updateCart } from "@/lib/events";
-
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type Product = {
   id: number;
@@ -132,14 +131,11 @@ export default function AddToCartButton({
           ? "Adding product to cart"
           : "Add product to cart"
       }
-      className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-black px-5 py-3 text-base font-semibold text-white transition-all hover:bg-gray-800 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-14 sm:text-lg"
+      className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#1677FF] px-5 py-3 text-base font-semibold text-white shadow-[0_0_20px_rgba(22,119,255,0.35)] transition-all hover:bg-[#1677FF]/90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-14 sm:text-lg"
     >
       {loading ? (
         <>
-          <Loader2
-            size={20}
-            className="animate-spin"
-          />
+          <LoadingAnimation size="xs" />
 
           <span>Adding...</span>
         </>

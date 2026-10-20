@@ -6,6 +6,7 @@ import Link from "next/link";
 import { toast } from "sonner";
 
 import { supabase } from "@/lib/supabase";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type Product = {
   id: number;
@@ -91,13 +92,9 @@ export default function ViewProductPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-gray-100 px-4 py-10 text-black md:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="rounded-2xl bg-white p-10 text-center shadow">
-            <p className="text-lg font-semibold">
-              Loading product...
-            </p>
-          </div>
+      <main className="min-h-screen bg-gray-100 px-4 py-24 text-black md:px-8">
+        <div className="mx-auto flex max-w-6xl items-center justify-center">
+          <LoadingAnimation size="lg" text="LOADING PRODUCT DETAILS" subtext="EXRONIX CATALOG" />
         </div>
       </main>
     );

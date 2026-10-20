@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Truck, ShieldCheck, RotateCcw, Loader2 } from "lucide-react";
+import { Truck, ShieldCheck, RotateCcw } from "lucide-react";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 import ProductOptions from "./ProductOptions";
 import QuantitySelector from "./QuantitySelector";
@@ -171,14 +172,11 @@ export default function ProductActions({
             <button
               onClick={handleBuyNow}
               disabled={buyingNow}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-black py-4 text-lg font-semibold transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#1677FF] text-[#1677FF] py-4 text-lg font-semibold transition hover:bg-[#1677FF] hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
             >
               {buyingNow ? (
                 <>
-                  <Loader2
-                    size={20}
-                    className="animate-spin"
-                  />
+                  <LoadingAnimation size="xs" />
                   Preparing Checkout...
                 </>
               ) : (
@@ -198,7 +196,7 @@ export default function ProductActions({
 
       {/* Trust Section */}
 
-      <div className="mt-10 space-y-4 rounded-2xl border bg-gray-50 p-5">
+      <div className="mt-10 space-y-4 rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-5">
         <div className="flex items-center gap-3">
           <Truck className="h-5 w-5 shrink-0" />
 

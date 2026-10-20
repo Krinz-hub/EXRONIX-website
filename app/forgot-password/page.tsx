@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { supabase } from "@/lib/supabase";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -124,11 +125,16 @@ export default function ForgotPasswordPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {loading
-                  ? "Sending..."
-                  : "Send Reset Link"}
+                {loading ? (
+                  <>
+                    <LoadingAnimation size="xs" />
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  "Send Reset Link"
+                )}
               </button>
             </form>
           )}

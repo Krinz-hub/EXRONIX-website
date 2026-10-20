@@ -21,6 +21,7 @@ import { getProductById } from "@/lib/productService";
 
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { useAuth } from "@/context/AuthContext";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type CheckoutItem = {
   id: number;
@@ -794,9 +795,9 @@ export default function CheckoutPage() {
                 .
               </p>
 
-              <p className="mt-1 text-xs text-gray-600">
+              <p className="mt-1 text-xs text-gray-400">
                 Thank you for
-                supporting ZAYNA ❤️
+                choosing EXRONIX.
               </p>
 
             </div>
@@ -1026,13 +1027,18 @@ export default function CheckoutPage() {
                     0 ||
                   isPlacingOrder
                 }
-                className="mt-6 w-full rounded-xl bg-black py-3 text-base font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-400 md:py-4 md:text-lg"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-black py-3 text-base font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-400 md:py-4 md:text-lg"
               >
-                {isPlacingOrder
-                  ? "Placing Order..."
-                  : buyNowItem
-                    ? "Buy Now — Place Order"
-                    : "Place Order"}
+                {isPlacingOrder ? (
+                  <>
+                    <LoadingAnimation size="xs" />
+                    <span>Placing Order...</span>
+                  </>
+                ) : buyNowItem ? (
+                  "Buy Now — Place Order"
+                ) : (
+                  "Place Order"
+                )}
               </button>
 
             </div>

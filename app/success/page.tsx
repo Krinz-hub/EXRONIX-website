@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function SuccessPage() {
   const [orderId] = useState(() => {
     const randomId = Math.floor(100000 + Math.random() * 900000);
-    return `ZYN-${randomId}`;
+    return `EXR-${randomId}`;
   });
 
   return (
@@ -20,7 +20,7 @@ export default function SuccessPage() {
         </h1>
 
         <p className="mt-4 text-gray-600">
-          Thank you for shopping with Zayna.
+          Thank you for ordering with EXRONIX.
         </p>
 
         <div className="mt-8 rounded-xl bg-gray-100 p-6">

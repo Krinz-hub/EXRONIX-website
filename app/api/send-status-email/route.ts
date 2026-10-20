@@ -58,60 +58,68 @@ export async function POST(req: Request) {
         break;
 
       case "Delivered":
-        title = "❤️ Order Delivered";
+        title = "📦 Order Delivered — EXRONIX";
         message =
-          "Your order has been delivered successfully. Thank you for choosing Zayna Studio.";
+          "Your order has been delivered successfully. Thank you for choosing EXRONIX.";
         break;
 
       default:
-        title = `Order Updated`;
+        title = `Order Updated — EXRONIX`;
         message = `Your order status has been updated to <b>${status}</b>.`;
     }
 
+    const fromEmail = process.env.EMAIL_FROM || "EXRONIX <orders@exronix.store>";
+
     await resend.emails.send({
-      from: "Zayna Studio <orders@zaynastudio.store>",
+      from: fromEmail,
       to: email,
       subject: title,
       html: `
-        <div style="max-width:650px;margin:auto;padding:40px;font-family:Arial">
+        <div style="max-width:650px;margin:auto;padding:40px;font-family:Arial,sans-serif;background:#ffffff;border-radius:12px;overflow:hidden;">
 
-          <h1 style="text-align:center;">
-            ZAYNA STUDIO
-          </h1>
+          <div style="background:#050608;padding:25px;text-align:center;border-bottom:2px solid #1677FF;">
+            <h1 style="color:#ffffff;margin:0;letter-spacing:2px;font-size:24px;">
+              EXRONIX
+            </h1>
+            <p style="color:#1677FF;margin-top:6px;font-size:11px;letter-spacing:1px;font-weight:bold;">
+              ENGINEERED BEYOND LIMITS
+            </p>
+          </div>
 
-          <h2>
-            Hi ${customer},
-          </h2>
+          <div style="padding:30px;">
+            <h2>
+              Hi ${customer},
+            </h2>
 
-          <p>${message}</p>
+            <p style="font-size:16px;line-height:1.6;">${message}</p>
 
-          <br>
+            <br>
 
-          <a
-            href="https://www.zaynastudio.store/orders/${orderId}"
-            style="
-              display:inline-block;
-              background:black;
-              color:white;
-              padding:14px 24px;
-              text-decoration:none;
-              border-radius:8px;
-            "
-          >
-            View Order
-          </a>
+            <div style="text-align:center;">
+              <a
+                href="${process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store"}/orders/${orderId}"
+                style="
+                  display:inline-block;
+                  background:#1677FF;
+                  color:white;
+                  padding:14px 28px;
+                  text-decoration:none;
+                  border-radius:8px;
+                  font-weight:bold;
+                "
+              >
+                Track Order #${orderId}
+              </a>
+            </div>
 
-          <br><br>
+            <br><br>
 
-          <p>
-            Order #${orderId}
-          </p>
+            <hr style="border:none;border-top:1px solid #eee;">
 
-          <hr>
-
-          <p style="color:#777">
-            Thank you for shopping with Zayna Studio.
-          </p>
+            <p style="color:#777;font-size:13px;text-align:center;">
+              Thank you for trusting EXRONIX — Precision 3D Printing & Engineering.
+            </p>
+          </div>
 
         </div>
       `,

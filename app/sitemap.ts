@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getProducts } from "@/lib/productService";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://www.zaynastudio.store";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store";
 
   const products = await getProducts();
 
@@ -45,6 +45,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
 
     {
+      url: `${baseUrl}/shipping-policy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+
+    {
       url: `${baseUrl}/privacy-policy`,
       lastModified: new Date(),
       changeFrequency: "yearly",
@@ -59,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
 
     {
-      url: `${baseUrl}/refund-policy`,
+      url: `${baseUrl}/return-refund-policy`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.3,

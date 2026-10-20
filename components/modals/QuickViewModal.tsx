@@ -53,56 +53,60 @@ export default function QuickViewModal({
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[999] flex items-center justify-center bg-black/75 backdrop-blur-md p-4"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-5xl rounded-3xl bg-white p-8 shadow-2xl"
+        className="relative w-full max-w-5xl rounded-3xl liquid-glass border border-white/15 bg-[#12151B]/95 p-6 sm:p-8 text-white shadow-2xl backdrop-blur-xl"
       >
         <button
           onClick={onClose}
-          className="absolute right-6 top-6"
+          aria-label="Close modal"
+          className="absolute right-5 top-5 z-20 rounded-xl p-2 text-gray-400 transition hover:bg-white/10 hover:text-white active:scale-95"
         >
-          <X size={28} />
+          <X size={24} />
         </button>
 
-        <div className="grid gap-10 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2 md:gap-10">
 
           {/* Image */}
 
-          <div className="overflow-hidden rounded-2xl bg-gray-100">
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-[#050608] border border-white/10">
 
             <Image
               src={product.image}
               alt={product.name}
-              width={600}
-              height={700}
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
             />
 
           </div>
 
           {/* Details */}
 
-          <div>
+          <div className="flex flex-col justify-center">
 
-            <h2 className="text-4xl font-bold">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#1677FF]">
+              EXRONIX Engineering
+            </span>
+
+            <h2 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
               {product.name}
             </h2>
 
-            <p className="mt-3 text-3xl font-bold">
+            <p className="mt-3 text-2xl sm:text-3xl font-black text-[#1677FF]">
               NPR {product.price.toLocaleString()}
             </p>
 
-            {/* Sizes */}
+            {/* Sizes / Specs */}
 
             {product.sizes?.length ? (
               <>
-                <h3 className="mt-8 font-semibold">
-                  Size
+                <h3 className="mt-6 text-xs font-semibold uppercase tracking-wider text-gray-400">
+                  Scale / Spec
                 </h3>
 
-                <div className="mt-3 flex gap-3">
+                <div className="mt-2.5 flex flex-wrap gap-2.5">
 
                   {product.sizes.map((size) => (
                     <button
@@ -110,10 +114,10 @@ export default function QuickViewModal({
                       onClick={() =>
                         setSelectedSize(size)
                       }
-                      className={`rounded-lg border px-5 py-2 ${
+                      className={`rounded-lg border px-4 py-2 text-sm font-medium transition ${
                         selectedSize === size
-                          ? "bg-black text-white"
-                          : ""
+                          ? "bg-[#1677FF] text-white border-[#1677FF] shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                          : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:text-white"
                       }`}
                     >
                       {size}
@@ -124,15 +128,15 @@ export default function QuickViewModal({
               </>
             ) : null}
 
-            {/* Colors */}
+            {/* Colors / Material */}
 
             {product.colors?.length ? (
               <>
-                <h3 className="mt-8 font-semibold">
-                  Color
+                <h3 className="mt-6 text-xs font-semibold uppercase tracking-wider text-gray-400">
+                  Material Finish
                 </h3>
 
-                <div className="mt-3 flex gap-3">
+                <div className="mt-2.5 flex flex-wrap gap-2.5">
 
                   {product.colors.map((color) => (
                     <button
@@ -140,10 +144,10 @@ export default function QuickViewModal({
                       onClick={() =>
                         setSelectedColor(color)
                       }
-                      className={`rounded-full border px-5 py-2 ${
+                      className={`rounded-lg border px-4 py-2 text-sm font-medium transition ${
                         selectedColor === color
-                          ? "bg-black text-white"
-                          : ""
+                          ? "bg-[#1677FF] text-white border-[#1677FF] shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                          : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:text-white"
                       }`}
                     >
                       {color}
@@ -156,18 +160,20 @@ export default function QuickViewModal({
 
             {/* Quantity */}
 
-            <h3 className="mt-8 font-semibold">
+            <h3 className="mt-6 text-xs font-semibold uppercase tracking-wider text-gray-400">
               Quantity
             </h3>
 
-            <div className="mt-3 flex w-40 items-center justify-between rounded-xl border p-2">
+            <div className="mt-2.5 flex w-36 items-center justify-between rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-white">
 
               <button
+                type="button"
                 onClick={() =>
                   setQuantity(Math.max(1, quantity - 1))
                 }
+                className="text-gray-400 hover:text-white transition"
               >
-                <Minus />
+                <Minus size={18} />
               </button>
 
               <span className="font-bold">
@@ -175,37 +181,39 @@ export default function QuickViewModal({
               </span>
 
               <button
+                type="button"
                 onClick={() =>
                   setQuantity(quantity + 1)
                 }
+                className="text-gray-400 hover:text-white transition"
               >
-                <Plus />
+                <Plus size={18} />
               </button>
 
             </div>
 
             <button
-  onClick={() => {
-    addToCart(
-      {
-        id: product.id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        size: selectedSize,
-        color: selectedColor,
-      },
-      quantity
-    );
+              onClick={() => {
+                addToCart(
+                  {
+                    id: product.id,
+                    name: product.name,
+                    image: product.image,
+                    price: product.price,
+                    size: selectedSize,
+                    color: selectedColor,
+                  },
+                  quantity
+                );
 
-    toast.success(`${product.name} added to cart!`);
+                toast.success(`${product.name} added to cart!`);
 
-    onClose();
-  }}
-  className="mt-10 w-full rounded-xl bg-black py-4 text-lg font-semibold text-white transition hover:bg-gray-800"
->
-  Add To Cart
-</button>
+                onClose();
+              }}
+              className="mt-8 w-full rounded-xl bg-[#1677FF] py-3.5 text-base font-semibold text-white shadow-[0_0_20px_rgba(22,119,255,0.35)] transition hover:bg-[#1677FF]/90 active:scale-[0.99]"
+            >
+              Add To Cart
+            </button>
 
           </div>
 

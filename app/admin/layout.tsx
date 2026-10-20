@@ -19,6 +19,7 @@ import {
 
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function AdminLayout({
   children,
@@ -144,15 +145,11 @@ export default function AdminLayout({
     checkingAdmin
   ) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-100">
-        <div className="text-center">
-          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-black" />
-
-          <p className="mt-4 text-sm text-gray-500">
-            Verifying administrator access...
-          </p>
-        </div>
-      </div>
+      <LoadingAnimation
+        fullScreen
+        text="VERIFYING ADMIN ACCESS"
+        subtext="EXRONIX STORE"
+      />
     );
   }
 
@@ -171,12 +168,12 @@ export default function AdminLayout({
 
         <div className="border-b border-gray-800 p-8">
 
-          <h1 className="text-3xl font-bold">
-            ZAYNA
+          <h1 className="text-3xl font-black tracking-wider text-white">
+            EXRONIX
           </h1>
 
-          <p className="mt-1 text-sm text-gray-400">
-            Admin Panel
+          <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-[#1677FF]">
+            Admin Portal
           </p>
 
         </div>
@@ -228,12 +225,12 @@ export default function AdminLayout({
       <div className="fixed left-0 right-0 top-0 z-30 flex h-16 items-center justify-between bg-black px-5 text-white lg:hidden">
 
         <div>
-          <h1 className="font-bold">
-            ZAYNA
+          <h1 className="font-black tracking-wider text-white">
+            EXRONIX
           </h1>
 
-          <p className="text-xs text-gray-400">
-            Admin Panel
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-[#1677FF]">
+            Admin Portal
           </p>
         </div>
 

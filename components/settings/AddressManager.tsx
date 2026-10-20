@@ -5,6 +5,7 @@ import { MapPin, Plus, Pencil, Trash2, Star } from "lucide-react";
 import { toast } from "sonner";
 import AddressModal from "./AddressModal";
 import { useAuth } from "@/context/AuthContext";
+import LoadingAnimation from "@/components/LoadingAnimation";
 import {
   getAddresses,
   deleteAddress,
@@ -58,8 +59,8 @@ const [editingAddress, setEditingAddress] =
 
   if (loading) {
     return (
-      <div className="rounded-2xl border bg-white p-5 shadow-sm md:p-8">
-        Loading addresses...
+      <div className="flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-8 shadow-sm backdrop-blur-md md:p-12">
+        <LoadingAnimation size="sm" text="LOADING ADDRESSES" />
       </div>
     );
   }

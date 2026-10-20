@@ -9,7 +9,6 @@ import {
   Home,
   ShoppingBag,
   Sparkles,
-  Grid2X2,
   Info,
   Phone,
   Heart,
@@ -35,18 +34,13 @@ const menu = [
   },
   {
     name: "Shop",
-    href: "/collections",
+    href: "/shop",
     icon: ShoppingBag,
   },
   {
     name: "New",
-    href: "/collections?sort=new",
+    href: "/new",
     icon: Sparkles,
-  },
-  {
-    name: "Collections",
-    href: "/collections",
-    icon: Grid2X2,
   },
   {
     name: "About",
@@ -163,7 +157,7 @@ export default function MobileMenu({
       <aside
         aria-label="Mobile navigation"
         aria-hidden={!open}
-        className={`fixed left-0 top-0 z-[100] flex h-[100dvh] w-[min(20rem,88vw)] max-w-full flex-col overflow-hidden bg-white shadow-2xl transition-transform duration-300 ease-out ${
+        className={`fixed left-0 top-0 z-[100] flex h-[100dvh] w-[min(20rem,88vw)] max-w-full flex-col overflow-hidden bg-[#12151B] text-[#F5F7FA] border-r border-white/10 shadow-2xl transition-transform duration-300 ease-out ${
           open
             ? "translate-x-0"
             : "-translate-x-full"
@@ -174,16 +168,16 @@ export default function MobileMenu({
             HEADER
         ========================= */}
 
-        <div className="flex shrink-0 items-center justify-between border-b px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))]">
+        <div className="flex shrink-0 items-center justify-between border-b border-white/10 px-5 py-4 pt-[max(1rem,env(safe-area-inset-top))]">
 
           <div className="min-w-0">
 
-            <h2 className="text-2xl font-black tracking-tight">
-              ZAYNA
+            <h2 className="text-2xl font-black tracking-wider text-white">
+              EXRONIX
             </h2>
 
-            <p className="text-xs text-gray-500">
-              Wear the Grace
+            <p className="text-[10px] font-semibold tracking-wider text-[#1677FF] uppercase">
+              ENGINEERED BEYOND LIMITS
             </p>
 
           </div>
@@ -192,7 +186,7 @@ export default function MobileMenu({
             type="button"
             aria-label="Close navigation menu"
             onClick={onClose}
-            className="shrink-0 rounded-xl p-2 transition hover:bg-gray-100 active:scale-95"
+            className="shrink-0 rounded-xl p-2 text-gray-400 transition hover:bg-white/10 hover:text-white active:scale-95"
           >
             <X size={25} />
           </button>
@@ -203,22 +197,22 @@ export default function MobileMenu({
             USER SECTION
         ========================= */}
 
-        <div className="shrink-0 border-b px-5 py-4">
+        <div className="shrink-0 border-b border-white/10 px-5 py-4">
 
           {user ? (
             <div className="flex min-w-0 items-center gap-3">
 
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black text-sm font-bold text-white">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#1677FF] text-sm font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)]">
                 {initials}
               </div>
 
               <div className="min-w-0">
 
-                <h3 className="truncate text-base font-bold">
+                <h3 className="truncate text-base font-bold text-white">
                   {displayName}
                 </h3>
 
-                <p className="truncate text-xs text-gray-500">
+                <p className="truncate text-xs text-gray-400">
                   {user.email}
                 </p>
 
@@ -227,12 +221,12 @@ export default function MobileMenu({
             </div>
           ) : (
             <>
-              <h3 className="text-base font-bold">
-                Welcome to ZAYNA
+              <h3 className="text-base font-bold text-white">
+                Welcome to EXRONIX
               </h3>
 
-              <p className="mt-1 text-xs text-gray-500">
-                Login to continue shopping.
+              <p className="mt-1 text-xs text-gray-400">
+                Sign in to manage orders and custom prints.
               </p>
             </>
           )}
@@ -248,12 +242,12 @@ export default function MobileMenu({
           {menu.map((item) => {
             const Icon = item.icon;
 
-            const isCollections =
-              item.href === "/collections";
-
-            const active = isCollections
-              ? pathname === "/collections"
-              : pathname === item.href;
+            const active =
+              item.href === "/"
+                ? pathname === "/"
+                : item.href === "/shop"
+                  ? pathname === "/shop" || pathname.startsWith("/collections")
+                  : pathname === item.href;
 
             return (
               <Link
@@ -262,8 +256,8 @@ export default function MobileMenu({
                 onClick={onClose}
                 className={`flex min-h-12 items-center gap-4 px-5 py-3.5 text-base font-medium transition-colors ${
                   active
-                    ? "bg-black text-white"
-                    : "text-gray-800 hover:bg-gray-100"
+                    ? "bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.35)]"
+                    : "text-gray-300 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <Icon
@@ -278,7 +272,7 @@ export default function MobileMenu({
             );
           })}
 
-          <div className="my-3 border-t" />
+          <div className="my-3 border-t border-white/10" />
 
           {/* =========================
               ACCOUNT LINKS
@@ -291,8 +285,8 @@ export default function MobileMenu({
                 onClick={onClose}
                 className={`flex min-h-12 items-center gap-4 px-5 py-3.5 text-base font-medium transition-colors ${
                   pathname === "/wishlist"
-                    ? "bg-black text-white"
-                    : "text-gray-800 hover:bg-gray-100"
+                    ? "bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.35)]"
+                    : "text-gray-300 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <Heart
@@ -307,8 +301,8 @@ export default function MobileMenu({
                 onClick={onClose}
                 className={`flex min-h-12 items-center gap-4 px-5 py-3.5 text-base font-medium transition-colors ${
                   pathname.startsWith("/orders")
-                    ? "bg-black text-white"
-                    : "text-gray-800 hover:bg-gray-100"
+                    ? "bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.35)]"
+                    : "text-gray-300 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <Package
@@ -323,8 +317,8 @@ export default function MobileMenu({
                 onClick={onClose}
                 className={`flex min-h-12 items-center gap-4 px-5 py-3.5 text-base font-medium transition-colors ${
                   pathname.startsWith("/settings")
-                    ? "bg-black text-white"
-                    : "text-gray-800 hover:bg-gray-100"
+                    ? "bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.35)]"
+                    : "text-gray-300 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <Settings
@@ -342,13 +336,13 @@ export default function MobileMenu({
             FOOTER
         ========================= */}
 
-        <div className="shrink-0 border-t bg-white px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+        <div className="shrink-0 border-t border-white/10 bg-[#0D1017] px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
 
           {user ? (
             <button
               type="button"
               onClick={handleLogout}
-              className="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-black py-3 font-semibold text-white transition hover:bg-gray-800 active:scale-[0.98]"
+              className="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-white/10 py-3 font-semibold text-white transition hover:bg-red-500/80 active:scale-[0.98]"
             >
               <LogOut size={20} />
               Logout
@@ -357,7 +351,7 @@ export default function MobileMenu({
             <Link
               href="/login"
               onClick={onClose}
-              className="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-black py-3 font-semibold text-white transition hover:bg-gray-800 active:scale-[0.98]"
+              className="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-[#1677FF] py-3 font-semibold text-white shadow-[0_0_20px_rgba(22,119,255,0.35)] transition hover:bg-[#1677FF]/90 active:scale-[0.98]"
             >
               <User size={20} />
               Login

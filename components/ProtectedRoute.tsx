@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import LoadingAnimation from "./LoadingAnimation";
 
 export default function ProtectedRoute({
   children,
@@ -20,9 +21,11 @@ export default function ProtectedRoute({
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        Loading...
-      </div>
+      <LoadingAnimation
+        fullScreen
+        text="AUTHENTICATING SESSION"
+        subtext="EXRONIX STORE"
+      />
     );
   }
 

@@ -100,11 +100,11 @@ export default function ProductCard({
 
   return (
     <>
-      <article className="group min-w-0 overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <article className="group min-w-0 overflow-hidden rounded-2xl liquid-glass-card border border-white/15 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1677FF]/55 hover:shadow-[0_16px_36px_rgba(22,119,255,0.25)]">
 
         {/* Image */}
 
-        <div className="relative aspect-[3/4] w-full overflow-hidden bg-gray-100">
+        <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#050608]/50">
 
           <Image
             src={image}
@@ -124,13 +124,13 @@ export default function ProductCard({
                 : `Add ${name} to wishlist`
             }
             onClick={toggleWishlist}
-            className="absolute right-2.5 top-2.5 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 shadow-md transition hover:scale-110 active:scale-95 sm:right-3 sm:top-3 sm:h-11 sm:w-11"
+            className="absolute right-2.5 top-2.5 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 backdrop-blur-md border border-white/20 shadow-md transition hover:scale-110 active:scale-95 sm:right-3 sm:top-3 sm:h-11 sm:w-11"
           >
             <Heart
               className={`h-4.5 w-4.5 sm:h-5 sm:w-5 ${
                 liked
                   ? "fill-red-500 text-red-500"
-                  : "text-gray-700"
+                  : "text-white"
               }`}
             />
           </button>
@@ -140,9 +140,9 @@ export default function ProductCard({
           <button
             type="button"
             onClick={handleQuickView}
-            className="absolute bottom-3 left-1/2 hidden -translate-x-1/2 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black shadow-lg transition-all duration-300 group-hover:opacity-100 lg:flex lg:opacity-0"
+            className="absolute bottom-3 left-1/2 hidden -translate-x-1/2 items-center gap-2 rounded-full liquid-glass border border-white/25 px-5 py-3 text-sm font-semibold text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:border-[#1677FF]/60 hover:bg-[#1677FF]/30 group-hover:opacity-100 lg:flex lg:opacity-0"
           >
-            <Eye size={16} />
+            <Eye size={16} className="text-[#1677FF]" />
             Quick View
           </button>
 
@@ -152,17 +152,17 @@ export default function ProductCard({
 
         <div className="min-w-0 p-3.5 sm:p-5">
 
-          <h3 className="line-clamp-2 min-h-[2.75rem] break-words text-sm font-semibold leading-5 text-black sm:min-h-[3.5rem] sm:text-lg sm:leading-6 lg:text-xl">
+          <h3 className="line-clamp-2 min-h-[2.75rem] break-words text-sm font-semibold leading-5 text-white sm:min-h-[3.5rem] sm:text-lg sm:leading-6 lg:text-xl">
             {name}
           </h3>
 
-          <p className="mt-2 truncate text-base font-bold text-gray-800 sm:text-xl">
+          <p className="mt-2 truncate text-base font-black text-[#1677FF] sm:text-xl">
             NPR {price.toLocaleString()}
           </p>
 
           <Link
             href={`/products/${id}`}
-            className="mt-3 flex min-h-11 w-full items-center justify-center rounded-lg bg-black px-3 py-2.5 text-xs font-medium text-white transition hover:bg-gray-800 active:scale-[0.98] sm:mt-5 sm:min-h-12 sm:text-sm lg:text-base"
+            className="mt-3 flex min-h-11 w-full items-center justify-center rounded-lg bg-[#1677FF] px-3 py-2.5 text-xs font-semibold text-white shadow-[0_0_15px_rgba(22,119,255,0.25)] transition hover:bg-[#1677FF]/90 active:scale-[0.98] sm:mt-5 sm:min-h-12 sm:text-sm lg:text-base"
           >
             View Product
           </Link>

@@ -12,6 +12,7 @@ import { FaInstagram, FaTiktok } from "react-icons/fa6";
 import { toast } from "sonner";
 
 import { sendMessage } from "@/lib/contactService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
@@ -62,22 +63,22 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 pt-36 pb-20">
+    <main className="min-h-screen bg-[#050608] text-white pt-36 pb-20">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Header */}
 
         <div className="mb-16 text-center">
-          <p className="uppercase tracking-[0.3em] text-gray-500">
-            Contact
+          <p className="uppercase tracking-[0.3em] text-[#1677FF] text-xs font-semibold">
+            Engineering & Inquiries
           </p>
 
-          <h1 className="mt-4 text-5xl font-bold">
-            We'd Love to Hear From You
+          <h1 className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-white">
+            Connect With EXRONIX
           </h1>
 
-          <p className="mt-5 text-lg text-gray-500">
-            Have questions about our products or your order?
+          <p className="mt-5 text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
+            Have questions about our 3D printed catalogue, material specs, or custom additive manufacturing projects? Reach out to our team.
           </p>
         </div>
 
@@ -85,63 +86,63 @@ export default function ContactPage() {
 
           {/* Contact Info */}
 
-          <div className="space-y-8 rounded-3xl bg-white p-10 shadow">
+          <div className="space-y-8 rounded-3xl liquid-glass border border-white/10 p-10">
 
             <div className="flex gap-5">
-              <Mail size={28} />
+              <Mail size={28} className="text-[#1677FF] shrink-0" />
               <div>
-                <h3 className="font-bold">Email</h3>
+                <h3 className="font-bold text-white">Email</h3>
                 <a
-  href="mailto:support@zaynastudio.store"
-  className="transition hover:text-black hover:underline"
->
- support@zaynastudio.store
-</a>
+                  href="mailto:support@exronix.store"
+                  className="text-gray-300 transition hover:text-[#1677FF] hover:underline"
+                >
+                  support@exronix.store
+                </a>
               </div>
             </div>
 
             <div className="flex gap-5">
-              <Phone size={28} />
+              <Phone size={28} className="text-[#1677FF] shrink-0" />
               <div>
-                <h3 className="font-bold">Phone</h3>
+                <h3 className="font-bold text-white">Support Phone</h3>
                 <a
-  href="tel:+9779842958835"
-  className="block transition hover:text-black hover:underline"
->
-  +977 9842958835
-</a>
+                  href="tel:+9779842958835"
+                  className="block text-gray-300 transition hover:text-[#1677FF] hover:underline"
+                >
+                  +977 9842958835
+                </a>
 
-<a
-  href="tel:+9779807124306"
-  className="block transition hover:text-black hover:underline"
->
-  +977 9807124306
-</a>
+                <a
+                  href="tel:+9779807124306"
+                  className="block text-gray-300 transition hover:text-[#1677FF] hover:underline"
+                >
+                  +977 9807124306
+                </a>
               </div>
             </div>
 
             <div className="flex gap-5">
-              <MapPin size={28} />
+              <MapPin size={28} className="text-[#1677FF] shrink-0" />
               <div>
-                <h3 className="font-bold">Location</h3>
-                <p>Hetauda, Nepal</p>
+                <h3 className="font-bold text-white">Manufacturing & Office</h3>
+                <p className="text-gray-300">Hetauda, Nepal</p>
               </div>
             </div>
 
             <div className="flex gap-5">
-              <Clock size={28} />
+              <Clock size={28} className="text-[#1677FF] shrink-0" />
               <div>
-                <h3 className="font-bold">Working Hours</h3>
-                <p>Sunday – Friday</p>
-                <p>10:00 AM – 6:00 PM</p>
+                <h3 className="font-bold text-white">Working Hours</h3>
+                <p className="text-gray-300">Sunday – Friday</p>
+                <p className="text-gray-300">10:00 AM – 6:00 PM</p>
               </div>
             </div>
 
             {/* Socials */}
 
-            <div className="border-t pt-8">
-              <h3 className="mb-5 text-xl font-bold">
-                Connect With Us
+            <div className="border-t border-white/10 pt-8">
+              <h3 className="mb-5 text-xl font-bold text-white">
+                Engineering Channels
               </h3>
 
               <div className="space-y-4">
@@ -149,42 +150,20 @@ export default function ContactPage() {
                 {/* Instagram */}
 
                 <a
-                  href="https://instagram.com/zaynastudio_"
+                  href="https://instagram.com/exronix"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-xl border p-4 transition-all duration-300 hover:border-pink-400 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50 hover:shadow-md"
+                  className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-[#1677FF]/50 hover:bg-[#1677FF]/10"
                 >
-                  <FaInstagram size={24} className="text-pink-600" />
+                  <FaInstagram size={24} className="text-[#1677FF]" />
 
                   <div>
-                    <p className="font-semibold">
+                    <p className="font-semibold text-white">
                       Instagram
                     </p>
 
-                    <p className="text-sm text-gray-500">
-                      @zaynastudio_
-                    </p>
-                  </div>
-                </a>
-
-                {/* TikTok */}
-
-                <a
-                  href="https://www.tiktok.com/@zaynastudio_"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-xl border p-4 transition-all duration-300 hover:border-black hover:bg-gray-50 hover:shadow-md"
-                >
-                    <FaTiktok size={24} />
-                  
-
-                  <div>
-                    <p className="font-semibold">
-                      TikTok
-                    </p>
-
-                    <p className="text-sm text-gray-500">
-                      @zaynastudio_
+                    <p className="text-sm text-gray-400">
+                      @exronix
                     </p>
                   </div>
                 </a>
@@ -196,49 +175,77 @@ export default function ContactPage() {
 
           {/* Contact Form */}
 
-          <div className="rounded-3xl bg-white p-10 shadow">
+          <div className="rounded-3xl liquid-glass border border-white/10 p-10">
 
             <div className="space-y-5">
 
-              <input
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Full Name"
-                className="w-full rounded-xl border p-4"
-              />
+              <div>
+                <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
+                  Full Name
+                </label>
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  className="w-full rounded-xl border border-white/10 bg-[#050608] p-4 text-white placeholder-gray-500 focus:border-[#1677FF] focus:outline-none"
+                />
+              </div>
 
-              <input
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Email Address"
-                className="w-full rounded-xl border p-4"
-              />
+              <div>
+                <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
+                  Email Address
+                </label>
+                <input
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="you@example.com"
+                  className="w-full rounded-xl border border-white/10 bg-[#050608] p-4 text-white placeholder-gray-500 focus:border-[#1677FF] focus:outline-none"
+                />
+              </div>
 
-              <input
-                name="subject"
-                value={form.subject}
-                onChange={handleChange}
-                placeholder="Subject"
-                className="w-full rounded-xl border p-4"
-              />
+              <div>
+                <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
+                  Subject / Project Type
+                </label>
+                <input
+                  name="subject"
+                  value={form.subject}
+                  onChange={handleChange}
+                  placeholder="e.g. Custom Print Request / Product Spec"
+                  className="w-full rounded-xl border border-white/10 bg-[#050608] p-4 text-white placeholder-gray-500 focus:border-[#1677FF] focus:outline-none"
+                />
+              </div>
 
-              <textarea
-                rows={7}
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Message"
-                className="w-full rounded-xl border p-4"
-              />
+              <div>
+                <label className="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
+                  Message Details
+                </label>
+                <textarea
+                  rows={5}
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Provide details about dimensions, materials, or your question..."
+                  className="w-full rounded-xl border border-white/10 bg-[#050608] p-4 text-white placeholder-gray-500 focus:border-[#1677FF] focus:outline-none"
+                />
+              </div>
 
               <button
                 onClick={handleSubmit}
                 disabled={loading}
-                className="w-full rounded-xl bg-black py-4 text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex items-center justify-center gap-2 w-full rounded-xl bg-[#1677FF] py-4 text-white font-semibold shadow-[0_0_20px_rgba(22,119,255,0.35)] transition hover:bg-[#1677FF]/90 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? (
+                  <>
+                    <LoadingAnimation size="xs" />
+                    <span>Transmitting Inquiry...</span>
+                  </>
+                ) : (
+                  "Submit Inquiry"
+                )}
               </button>
 
             </div>

@@ -19,11 +19,8 @@ export default function Navbar() {
 
   const isHome = pathname === "/";
 
-  const [mobileOpen, setMobileOpen] =
-    useState(false);
-
-  const [scrolled, setScrolled] =
-    useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   /* =========================
      SCROLL EFFECT
@@ -41,16 +38,9 @@ export default function Navbar() {
 
     handleScroll();
 
-    window.addEventListener(
-      "scroll",
-      handleScroll
-    );
+    window.addEventListener("scroll", handleScroll);
 
-    return () =>
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isHome]);
 
   /* =========================
@@ -84,7 +74,7 @@ export default function Navbar() {
           isHome ? "fixed" : "sticky"
         } left-0 top-0 z-50 w-full transition-all duration-500 ${
           scrolled
-            ? "bg-white/90 shadow-md backdrop-blur-xl"
+            ? "liquid-glass-nav"
             : "bg-transparent"
         }`}
       >
@@ -102,14 +92,8 @@ export default function Navbar() {
               type="button"
               aria-label="Open navigation menu"
               aria-expanded={mobileOpen}
-              onClick={() =>
-                setMobileOpen(true)
-              }
-              className={`shrink-0 rounded-lg p-2 transition lg:hidden ${
-                scrolled
-                  ? "text-black hover:bg-gray-100"
-                  : "text-white hover:bg-white/10"
-              }`}
+              onClick={() => setMobileOpen(true)}
+              className="shrink-0 rounded-lg p-2 text-white transition hover:bg-white/10 lg:hidden"
             >
               <Menu className="h-6 w-6 sm:h-7 sm:w-7" />
             </button>
@@ -118,40 +102,26 @@ export default function Navbar() {
 
             <Link
               href="/"
-              aria-label="ZAYNA Home"
-              className="flex min-w-0 items-center gap-2 sm:gap-3"
+              aria-label="EXRONIX Home"
+              className="group flex min-w-0 items-center gap-2 sm:gap-3"
             >
               <Image
-                src="/images/logo.png"
-                alt="ZAYNA"
-                width={44}
-                height={44}
+                src="/images/exronix-logo.png"
+                alt="EXRONIX"
+                width={140}
+                height={50}
                 priority
-                className="h-9 w-9 shrink-0 object-contain sm:h-11 sm:w-11"
+                className="h-8 w-auto shrink-0 object-contain transition duration-300 group-hover:scale-105 sm:h-10"
               />
 
               <div className="min-w-0">
-
-                <h1
-                  className={`text-xl font-black tracking-tight transition-colors sm:text-2xl lg:text-3xl ${
-                    scrolled
-                      ? "text-black"
-                      : "text-white"
-                  }`}
-                >
-                  ZAYNA
+                <h1 className="text-xl font-black tracking-wider text-white sm:text-2xl lg:text-3xl">
+                  EXRONIX
                 </h1>
 
-                <p
-                  className={`hidden text-[9px] uppercase tracking-[0.3em] transition-colors sm:block ${
-                    scrolled
-                      ? "text-gray-500"
-                      : "text-gray-200"
-                  }`}
-                >
-                  APPAREL
+                <p className="hidden text-[8px] font-bold uppercase tracking-[0.25em] text-[#1677FF] sm:block">
+                  ENGINEERED BEYOND LIMITS
                 </p>
-
               </div>
             </Link>
 
@@ -162,9 +132,7 @@ export default function Navbar() {
           ========================= */}
 
           <div className="hidden flex-1 justify-center lg:flex">
-            <DesktopMenu
-              scrolled={scrolled}
-            />
+            <DesktopMenu scrolled={scrolled} />
           </div>
 
           {/* =========================
@@ -172,9 +140,7 @@ export default function Navbar() {
           ========================= */}
 
           <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-            <NavIcons
-              scrolled={scrolled}
-            />
+            <NavIcons scrolled={scrolled} />
           </div>
 
         </div>
@@ -186,9 +152,7 @@ export default function Navbar() {
 
       <MobileMenu
         open={mobileOpen}
-        onClose={() =>
-          setMobileOpen(false)
-        }
+        onClose={() => setMobileOpen(false)}
       />
     </>
   );

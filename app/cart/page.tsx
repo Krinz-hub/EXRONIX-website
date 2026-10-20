@@ -218,8 +218,8 @@ useEffect(() => {
 
         <div className="mb-10">
 
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gray-500">
-            Zayna Studio
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#1677FF]">
+            EXRONIX
           </p>
 
           <h1 className="mt-3 text-4xl font-bold sm:text-5xl">

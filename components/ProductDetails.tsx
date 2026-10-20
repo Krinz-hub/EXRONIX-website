@@ -21,14 +21,14 @@ export default function ProductDetails({
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <section className="bg-white pt-28 pb-20">
+    <section className="bg-transparent text-white pt-28 pb-20">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-10">
 
         {/* LEFT */}
 
         <div>
 
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-gray-100">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/15 bg-[#050608]/70 shadow-2xl backdrop-blur-xl">
 
             <Image
               src={selectedImage}
@@ -44,49 +44,49 @@ export default function ProductDetails({
 
         {/* RIGHT */}
 
-        <div>
+        <div className="flex flex-col justify-center">
 
           {/* Product Name */}
 
-          <h1 className="text-3xl font-bold leading-tight lg:text-5xl">
+          <h1 className="text-3xl font-black uppercase tracking-tight text-white lg:text-5xl">
             {product.name}
           </h1>
 
-          {/* Rating */}
+          {/* Rating / Category */}
 
-          <div className="mt-5 flex items-center gap-3">
+          <div className="mt-4 flex items-center gap-3">
 
-            <div className="flex text-xl text-yellow-500">
-              ★★★★★
-            </div>
+            <span className="rounded-full border border-[#1677FF]/50 bg-[#1677FF]/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#1677FF]">
+              {product.category || "PC HARDWARE"}
+            </span>
 
-            <span className="text-sm text-gray-500">
-              (24 Reviews)
+            <span className="text-sm text-gray-400">
+              Verified Precision Build
             </span>
 
           </div>
 
           {/* Price */}
 
-          <p className="mt-6 text-3xl font-bold lg:text-4xl">
+          <p className="mt-6 text-3xl font-black text-[#1677FF] lg:text-4xl">
             NPR {product.price.toLocaleString()}
           </p>
 
           {/* Description */}
 
-          <p className="mt-6 leading-8 text-gray-600">
+          <p className="mt-6 leading-7 text-gray-300">
             {product.description ||
-              "Designed for everyday comfort with premium materials and a timeless minimalist aesthetic. Crafted with premium fabric to deliver exceptional comfort, durability, and effortless everyday style."}
+              "Engineered for high-performance computing and clean desk environments with aerospace-grade materials, precision tolerances, and verified durability."}
           </p>
 
-          {/* Size */}
+          {/* Variant / Form Factor */}
 
           {product.sizes?.length > 0 && (
 
-            <div className="mt-10">
+            <div className="mt-8">
 
-              <h3 className="mb-4 text-lg font-semibold">
-                Size
+              <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-400">
+                Variant / Form Factor
               </h3>
 
               <div className="flex flex-wrap gap-3">
@@ -95,11 +95,12 @@ export default function ProductDetails({
 
                   <button
                     key={item}
+                    type="button"
                     onClick={() => setSize(item)}
-                    className={`flex h-12 w-12 items-center justify-center rounded-xl border font-medium transition ${
+                    className={`flex min-h-11 items-center justify-center rounded-xl border px-4 text-xs font-semibold uppercase tracking-wider transition ${
                       size === item
-                        ? "border-black bg-black text-white"
-                        : "hover:border-black"
+                        ? "border-[#1677FF] bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                        : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:bg-white/10"
                     }`}
                   >
                     {item}
@@ -113,14 +114,14 @@ export default function ProductDetails({
 
           )}
 
-          {/* Color */}
+          {/* Color / Finish */}
 
           {product.colors?.length > 0 && (
 
-            <div className="mt-8">
+            <div className="mt-6">
 
-              <h3 className="mb-4 text-lg font-semibold">
-                Color
+              <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-400">
+                Material Finish
               </h3>
 
               <div className="flex flex-wrap gap-3">
@@ -129,11 +130,12 @@ export default function ProductDetails({
 
                   <button
                     key={item}
+                    type="button"
                     onClick={() => setColor(item)}
-                    className={`rounded-full border px-5 py-2 font-medium transition ${
+                    className={`rounded-xl border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition ${
                       color === item
-                        ? "bg-black text-white"
-                        : "hover:border-black"
+                        ? "border-[#1677FF] bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                        : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:bg-white/10"
                     }`}
                   >
                     {item}
@@ -149,30 +151,32 @@ export default function ProductDetails({
 
           {/* Quantity */}
 
-          <div className="mt-10">
+          <div className="mt-8">
 
-            <h3 className="mb-4 text-lg font-semibold">
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-400">
               Quantity
             </h3>
 
-            <div className="flex w-fit items-center overflow-hidden rounded-xl border">
+            <div className="flex w-fit items-center overflow-hidden rounded-xl border border-white/20 bg-white/5">
 
               <button
+                type="button"
                 onClick={() =>
                   setQuantity((q) => Math.max(1, q - 1))
                 }
-                className="px-5 py-3 text-xl transition hover:bg-gray-100"
+                className="px-4 py-2.5 text-lg text-white transition hover:bg-white/10"
               >
                 −
               </button>
 
-              <span className="min-w-16 text-center font-semibold">
+              <span className="min-w-14 text-center text-sm font-bold text-white">
                 {quantity}
               </span>
 
               <button
+                type="button"
                 onClick={() => setQuantity((q) => q + 1)}
-                className="px-5 py-3 text-xl transition hover:bg-gray-100"
+                className="px-4 py-2.5 text-lg text-white transition hover:bg-white/10"
               >
                 +
               </button>

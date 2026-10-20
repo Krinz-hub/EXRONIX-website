@@ -1,53 +1,55 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { toast } from "sonner";
-
 import { signIn } from "@/lib/authService";
 import { useAuth } from "@/context/AuthContext";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function LoginPage() {
   const router = useRouter();
-
   const { user, loading } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [isSigningIn, setIsSigningIn] = useState(false);
 
-  useEffect(() => {
-    if (!loading && user) {
-      router.replace("/");
-    }
-  }, [loading, user, router]);
+  // If already logged in, redirect
+  if (!loading && user) {
+    router.replace("/");
+    return null;
+  }
 
-  async function handleLogin(e: React.FormEvent) {
+  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    setIsSigningIn(true);
+    const cleanEmail = email.trim().toLowerCase();
+
+    if (!cleanEmail || !password) {
+      toast.error("Please fill in both email and password.");
+      return;
+    }
 
     try {
-      const { error } = await signIn(email, password);
+      setIsSigningIn(true);
+
+      const { data, error } = await signIn(cleanEmail, password);
 
       if (error) {
-        toast.error(
-          error instanceof Error
-            ? error.message
-            : String(error)
-        );
+        toast.error(error.message || "Failed to sign in. Please verify credentials.");
         return;
       }
 
-      router.replace("/");
-    } catch (error) {
-      console.error("Login error:", error);
-
-      toast.error(
-        "Something went wrong. Please try again."
-      );
+      if (data?.user) {
+        toast.success("Welcome back to EXRONIX!");
+        router.refresh();
+        router.push("/");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSigningIn(false);
     }
@@ -55,124 +57,112 @@ export default function LoginPage() {
 
   if (loading) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
-        <p className="text-gray-500">
-          Loading...
-        </p>
-      </main>
+      <LoadingAnimation
+        fullScreen
+        text="VERIFYING ACCOUNT"
+        subtext="EXRONIX STORE"
+      />
     );
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-10 sm:px-6">
-
+    <main className="flex min-h-[calc(100vh-140px)] items-center justify-center bg-gray-100/90 px-4 py-16 sm:px-6">
       <div className="w-full max-w-md">
-
-        {/* Card */}
-        <div className="rounded-2xl bg-white p-6 shadow-lg sm:p-8 md:p-10">
-
+        {/* Form Card */}
+        <div className="rounded-2xl border border-gray-200/90 bg-white p-7 shadow-xl text-gray-900 sm:p-9 md:p-10">
           {/* Header */}
           <div className="text-center">
-
-            <h1 className="text-2xl font-bold sm:text-3xl">
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
               Welcome Back
             </h1>
 
-            <p className="mt-2 text-sm text-gray-500 sm:text-base">
-              Login to continue shopping with ZAYNA.
+            <p className="mt-2 text-sm text-gray-600 sm:text-base">
+              Sign in to access your EXRONIX account and orders.
             </p>
-
           </div>
 
           {/* Form */}
-          <form
-            onSubmit={handleLogin}
-            className="mt-7 sm:mt-8"
-          >
-
-            {/* Email */}
-            <label
-              htmlFor="email"
-              className="mb-2 block text-sm font-medium text-gray-700"
-            >
-              Email
-            </label>
-
-            <input
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) =>
-                setEmail(e.target.value)
-              }
-              className="mb-5 w-full rounded-xl border border-gray-300 px-4 py-3.5 text-sm outline-none transition focus:border-black focus:ring-1 focus:ring-black sm:text-base"
-              autoComplete="email"
-              required
-            />
-
-            {/* Password */}
-            <label
-              htmlFor="password"
-              className="mb-2 block text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
-
-            <input
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) =>
-                setPassword(e.target.value)
-              }
-              className="mb-5 w-full rounded-xl border border-gray-300 px-4 py-3.5 text-sm outline-none transition focus:border-black focus:ring-1 focus:ring-black sm:text-base"
-              autoComplete="current-password"
-              required
-            />
-
-            {/* Forgot Password */}
-            <div className="mb-6 flex justify-end">
-
-              <Link
-                href="/forgot-password"
-                className="text-sm font-medium text-blue-600 transition hover:text-blue-800 hover:underline"
+          <form onSubmit={handleLogin} className="mt-7 sm:mt-8 space-y-5">
+            {/* Email Field */}
+            <div>
+              <label
+                htmlFor="email"
+                className="mb-2 block text-sm font-semibold text-gray-800"
               >
-                Forgot Password?
-              </Link>
+                Email Address
+              </label>
 
+              <input
+                id="email"
+                type="email"
+                placeholder="name@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none transition focus:border-[#1677FF] focus:ring-2 focus:ring-[#1677FF]/20 sm:text-base"
+                autoComplete="email"
+                required
+              />
             </div>
 
-            {/* Login */}
+            {/* Password Field */}
+            <div>
+              <div className="mb-2 flex items-center justify-between">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-semibold text-gray-800"
+                >
+                  Password
+                </label>
+
+                <Link
+                  href="/forgot-password"
+                  className="text-xs font-semibold text-[#1677FF] transition hover:text-[#1677FF]/80 hover:underline sm:text-sm"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
+
+              <input
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none transition focus:border-[#1677FF] focus:ring-2 focus:ring-[#1677FF]/20 sm:text-base"
+                autoComplete="current-password"
+                required
+              />
+            </div>
+
+            {/* Submit Button */}
             <button
               type="submit"
               disabled={isSigningIn}
-              className="flex min-h-12 w-full items-center justify-center rounded-xl bg-black px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 sm:text-base"
+              className="mt-2 flex min-h-12 w-full items-center justify-center rounded-xl bg-black px-4 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-gray-800 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
             >
-              {isSigningIn
-                ? "Signing In..."
-                : "Login"}
+              {isSigningIn ? (
+                <span className="flex items-center gap-2">
+                  <LoadingAnimation size="xs" />
+                  <span>Signing In...</span>
+                </span>
+              ) : (
+                "Login to Account"
+              )}
             </button>
 
-            {/* Signup */}
-            <p className="mt-6 text-center text-sm text-gray-600 sm:text-base">
+            {/* Signup Link */}
+            <p className="mt-6 text-center text-sm text-gray-600">
               Don't have an account?{" "}
-
               <Link
                 href="/signup"
-                className="font-semibold text-blue-600 transition hover:text-blue-800 hover:underline"
+                className="font-bold text-[#1677FF] transition hover:text-[#1677FF]/80 hover:underline"
               >
                 Sign Up
               </Link>
             </p>
-
           </form>
-
         </div>
-
       </div>
-
     </main>
   );
 }

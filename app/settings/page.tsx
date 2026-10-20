@@ -20,6 +20,7 @@ import {
 } from "@/lib/authService";
 
 import { uploadAvatar } from "@/lib/avatarService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function SettingsPage() {
   const { user, refreshUser } = useAuth();
@@ -680,11 +681,20 @@ async function handleDeleteAccount() {
                 dark:border-gray-700
                 dark:text-white
                 dark:hover:bg-gray-800
+                inline-flex
+                items-center
+                justify-center
+                gap-2
               "
             >
-              {uploading
-                ? "Uploading..."
-                : "Change Photo"}
+              {uploading ? (
+                <>
+                  <LoadingAnimation size="xs" />
+                  <span>Uploading...</span>
+                </>
+              ) : (
+                "Change Photo"
+              )}
 
               <input
                 type="file"
@@ -1022,7 +1032,7 @@ async function handleDeleteAccount() {
           </h2>
 
           <p className="mt-2 text-gray-500 dark:text-gray-400">
-            Choose how ZAYNA Studio looks.
+            Choose how EXRONIX looks.
           </p>
 
           <div className="mt-6 grid grid-cols-2 gap-4">

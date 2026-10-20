@@ -4,21 +4,20 @@ export default function CollectionsHeader() {
 
       {/* Small Heading */}
 
-      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500 sm:text-sm sm:tracking-[0.45em]">
-        ZAYNA STUDIO
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#1677FF] sm:text-sm sm:tracking-[0.45em]">
+        EXRONIX HARDWARE
       </p>
 
       {/* Main Heading */}
 
-      <h1 className="text-3xl font-black tracking-tight text-black sm:text-4xl lg:text-5xl">
-        Discover Your Style
+      <h1 className="text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
+        PC Accessories & Hardware Shop
       </h1>
 
       {/* Description */}
 
-      <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-500 sm:mt-5 sm:text-base lg:text-lg">
-        Minimal. Bold. Timeless. Explore premium oversized essentials
-        crafted for everyday comfort.
+      <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-300 sm:mt-5 sm:text-base lg:text-lg">
+        ENGINEERED BEYOND LIMITS. High-precision esports gaming mice, architectural panoramic PC cabinets, and CNC aluminum headphone stands engineered for the ultimate desk setup.
       </p>
 
     </section>

@@ -6,6 +6,7 @@ import CollectionsHeader from "@/components/collections/CollectionsHeader";
 import FilterSidebar from "@/components/collections/FilterSidebar";
 import SortDropdown from "@/components/collections/SortDropdown";
 import ProductGrid from "@/components/collections/ProductGrid";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 import {
   getProducts,
@@ -14,13 +15,19 @@ import {
 
 export default function CollectionsPage() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("All");
   const [sort, setSort] = useState("newest");
 
   useEffect(() => {
     async function loadProducts() {
-      const data = await getProducts();
-      setProducts(data);
+      try {
+        setLoading(true);
+        const data = await getProducts();
+        setProducts(data);
+      } finally {
+        setLoading(false);
+      }
     }
 
     loadProducts();
@@ -66,7 +73,7 @@ export default function CollectionsPage() {
   }, [products, category, sort]);
 
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-gray-50 px-4 pb-20 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pt-36">
+    <main className="min-h-screen w-full overflow-x-hidden bg-transparent text-white px-4 pb-20 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pt-36">
 
       <div className="mx-auto max-w-7xl">
 
@@ -76,13 +83,13 @@ export default function CollectionsPage() {
 
         {/* Product Count + Sort */}
 
-        <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-center sm:justify-between border-b border-white/10 pb-4">
 
-          <h2 className="text-lg font-semibold sm:text-xl">
+          <h2 className="text-lg font-semibold sm:text-xl text-white">
             {filteredProducts.length}{" "}
             {filteredProducts.length === 1
-              ? "Product"
-              : "Products"}
+              ? "Hardware Item"
+              : "Hardware Items"}
           </h2>
 
           <div className="w-full sm:w-auto">
@@ -108,9 +115,23 @@ export default function CollectionsPage() {
           {/* Products */}
 
           <div className="min-w-0">
-            <ProductGrid
-              products={filteredProducts}
-            />
+            {loading ? (
+              <div className="flex min-h-[360px] items-center justify-center rounded-2xl liquid-glass border border-white/10 bg-[#050608]/40 p-12">
+                <LoadingAnimation
+                  size="md"
+                  text="LOADING HARDWARE"
+                  subtext="EXRONIX STORE"
+                />
+              </div>
+            ) : (
+              <ProductGrid
+                products={filteredProducts}
+                onReset={() => {
+                  setCategory("All");
+                  setSort("newest");
+                }}
+              />
+            )}
           </div>
 
         </div>

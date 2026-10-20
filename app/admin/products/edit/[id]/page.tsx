@@ -9,6 +9,7 @@ import {
   getProductById,
   updateProduct,
 } from "@/lib/productService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type ProductStatus = "Active" | "Inactive";
 
@@ -20,7 +21,7 @@ export default function EditProductPage() {
   const [saving, setSaving] = useState(false);
 
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("T-Shirts");
+  const [category, setCategory] = useState("Computer Mice");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
   const [image, setImage] = useState("");
@@ -215,12 +216,8 @@ export default function EditProductPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-gray-100 px-6 py-32">
-        <div className="mx-auto max-w-5xl rounded-2xl bg-white p-10 text-center shadow">
-          <p className="text-lg font-semibold">
-            Loading product...
-          </p>
-        </div>
+      <main className="min-h-screen bg-gray-100 px-6 py-32 flex items-center justify-center">
+        <LoadingAnimation size="lg" text="PREPARING EDITOR" subtext="EXRONIX CATALOG" />
       </main>
     );
   }
@@ -287,20 +284,16 @@ export default function EditProductPage() {
                 }
                 className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:border-black"
               >
-                <option value="T-Shirts">
-                  T-Shirts
+                <option value="Computer Mice">
+                  Computer Mice
                 </option>
 
-                <option value="Oversized">
-                  Oversized
+                <option value="PC Cabinets">
+                  PC Cabinets
                 </option>
 
-                <option value="Hoodies">
-                  Hoodies
-                </option>
-
-                <option value="Accessories">
-                  Accessories
+                <option value="Headphone Stands">
+                  Headphone Stands
                 </option>
               </select>
             </div>

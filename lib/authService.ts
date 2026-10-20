@@ -93,7 +93,7 @@ export async function resetPassword(
       redirectTo:
         process.env.NODE_ENV === "development"
           ? "http://localhost:3000/reset-password"
-          : "https://www.zaynastudio.store/reset-password",
+          : `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store"}/reset-password`,
     }
   );
 }

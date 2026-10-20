@@ -9,6 +9,7 @@ import {
   deleteProduct,
   type Product,
 } from "@/lib/products";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function ProductsPage() {
   const [search, setSearch] = useState("");
@@ -175,15 +176,7 @@ export default function ProductsPage() {
   if (loading) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-gray-100 px-6">
-        <div className="rounded-2xl bg-white px-10 py-8 text-center shadow">
-          <p className="text-lg font-semibold">
-            Loading Products...
-          </p>
-
-          <p className="mt-2 text-sm text-gray-500">
-            Please wait while we load your products.
-          </p>
-        </div>
+        <LoadingAnimation size="lg" text="LOADING PRODUCTS" subtext="EXRONIX CATALOG" />
       </main>
     );
   }
@@ -313,20 +306,16 @@ export default function ProductsPage() {
               All Categories
             </option>
 
-            <option value="T-Shirts">
-              T-Shirts
+            <option value="Computer Mice">
+              Computer Mice
             </option>
 
-            <option value="Oversized">
-              Oversized
+            <option value="PC Cabinets">
+              PC Cabinets
             </option>
 
-            <option value="Hoodies">
-              Hoodies
-            </option>
-
-            <option value="Linen Pants">
-              Linen Pants
+            <option value="Headphone Stands">
+              Headphone Stands
             </option>
           </select>
 

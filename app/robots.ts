@@ -16,6 +16,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
 
-    sitemap: "https://www.zaynastudio.store/sitemap.xml",
+    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store"}/sitemap.xml`,
   };
 }

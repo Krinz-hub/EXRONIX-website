@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { createCoupon } from "@/lib/couponService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 type Props = {
   open: boolean;
@@ -201,11 +202,16 @@ export default function CreateCouponModal({
           <button
             disabled={loading}
             onClick={handleSubmit}
-            className="rounded-xl bg-black px-6 py-3 text-white"
+            className="flex items-center justify-center gap-2 rounded-xl bg-black px-6 py-3 text-white disabled:opacity-60"
           >
-            {loading
-              ? "Creating..."
-              : "Create Coupon"}
+            {loading ? (
+              <>
+                <LoadingAnimation size="xs" />
+                <span>Creating...</span>
+              </>
+            ) : (
+              "Create Coupon"
+            )}
           </button>
 
         </div>

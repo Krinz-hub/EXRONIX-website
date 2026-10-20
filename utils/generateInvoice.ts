@@ -34,11 +34,11 @@ export function generateInvoice(order: Order) {
   // Title
   doc.setFontSize(24);
   doc.setFont("helvetica", "bold");
-  doc.text("ZAYNA", 14, 20);
+  doc.text("EXRONIX", 14, 20);
 
-  doc.setFontSize(12);
+  doc.setFontSize(11);
   doc.setFont("helvetica", "normal");
-  doc.text("Premium Apparel", 14, 28);
+  doc.text("ENGINEERED BEYOND LIMITS — Precision 3D Printing", 14, 28);
 
   doc.line(14, 35, 196, 35);
 
@@ -120,7 +120,7 @@ export function generateInvoice(order: Order) {
   doc.setFont("helvetica", "normal");
 
   doc.text(
-    "Thank you for shopping with Zayna",
+    "Thank you for ordering with EXRONIX",
     14,
     finalY + 35
   );

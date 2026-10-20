@@ -12,6 +12,7 @@ import {
   updateOrderDetails,
   deleteOrder,
 } from "@/lib/orderService";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 /* =========================================
    ORDER TYPE
@@ -311,10 +312,8 @@ export default function OrdersPage() {
 
         {loading ? (
 
-          <div className="rounded-2xl bg-white p-12 text-center shadow">
-            <p className="text-gray-500">
-              Loading orders...
-            </p>
+          <div className="rounded-2xl bg-white p-12 text-center shadow flex items-center justify-center">
+            <LoadingAnimation size="md" text="LOADING ORDERS" subtext="EXRONIX ORDER FULFILLMENT" />
           </div>
 
         ) : filteredOrders.length === 0 ? (

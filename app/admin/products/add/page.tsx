@@ -6,12 +6,13 @@ import Link from "next/link";
 import { uploadProductImage } from "@/lib/storageService";
 import { addProduct } from "@/lib/products";
 import { toast } from "sonner";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 export default function AddProductPage() {
   const router = useRouter();
 
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("T-Shirts");
+  const [category, setCategory] = useState("Computer Mice");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
 
@@ -276,11 +277,9 @@ export default function AddProductPage() {
                 }
                 className="w-full rounded-lg border border-gray-300 p-3 outline-none"
               >
-                <option>T-Shirts</option>
-                <option>Oversized</option>
-                <option>Hoodies</option>
-                <option>Accessories</option>
-                <option>Linen Pants</option>
+                <option>Computer Mice</option>
+                <option>PC Cabinets</option>
+                <option>Headphone Stands</option>
               </select>
             </div>
 
@@ -407,8 +406,12 @@ export default function AddProductPage() {
                     : "cursor-pointer hover:border-black hover:bg-gray-100"
                 }`}
               >
-                <div className="text-5xl">
-                  {uploading ? "⏳" : "📷"}
+                <div className="flex items-center justify-center">
+                  {uploading ? (
+                    <LoadingAnimation size="sm" text="" subtext="" />
+                  ) : (
+                    <div className="text-5xl">📷</div>
+                  )}
                 </div>
 
                 <p className="mt-4 text-lg font-semibold">
@@ -491,11 +494,16 @@ export default function AddProductPage() {
               type="button"
               onClick={saveProduct}
               disabled={saving || uploading}
-              className="w-full rounded-lg bg-green-600 py-4 text-lg font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 py-4 text-lg font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {saving
-                ? "Saving Product..."
-                : "Save Product"}
+              {saving ? (
+                <>
+                  <LoadingAnimation size="xs" />
+                  <span>Saving Product...</span>
+                </>
+              ) : (
+                "Save Product"
+              )}
             </button>
 
           </div>

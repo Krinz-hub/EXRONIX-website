@@ -7,10 +7,9 @@ type Props = {
 
 const categories = [
   "All",
-  "T-Shirts",
-  "Oversized",
-  "Hoodies",
-  "Linen Pants",
+  "Computer Mice",
+  "PC Cabinets",
+  "Headphone Stands",
 ];
 
 export default function FilterSidebar({
@@ -34,10 +33,10 @@ export default function FilterSidebar({
                 key={item}
                 type="button"
                 onClick={() => setCategory(item)}
-                className={`min-h-10 whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium transition-all active:scale-95 ${
+                className={`min-h-10 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all active:scale-95 ${
                   active
-                    ? "border-black bg-black text-white"
-                    : "border-gray-200 bg-white text-gray-700 hover:bg-gray-100"
+                    ? "border-[#1677FF] bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                    : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {item}
@@ -52,10 +51,10 @@ export default function FilterSidebar({
           DESKTOP FILTERS
       ========================= */}
 
-      <aside className="hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm lg:block">
+      <aside className="hidden rounded-2xl border border-white/15 liquid-glass p-6 text-white shadow-xl backdrop-blur-xl lg:block">
 
-        <h2 className="mb-5 text-xl font-bold">
-          Filters
+        <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-[#1677FF]">
+          Hardware Categories
         </h2>
 
         <div className="space-y-2">
@@ -68,17 +67,29 @@ export default function FilterSidebar({
                 key={item}
                 type="button"
                 onClick={() => setCategory(item)}
-                className={`block min-h-11 w-full rounded-xl px-4 py-3 text-left text-sm font-medium transition ${
+                className={`flex min-h-11 w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium transition ${
                   active
-                    ? "bg-black text-white"
-                    : "text-gray-700 hover:bg-gray-100"
+                    ? "bg-[#1677FF] text-white font-semibold shadow-[0_0_15px_rgba(22,119,255,0.35)]"
+                    : "text-gray-300 hover:bg-white/10 hover:text-white"
                 }`}
               >
-                {item}
+                <span>{item}</span>
+                {active && (
+                  <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                )}
               </button>
             );
           })}
 
+        </div>
+
+        <div className="mt-8 border-t border-white/10 pt-6">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+            ENGINEERING SPEC
+          </p>
+          <p className="mt-2 text-xs leading-5 text-gray-400">
+            Precision-milled PC accessories with ultra-low tolerances and verified durability.
+          </p>
         </div>
 
       </aside>

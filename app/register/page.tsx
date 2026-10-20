@@ -88,7 +88,7 @@ export default function RegisterPage() {
         </h1>
 
         <p className="mb-8 text-center text-gray-500">
-          Join ZAYNA Apparel
+          Join EXRONIX — Engineered Beyond Limits
         </p>
 
         <form

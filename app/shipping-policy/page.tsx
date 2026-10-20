@@ -19,7 +19,7 @@ export default function ShippingPolicyPage() {
             </h2>
 
             <p className="text-gray-600">
-              Zayna Studio currently ships throughout Nepal.
+              EXRONIX currently ships throughout Nepal.
               Delivery times may vary depending on your
               province and location.
             </p>
