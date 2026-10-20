@@ -1,10 +1,30 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+interface OrderEmailItem {
+  product_name: string;
+  quantity: number;
+  price: number;
+}
 
 export async function POST(req: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+
+    if (!apiKey) {
+      console.error("Missing RESEND_API_KEY: Transactional email service is not configured.");
+
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Email service is not configured.",
+        },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
+
     const {
       customer,
       email,
@@ -15,9 +35,11 @@ export async function POST(req: Request) {
       items,
     } = await req.json();
 
-    const itemRows = items
+    const orderItems: OrderEmailItem[] = Array.isArray(items) ? items : [];
+
+    const itemRows = orderItems
       .map(
-        (item: any) => `
+        (item: OrderEmailItem) => `
           <tr>
             <td style="padding:8px;border-bottom:1px solid #eee;">
               ${item.product_name}
@@ -156,17 +178,30 @@ We'll notify you again when your order ships.
 
     const fromEmail = process.env.EMAIL_FROM || "EXRONIX <orders@exronix.store>";
 
-    await resend.emails.send({
+    const { error: customerEmailError } = await resend.emails.send({
       from: fromEmail,
       to: email,
       subject: `Your EXRONIX Order #${orderId} is Confirmed 🚀`,
       html,
     });
-    await resend.emails.send({
-  from: fromEmail,
-  to: process.env.ADMIN_EMAIL || "support@exronix.store",
-  subject: `🛒 New Order #${orderId}`,
-  html: `
+
+    if (customerEmailError) {
+      console.error("Failed to send customer order confirmation email:", customerEmailError);
+
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Failed to send order confirmation email.",
+        },
+        { status: 500 }
+      );
+    }
+
+    const { error: adminEmailError } = await resend.emails.send({
+      from: fromEmail,
+      to: process.env.ADMIN_EMAIL || "support@exronix.store",
+      subject: `🛒 New Order #${orderId}`,
+      html: `
     <h2>New Order Received</h2>
 
     <p><b>Customer:</b> ${customer}</p>
@@ -186,9 +221,9 @@ We'll notify you again when your order ships.
     <h3>Products</h3>
 
     <ul>
-      ${items
+      ${orderItems
         .map(
-          (item: any) => `
+          (item: OrderEmailItem) => `
             <li>
               ${item.product_name}
               ×
@@ -215,17 +250,22 @@ We'll notify you again when your order ships.
       Open EXRONIX Admin Portal
     </a>
   `,
-});
+    });
+
+    if (adminEmailError) {
+      console.error("Failed to send admin order notification email:", adminEmailError);
+    }
 
     return NextResponse.json({
       success: true,
     });
   } catch (err) {
-    console.error(err);
+    console.error("Unexpected error in /api/send-order-email:", err);
 
     return NextResponse.json(
       {
         success: false,
+        error: "Failed to send order email.",
       },
       {
         status: 500,

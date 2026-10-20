@@ -63,13 +63,13 @@ This security audit was performed via source code analysis and static inspection
     try {
       const { customer, email, orderId, total, payment, address, items } = await req.json();
       await resend.emails.send({
-        from: "Zayna Studio <orders@zaynastudio.store>",
+        from: "EXRONIX <orders@exronix.store>",
         to: email, // <-- Arbitrary recipient!
         subject: `Your Order #${orderId} is Confirmed 🎉`,
         html,
       });
   ```
-- **Impact**: Anyone on the internet can send arbitrary emails to any email address pretending to be `orders@zaynastudio.store`, causing domain blacklisting, phishing, and rapid exhaustion of your Resend email quotas.
+- **Impact**: Anyone on the internet can send arbitrary emails to any email address pretending to be `orders@exronix.store`, causing domain blacklisting, phishing, and rapid exhaustion of your Resend email quotas.
 - **Remediation**:
   Verify the caller's Supabase session token in the API route before sending emails. For `send-order-email`, only send after confirming the order actually exists in the `orders` table. For `send-status-email`, verify that the caller is an authenticated user with `role === 'admin'`.
 
@@ -81,7 +81,7 @@ This security audit was performed via source code analysis and static inspection
 - **Evidence**:
   ```ts
   const html = `
-    <h1>ZAYNA STUDIO</h1>
+    <h1>EXRONIX</h1>
     <h2>Hi ${customer},</h2>
     <p>Shipping Address: ${address}</p>
     ...
@@ -158,7 +158,7 @@ This security audit was performed via source code analysis and static inspection
 - **Affected File**: [`app/api/send-order-email/route.ts:165`](file:///Users/dev/Documents/jja/app/api/send-order-email/route.ts#L165)
 - **Evidence**:
   ```ts
-  to: "zaynaofficial07@gmail.com", // Change if you use another admin email
+  to: "support@exronix.store", // Configured via ADMIN_EMAIL
   ```
 - **Impact**: Notifications of new orders are hardcoded to the previous developer/owner's personal email address instead of the active store owner's address.
 - **Remediation**:

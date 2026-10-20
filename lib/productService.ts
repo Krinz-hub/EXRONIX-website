@@ -36,6 +36,8 @@ export type Product = {
   sizes: string[];
 
   colors: string[];
+
+  specs?: Record<string, string>;
 };
 
 /* =====================================================
@@ -351,6 +353,11 @@ function mapProduct(
 
     colors:
       parsePgArray(product.colors),
+
+    specs:
+      (sampleProducts.find((p) => p.id === Number(product.id))?.specs) ||
+      (product as any).specs ||
+      {},
   };
 }
 

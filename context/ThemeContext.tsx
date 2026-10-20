@@ -30,7 +30,7 @@ export function ThemeProvider({
       }
 
       const saved =
-        localStorage.getItem("zayna-theme");
+        localStorage.getItem("exronix-theme");
 
       if (
         saved === "dark" ||
@@ -57,7 +57,7 @@ export function ThemeProvider({
     root.style.colorScheme = theme;
 
     localStorage.setItem(
-      "zayna-theme",
+      "exronix-theme",
       theme
     );
   }, [theme]);

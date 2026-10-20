@@ -10,14 +10,12 @@ This audit documents every brand identity element, string, and visual asset acro
 
 | Brand String | Occurrences | Key File Locations | Recommended Source |
 |---|---|---|---|
-| **"Zayna Studio"** | 38 | `app/layout.tsx:30,35,50,54,71`, `components/Footer.tsx:14,149`, `app/about/page.tsx:10`, `app/api/send-order-email/route.ts:49,65`, `app/api/send-status-email/route.ts:79,113` | Centralized site config (`siteConfig.name`) |
-| **"ZAYNA"** | 46 | `components/navbar/Navbar.tsx:126`, `components/Hero.tsx:112`, `app/admin/layout.tsx:175,232`, `utils/generateInvoice.ts:37`, `app/login/page.tsx:84`, `app/register/page.tsx:85` | Centralized site config (`siteConfig.shortName`) |
-| **"Wear the Grace"** | 8 | `app/layout.tsx:30,35,45,64,91`, `app/api/send-order-email/route.ts:53`, `components/navbar/MobileMenu.tsx:186`, `components/Footer.tsx:18` | Centralized site config (`siteConfig.tagline`) |
-| **"MINIMAL • BOLD • TIMELESS"** | 1 | `components/Hero.tsx:32` | Homepage Hero content (`siteConfig.subtagline`) |
-| **"support@zaynastudio.store"** | 4 | `components/Footer.tsx:123`, `app/contact/page.tsx:68`, `app/privacy-policy/page.tsx:144`, `lib/storeSettingsService.ts:8` | Centralized config / database `store_settings` |
-| **"orders@zaynastudio.store"** | 2 | `app/api/send-order-email/route.ts:158`, `app/api/send-status-email/route.ts:72` | Environment variable `EMAIL_FROM` |
-| **"https://www.zaynastudio.store"** | 8 | `app/layout.tsx:26,69`, `app/sitemap.ts:5`, `app/robots.ts:19`, `lib/authService.ts:96`, `app/api/send-order-email/route.ts:127` | Environment variable `NEXT_PUBLIC_SITE_URL` |
-| **"https://instagram.com/zaynastudio_"** | 1 | `components/Footer.tsx:133` | Centralized site config (`siteConfig.socials.instagram`) |
+| **"EXRONIX"** | 50+ | `app/layout.tsx`, `components/Footer.tsx`, `app/about/page.tsx`, `app/api/send-order-email/route.ts`, `app/api/send-status-email/route.ts` | Centralized site config (`siteConfig.name`) |
+| **"ENGINEERED BEYOND LIMITS"** | 8 | `app/layout.tsx`, `app/api/send-order-email/route.ts`, `components/Footer.tsx` | Centralized site config (`siteConfig.tagline`) |
+| **"support@exronix.store"** | 4 | `components/Footer.tsx`, `app/contact/page.tsx`, `app/privacy-policy/page.tsx`, `lib/storeSettingsService.ts` | Centralized config / database `store_settings` |
+| **"orders@exronix.store"** | 2 | `app/api/send-order-email/route.ts`, `app/api/send-status-email/route.ts` | Environment variable `EMAIL_FROM` |
+| **"https://www.exronix.store"** | 8 | `app/layout.tsx`, `app/sitemap.ts`, `app/robots.ts`, `lib/authService.ts`, `app/api/send-order-email/route.ts` | Environment variable `NEXT_PUBLIC_SITE_URL` |
+| **"https://instagram.com/exronix"** | 1 | `components/Footer.tsx` | Centralized site config (`siteConfig.socials.instagram`) |
 | **"NPR" / Currency** | 61 | `app/checkout/page.tsx:288`, `components/ProductCard.tsx:125`, `utils/generateInvoice.ts:88`, `app/api/send-order-email/route.ts:29,104` | Centralized currency formatter (`formatPrice`) |
 
 ---
@@ -33,8 +31,6 @@ All local visual assets are located in `public/` and `app/`.
 | `public/images/logo.png` | PNG (1024 × 1024, RGBA) | 1.4 MB | `components/navbar/Navbar.tsx:125` | **Primary Brand Logo** (Navbar). High resolution, should be compressed to WebP/SVG. |
 | `app/favicon.ico` | ICO (16x16, 32x32, 4 icons) | ~15 KB | Browser tab icon, referenced in `app/layout.tsx:100` | **Active Favicon**. |
 | `public/og-image.png` | PNG (1728 × 910, RGB) | 680 KB | `app/layout.tsx:79,96` | **Open Graph Social Share Preview Image**. |
-| `public/images/ZAYNA logo.jpeg` | JPEG (740 × 1600) | 46 KB | None (0 references in code) | Alternate logo asset (Unused). |
-| `public/images/zayna_web_optimized.svg` | SVG (Vector) | 53 KB | None (0 references in code) | Vector brand graphic (Unused). |
 
 ---
 

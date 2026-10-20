@@ -162,7 +162,7 @@ export default function InventoryPage() {
       return {
         label: "Out of Stock",
         className:
-          "bg-red-100 text-red-700",
+          "border border-red-500/30 bg-red-500/15 text-red-400",
       };
     }
 
@@ -170,31 +170,31 @@ export default function InventoryPage() {
       return {
         label: "Low Stock",
         className:
-          "bg-yellow-100 text-yellow-700",
+          "border border-amber-500/30 bg-amber-500/15 text-amber-400",
       };
     }
 
     return {
       label: "In Stock",
       className:
-        "bg-green-100 text-green-700",
+        "border border-emerald-500/30 bg-emerald-500/15 text-emerald-400",
     };
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-6 text-black md:px-8 md:py-10">
+    <main className="min-h-screen bg-transparent px-4 py-6 text-white md:px-8 md:py-10">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
 
         <div className="mb-8 md:mb-10">
 
-          <h1 className="text-3xl font-bold md:text-5xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
             Inventory Management
           </h1>
 
-          <p className="mt-2 text-sm text-gray-500 md:text-base">
-            Monitor and update product stock.
+          <p className="mt-2 text-sm text-gray-400 md:text-base">
+            Monitor warehouse stocks and adjust unit counts in real time.
           </p>
 
         </div>
@@ -205,13 +205,13 @@ export default function InventoryPage() {
 
           {/* Products */}
 
-          <div className="rounded-2xl bg-white p-4 shadow md:p-6">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl md:p-6">
 
-            <p className="text-xs text-gray-500 md:text-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
               📦 Products
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold md:mt-3 md:text-4xl">
+            <h2 className="mt-2 text-2xl font-black text-white md:mt-3 md:text-4xl">
               {totalProducts}
             </h2>
 
@@ -219,13 +219,13 @@ export default function InventoryPage() {
 
           {/* In Stock */}
 
-          <div className="rounded-2xl bg-white p-4 shadow md:p-6">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl md:p-6">
 
-            <p className="text-xs text-green-600 md:text-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
               🟢 In Stock
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold md:mt-3 md:text-4xl">
+            <h2 className="mt-2 text-2xl font-black text-emerald-400 md:mt-3 md:text-4xl">
               {inStock}
             </h2>
 
@@ -233,13 +233,13 @@ export default function InventoryPage() {
 
           {/* Low Stock */}
 
-          <div className="rounded-2xl bg-white p-4 shadow md:p-6">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl md:p-6">
 
-            <p className="text-xs text-yellow-600 md:text-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-amber-400">
               🟡 Low Stock
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold md:mt-3 md:text-4xl">
+            <h2 className="mt-2 text-2xl font-black text-amber-400 md:mt-3 md:text-4xl">
               {lowStock}
             </h2>
 
@@ -247,13 +247,13 @@ export default function InventoryPage() {
 
           {/* Out of Stock */}
 
-          <div className="rounded-2xl bg-white p-4 shadow md:p-6">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl md:p-6">
 
-            <p className="text-xs text-red-600 md:text-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-red-400">
               🔴 Out of Stock
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold md:mt-3 md:text-4xl">
+            <h2 className="mt-2 text-2xl font-black text-red-400 md:mt-3 md:text-4xl">
               {outOfStock}
             </h2>
 
@@ -261,13 +261,13 @@ export default function InventoryPage() {
 
           {/* Inventory Value */}
 
-          <div className="col-span-2 rounded-2xl bg-white p-4 shadow md:col-span-2 md:p-6 lg:col-span-1">
+          <div className="col-span-2 rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl md:col-span-2 md:p-6 lg:col-span-1">
 
-            <p className="text-xs text-gray-500 md:text-sm">
-              💰 Inventory Value
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#1677FF]">
+              💰 Total Value
             </p>
 
-            <h2 className="mt-2 text-xl font-bold md:mt-3 md:text-3xl">
+            <h2 className="mt-2 text-xl font-black text-[#1677FF] md:mt-3 md:text-2xl">
               NPR{" "}
               {inventoryValue.toLocaleString()}
             </h2>
@@ -282,12 +282,12 @@ export default function InventoryPage() {
 
           <input
             type="text"
-            placeholder="🔍 Search product..."
+            placeholder="🔍 Search product title..."
             value={search}
             onChange={(e) =>
               setSearch(e.target.value)
             }
-            className="w-full rounded-xl border bg-white p-3 outline-none transition focus:border-black md:p-4"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] md:p-4"
           />
 
           <select
@@ -295,16 +295,16 @@ export default function InventoryPage() {
             onChange={(e) =>
               setFilter(e.target.value)
             }
-            className="w-full rounded-xl border bg-white px-4 py-3 outline-none focus:border-black md:w-52"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white outline-none transition focus:border-[#1677FF] md:w-52"
           >
-            <option value="All">All Products</option>
-            <option value="In Stock">
+            <option value="All" className="bg-[#0b0e14] text-white">All Products</option>
+            <option value="In Stock" className="bg-[#0b0e14] text-white">
               In Stock
             </option>
-            <option value="Low Stock">
+            <option value="Low Stock" className="bg-[#0b0e14] text-white">
               Low Stock
             </option>
-            <option value="Out of Stock">
+            <option value="Out of Stock" className="bg-[#0b0e14] text-white">
               Out of Stock
             </option>
           </select>
@@ -313,7 +313,7 @@ export default function InventoryPage() {
 
         {/* Selection Info */}
 
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-2 text-sm text-gray-500">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
 
           <span>
             {filteredProducts.length}{" "}
@@ -323,7 +323,7 @@ export default function InventoryPage() {
           </span>
 
           {selectedProducts.length > 0 && (
-            <span className="font-medium text-black">
+            <span className="font-bold text-[#1677FF]">
               {selectedProducts.length} selected
             </span>
           )}
@@ -333,13 +333,13 @@ export default function InventoryPage() {
         {/* Loading */}
 
         {loading ? (
-          <div className="rounded-2xl bg-white p-12 text-center shadow flex items-center justify-center">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-12 text-center shadow-xl flex items-center justify-center">
             <LoadingAnimation size="md" text="LOADING INVENTORY" subtext="EXRONIX WAREHOUSE TELEMETRY" />
           </div>
         ) : filteredProducts.length === 0 ? (
-          <div className="rounded-2xl bg-white p-12 text-center shadow">
-            <p className="text-gray-500">
-              No products found.
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-12 text-center shadow-xl">
+            <p className="text-gray-400">
+              No products found matching search.
             </p>
           </div>
         ) : (
@@ -358,7 +358,7 @@ export default function InventoryPage() {
                   return (
                     <div
                       key={product.id}
-                      className="rounded-2xl bg-white p-5 shadow"
+                      className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl text-white"
                     >
 
                       {/* Product Header */}
@@ -375,7 +375,7 @@ export default function InventoryPage() {
                               product.id
                             )
                           }
-                          className="mt-2 h-4 w-4"
+                          className="mt-2 h-4 w-4 rounded accent-[#1677FF]"
                         />
 
                         <Image
@@ -383,16 +383,16 @@ export default function InventoryPage() {
                           alt={product.name}
                           width={70}
                           height={70}
-                          className="h-16 w-16 shrink-0 rounded-xl object-cover"
+                          className="h-16 w-16 shrink-0 rounded-2xl border border-white/10 bg-[#080a0f] object-cover"
                         />
 
                         <div className="min-w-0 flex-1">
 
-                          <h2 className="truncate font-bold">
+                          <h2 className="truncate font-bold text-white">
                             {product.name}
                           </h2>
 
-                          <p className="mt-1 text-sm text-gray-500">
+                          <p className="mt-1 text-sm font-semibold text-[#1677FF]">
                             NPR{" "}
                             {product.price.toLocaleString()}
                           </p>
@@ -403,15 +403,15 @@ export default function InventoryPage() {
 
                       {/* Stock Info */}
 
-                      <div className="mt-5 grid grid-cols-2 gap-4 border-t pt-4">
+                      <div className="mt-5 grid grid-cols-2 gap-4 border-t border-white/10 pt-4">
 
                         <div>
 
-                          <p className="text-xs text-gray-500">
+                          <p className="text-xs text-gray-400">
                             Current Stock
                           </p>
 
-                          <p className="mt-1 text-2xl font-bold">
+                          <p className="mt-1 text-2xl font-black text-white">
                             {product.stock}
                           </p>
 
@@ -419,12 +419,12 @@ export default function InventoryPage() {
 
                         <div>
 
-                          <p className="text-xs text-gray-500">
+                          <p className="text-xs text-gray-400">
                             Status
                           </p>
 
                           <span
-                            className={`mt-1 inline-block rounded-full px-3 py-1 text-xs font-semibold ${status.className}`}
+                            className={`mt-1 inline-block rounded-full px-3 py-1 text-xs font-bold ${status.className}`}
                           >
                             {status.label}
                           </span>
@@ -444,7 +444,7 @@ export default function InventoryPage() {
                               -1
                             )
                           }
-                          className="flex h-11 w-1/2 items-center justify-center rounded-xl bg-red-500 text-xl font-bold text-white transition hover:bg-red-600"
+                          className="flex h-11 w-1/2 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/15 text-xl font-bold text-red-400 transition hover:bg-red-500/25"
                         >
                           −
                         </button>
@@ -456,7 +456,7 @@ export default function InventoryPage() {
                               1
                             )
                           }
-                          className="flex h-11 w-1/2 items-center justify-center rounded-xl bg-green-600 text-xl font-bold text-white transition hover:bg-green-700"
+                          className="flex h-11 w-1/2 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/15 text-xl font-bold text-emerald-400 transition hover:bg-emerald-500/25"
                         >
                           +
                         </button>
@@ -474,11 +474,11 @@ export default function InventoryPage() {
             {/* DESKTOP TABLE */}
             {/* ========================== */}
 
-            <div className="hidden overflow-x-auto rounded-2xl bg-white shadow md:block">
+            <div className="hidden overflow-x-auto rounded-3xl border border-white/10 bg-[#0e1219] shadow-2xl md:block">
 
               <table className="min-w-[950px] w-full">
 
-                <thead className="bg-black text-white">
+                <thead className="border-b border-white/10 bg-[#080a0f] text-xs uppercase tracking-wider text-gray-300">
 
                   <tr>
 
@@ -491,35 +491,35 @@ export default function InventoryPage() {
                             filteredProducts.length
                         }
                         onChange={toggleAll}
-                        className="h-4 w-4"
+                        className="h-4 w-4 rounded accent-[#1677FF]"
                       />
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Product
                     </th>
 
-                    <th className="px-4 py-4 text-center">
+                    <th className="px-4 py-4 text-center font-semibold">
                       Price
                     </th>
 
-                    <th className="px-4 py-4 text-center">
+                    <th className="px-4 py-4 text-center font-semibold">
                       Stock
                     </th>
 
-                    <th className="px-4 py-4 text-center">
+                    <th className="px-4 py-4 text-center font-semibold">
                       Status
                     </th>
 
-                    <th className="px-4 py-4 text-center">
-                      Actions
+                    <th className="px-4 py-4 text-center font-semibold">
+                      Adjust Stock
                     </th>
 
                   </tr>
 
                 </thead>
 
-                <tbody>
+                <tbody className="divide-y divide-white/5">
 
                   {filteredProducts.map(
                     (product) => {
@@ -531,7 +531,7 @@ export default function InventoryPage() {
                       return (
                         <tr
                           key={product.id}
-                          className="border-b transition hover:bg-gray-50"
+                          className="transition hover:bg-white/5"
                         >
 
                           <td className="px-4 py-4 text-center">
@@ -546,7 +546,7 @@ export default function InventoryPage() {
                                   product.id
                                 )
                               }
-                              className="h-4 w-4"
+                              className="h-4 w-4 rounded accent-[#1677FF]"
                             />
 
                           </td>
@@ -564,10 +564,10 @@ export default function InventoryPage() {
                                 }
                                 width={70}
                                 height={70}
-                                className="h-16 w-16 rounded-lg object-cover"
+                                className="h-14 w-14 rounded-2xl border border-white/10 bg-[#080a0f] object-cover"
                               />
 
-                              <span className="font-semibold">
+                              <span className="font-semibold text-white">
                                 {product.name}
                               </span>
 
@@ -575,19 +575,19 @@ export default function InventoryPage() {
 
                           </td>
 
-                          <td className="px-4 py-4 text-center whitespace-nowrap">
+                          <td className="px-4 py-4 text-center whitespace-nowrap text-sm font-semibold text-[#1677FF]">
                             NPR{" "}
                             {product.price.toLocaleString()}
                           </td>
 
-                          <td className="px-4 py-4 text-center text-xl font-bold">
+                          <td className="px-4 py-4 text-center text-xl font-black text-white">
                             {product.stock}
                           </td>
 
                           <td className="px-4 py-4 text-center">
 
                             <span
-                              className={`rounded-full px-3 py-1 text-xs font-semibold md:text-sm ${status.className}`}
+                              className={`rounded-full px-3 py-1 text-xs font-bold ${status.className}`}
                             >
                               {status.label}
                             </span>
@@ -605,7 +605,7 @@ export default function InventoryPage() {
                                     -1
                                   )
                                 }
-                                className="rounded-lg bg-red-500 px-4 py-2 text-lg font-bold text-white transition hover:bg-red-600"
+                                className="flex h-9 w-9 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/15 text-lg font-bold text-red-400 transition hover:bg-red-500/25"
                               >
                                 −
                               </button>
@@ -617,7 +617,7 @@ export default function InventoryPage() {
                                     1
                                   )
                                 }
-                                className="rounded-lg bg-green-600 px-4 py-2 text-lg font-bold text-white transition hover:bg-green-700"
+                                className="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/15 text-lg font-bold text-emerald-400 transition hover:bg-emerald-500/25"
                               >
                                 +
                               </button>

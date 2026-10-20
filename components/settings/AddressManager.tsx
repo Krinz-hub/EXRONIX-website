@@ -66,42 +66,42 @@ const [editingAddress, setEditingAddress] =
   }
 
   return (
-    <div className="rounded-2xl border bg-white p-5 shadow-sm md:p-8">
+    <div className="rounded-2xl border border-white/10 bg-[#0e1219] p-5 text-white shadow-sm md:p-8">
 
       <div className="mb-8 flex items-center justify-between">
 
         <div>
-          <h2 className="text-2xl font-bold">
+          <h2 className="text-2xl font-bold text-white">
             📍 Saved Addresses
           </h2>
 
-          <p className="mt-2 text-gray-500">
+          <p className="mt-2 text-sm text-gray-400">
             Manage your shipping addresses.
           </p>
         </div>
 
         <button
-  onClick={() => {
-    setEditingAddress(null);
-    setOpenModal(true);
-  }}
-  className="flex items-center gap-2 rounded-xl bg-black px-5 py-3 text-white transition hover:bg-gray-800"
->
-  <Plus size={18} />
-  Add Address
-</button>
+          onClick={() => {
+            setEditingAddress(null);
+            setOpenModal(true);
+          }}
+          className="flex items-center gap-2 rounded-xl bg-[#1677FF] px-5 py-3 font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90"
+        >
+          <Plus size={18} />
+          Add Address
+        </button>
 
       </div>
 
       {addresses.length === 0 ? (
-        <div className="rounded-xl border border-dashed p-10 text-center">
+        <div className="rounded-xl border border-dashed border-white/15 p-10 text-center">
 
           <MapPin
             size={40}
-            className="mx-auto text-gray-400"
+            className="mx-auto text-gray-500"
           />
 
-          <p className="mt-4 text-gray-500">
+          <p className="mt-4 text-sm text-gray-400">
             No addresses added yet.
           </p>
 
@@ -113,40 +113,40 @@ const [editingAddress, setEditingAddress] =
 
             <div
               key={address.id}
-              className="rounded-2xl border p-6"
+              className="rounded-2xl border border-white/10 bg-[#0b0e14]/60 p-6"
             >
 
               <div className="flex items-start justify-between">
 
                 <div>
 
-                  <h3 className="text-xl font-semibold">
+                  <h3 className="text-xl font-semibold text-white">
                     {address.full_name}
                   </h3>
 
-                  <p className="mt-2 text-gray-600">
+                  <p className="mt-2 text-sm text-gray-300">
                     {address.phone}
                   </p>
 
-                  <p className="mt-2 text-gray-600">
+                  <p className="mt-2 text-sm text-gray-300">
                     {address.address}
                   </p>
 
-                  <p className="text-gray-600">
+                  <p className="text-sm text-gray-300">
                     {address.city},{" "}
                     {address.district}
                   </p>
 
-                  <p className="text-gray-600">
+                  <p className="text-sm text-gray-400">
                     {address.province}
                   </p>
 
                 </div>
 
                 {address.is_default && (
-                  <div className="flex items-center gap-2 rounded-full bg-yellow-100 px-4 py-2 text-sm font-medium text-yellow-700">
+                  <div className="flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/15 px-4 py-1.5 text-xs font-semibold text-amber-400">
 
-                    <Star size={16} />
+                    <Star size={14} className="fill-amber-400" />
 
                     Default
 
@@ -155,16 +155,16 @@ const [editingAddress, setEditingAddress] =
 
               </div>
 
-              <div className="mt-6 flex gap-3">
+              <div className="mt-6 flex flex-wrap gap-3">
 
                 <button
-                onClick={() => {
+                  onClick={() => {
                     setEditingAddress(address);
                     setOpenModal(true);
-                }}
-                className="flex items-center gap-2 rounded-lg border px-4 py-2 transition hover:bg-gray-100"
+                  }}
+                  className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10"
                 >
-                  <Pencil size={16} />
+                  <Pencil size={15} />
                   Edit
                 </button>
 
@@ -172,9 +172,9 @@ const [editingAddress, setEditingAddress] =
                   onClick={() =>
                     handleDelete(address.id)
                   }
-                  className="flex items-center gap-2 rounded-lg border border-red-200 px-4 py-2 text-red-600 transition hover:bg-red-50"
+                  className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-400 transition hover:bg-red-500/20"
                 >
-                  <Trash2 size={16} />
+                  <Trash2 size={15} />
                   Delete
                 </button>
 
@@ -183,7 +183,7 @@ const [editingAddress, setEditingAddress] =
                     onClick={() =>
                       handleDefault(address.id)
                     }
-                    className="rounded-lg bg-black px-4 py-2 text-white transition hover:bg-gray-800"
+                    className="rounded-xl border border-[#1677FF]/40 bg-[#1677FF]/15 px-4 py-2 text-sm font-semibold text-[#1677FF] transition hover:bg-[#1677FF]/25"
                   >
                     Set Default
                   </button>

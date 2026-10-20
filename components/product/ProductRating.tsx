@@ -66,9 +66,9 @@ export default function ProductRating({
 
   if (loading) {
     return (
-      <div className="mt-4 flex items-center gap-2.5 sm:mt-5 text-xs text-white/50">
+      <div className="mt-3 flex items-center gap-2.5 text-xs text-gray-500">
         <LoadingAnimation size="xs" />
-        <span className="font-mono uppercase tracking-wider text-[11px] text-white/40">CALCULATING METRICS</span>
+        <span className="font-mono uppercase tracking-wider text-[11px] text-gray-400">LOADING METRICS</span>
       </div>
     );
   }
@@ -76,15 +76,15 @@ export default function ProductRating({
   // No reviews yet
   if (reviewCount === 0) {
     return (
-      <div className="mt-4 flex flex-wrap items-center gap-2 sm:mt-5 sm:gap-3">
+      <div className="mt-3 flex flex-wrap items-center gap-2 sm:gap-3">
         <div
-          className="text-sm tracking-wide text-gray-300 sm:text-base"
+          className="text-sm tracking-wide text-gray-500 sm:text-base"
           aria-label="No reviews yet"
         >
           ☆☆☆☆☆
         </div>
 
-        <span className="text-xs text-gray-500 sm:text-sm">
+        <span className="text-xs font-medium text-gray-400 sm:text-sm">
           No Reviews Yet
         </span>
       </div>
@@ -94,18 +94,20 @@ export default function ProductRating({
   const roundedRating = Math.round(averageRating);
 
   return (
-    <div className="mt-4 flex flex-wrap items-center gap-2 sm:mt-5 sm:gap-3">
+    <div className="mt-3 flex flex-wrap items-center gap-2 sm:gap-3">
       <div
-        className="text-sm tracking-wide text-yellow-500 sm:text-base"
+        className="text-base tracking-wide text-amber-400 sm:text-lg"
         aria-label={`${averageRating.toFixed(1)} out of 5 stars`}
       >
         {"★".repeat(roundedRating)}
         {"☆".repeat(5 - roundedRating)}
       </div>
 
-      <span className="text-xs text-gray-500 sm:text-sm">
-        {averageRating.toFixed(1)} ({reviewCount}{" "}
-        {reviewCount === 1 ? "Review" : "Reviews"})
+      <span className="text-xs font-bold text-white sm:text-sm">
+        {averageRating.toFixed(1)}{" "}
+        <span className="font-normal text-gray-400">
+          ({reviewCount} {reviewCount === 1 ? "Review" : "Reviews"})
+        </span>
       </span>
     </div>
   );

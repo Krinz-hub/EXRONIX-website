@@ -1,10 +1,8 @@
-# Zayna Apparel — Project Brief & Overview
+# EXRONIX — Project Brief & Overview
 
 ## 1. Executive Summary
 
-**Zayna Apparel** (branded in the codebase as **ZAYNA** / **Zayna Studio**, with the tagline *"Wear the Grace"*) is a single-brand direct-to-consumer (D2C) e-commerce web application focused on oversized streetwear apparel.
-
-The application targets the **Nepal market**, featuring local pricing in **Nepalese Rupees (NPR)**, nationwide provincial shipping options, and **Cash on Delivery (COD)** as the primary fulfillment mechanism.
+**EXRONIX** (tagline *"ENGINEERED BEYOND LIMITS"*) is a high-performance direct-to-consumer (D2C) web application focused on precision 3D printing, custom additive manufacturing, and desktop hardware accessories.
 
 ---
 

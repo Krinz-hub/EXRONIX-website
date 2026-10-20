@@ -24,6 +24,7 @@ type ProductCardProps = {
   image: string;
   sizes?: string[];
   colors?: string[];
+  variant?: "dark" | "light";
 };
 
 export default function ProductCard({
@@ -33,12 +34,15 @@ export default function ProductCard({
   image,
   sizes = [],
   colors = [],
+  variant = "dark",
 }: ProductCardProps) {
   const { user } = useAuth();
   const router = useRouter();
 
   const [liked, setLiked] = useState(false);
   const [openQuickView, setOpenQuickView] = useState(false);
+
+  const isLight = variant === "light";
 
   useEffect(() => {
     async function checkWishlist() {
@@ -100,7 +104,9 @@ export default function ProductCard({
 
   return (
     <>
-      <article className="group min-w-0 overflow-hidden rounded-2xl liquid-glass-card border border-white/15 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1677FF]/55 hover:shadow-[0_16px_36px_rgba(22,119,255,0.25)]">
+      <article
+        className="group min-w-0 overflow-hidden rounded-2xl liquid-glass-card border border-white/15 text-white shadow-lg backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1677FF]/55 hover:shadow-[0_16px_36px_rgba(22,119,255,0.25)]"
+      >
 
         {/* Image */}
 
@@ -140,7 +146,7 @@ export default function ProductCard({
           <button
             type="button"
             onClick={handleQuickView}
-            className="absolute bottom-3 left-1/2 hidden -translate-x-1/2 items-center gap-2 rounded-full liquid-glass border border-white/25 px-5 py-3 text-sm font-semibold text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:border-[#1677FF]/60 hover:bg-[#1677FF]/30 group-hover:opacity-100 lg:flex lg:opacity-0"
+            className="absolute bottom-3 left-1/2 hidden -translate-x-1/2 items-center gap-2 rounded-full liquid-glass border border-white/25 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:border-[#1677FF]/60 hover:bg-[#1677FF]/30 group-hover:opacity-100 lg:flex lg:opacity-0"
           >
             <Eye size={16} className="text-[#1677FF]" />
             Quick View
@@ -152,17 +158,17 @@ export default function ProductCard({
 
         <div className="min-w-0 p-3.5 sm:p-5">
 
-          <h3 className="line-clamp-2 min-h-[2.75rem] break-words text-sm font-semibold leading-5 text-white sm:min-h-[3.5rem] sm:text-lg sm:leading-6 lg:text-xl">
+          <h3 className="line-clamp-2 min-h-[2.5rem] break-words text-sm font-semibold leading-snug sm:min-h-[3rem] sm:text-base lg:text-lg text-white group-hover:text-[#1677FF] transition-colors">
             {name}
           </h3>
 
-          <p className="mt-2 truncate text-base font-black text-[#1677FF] sm:text-xl">
+          <p className="mt-2 truncate text-base font-black text-[#1677FF] sm:text-lg lg:text-xl">
             NPR {price.toLocaleString()}
           </p>
 
           <Link
             href={`/products/${id}`}
-            className="mt-3 flex min-h-11 w-full items-center justify-center rounded-lg bg-[#1677FF] px-3 py-2.5 text-xs font-semibold text-white shadow-[0_0_15px_rgba(22,119,255,0.25)] transition hover:bg-[#1677FF]/90 active:scale-[0.98] sm:mt-5 sm:min-h-12 sm:text-sm lg:text-base"
+            className="mt-3 flex min-h-10 w-full items-center justify-center rounded-xl bg-[#1677FF] px-3 py-2.5 text-xs font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.25)] transition hover:bg-[#1677FF]/90 active:scale-[0.98] sm:mt-4 sm:min-h-11 sm:text-sm"
           >
             View Product
           </Link>

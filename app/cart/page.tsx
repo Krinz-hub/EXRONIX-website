@@ -125,7 +125,7 @@ useEffect(() => {
       setAppliedCoupon(result.coupon);
 
       localStorage.setItem(
-        "zayna-coupon",
+        "exronix-coupon",
         JSON.stringify(result.coupon)
       );
 
@@ -161,7 +161,7 @@ useEffect(() => {
     setMessage("");
 
     localStorage.removeItem(
-      "zayna-coupon"
+      "exronix-coupon"
     );
 
     toast.success(
@@ -175,28 +175,27 @@ useEffect(() => {
 
   if (cart.length === 0) {
     return (
-      <main className="min-h-screen bg-gray-50 px-4 pb-20 pt-32 sm:px-6 lg:px-10">
-        <div className="mx-auto flex max-w-3xl flex-col items-center justify-center rounded-3xl bg-white px-6 py-20 text-center shadow-sm">
+      <main className="min-h-screen px-4 pb-20 pt-32 sm:px-6 lg:px-10 text-white">
+        <div className="mx-auto flex max-w-3xl flex-col items-center justify-center rounded-3xl border border-white/15 bg-[#0e1219]/80 liquid-glass backdrop-blur-2xl px-6 py-20 text-center shadow-2xl">
 
-          <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gray-100">
+          <div className="flex h-24 w-24 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#1677FF]">
             <ShoppingBag
               size={42}
-              className="text-gray-500"
+              className="text-[#1677FF]"
             />
           </div>
 
-          <h1 className="mt-8 text-3xl font-bold sm:text-4xl">
+          <h1 className="mt-8 text-3xl font-bold sm:text-4xl text-white">
             Your Cart is Empty
           </h1>
 
-          <p className="mt-3 max-w-md text-gray-500">
-            Looks like you haven't added
-            anything yet.
+          <p className="mt-3 max-w-md text-gray-400">
+            Looks like you haven't added anything yet.
           </p>
 
           <Link
-            href="/collections"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-black px-8 py-4 font-semibold text-white transition hover:bg-gray-800"
+            href="/shop"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#1677FF] px-8 py-4 font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90"
           >
             Continue Shopping
             <ArrowRight size={18} />
@@ -208,7 +207,7 @@ useEffect(() => {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 px-4 pb-20 pt-32 sm:px-6 lg:px-10">
+    <main className="min-h-screen px-4 pb-20 pt-32 sm:px-6 lg:px-10 text-white">
 
       <div className="mx-auto max-w-7xl">
 
@@ -222,11 +221,11 @@ useEffect(() => {
             EXRONIX
           </p>
 
-          <h1 className="mt-3 text-4xl font-bold sm:text-5xl">
+          <h1 className="mt-3 text-4xl font-black tracking-tight text-white sm:text-5xl">
             Your Cart
           </h1>
 
-          <p className="mt-3 text-gray-500">
+          <p className="mt-3 text-gray-400">
             {cart.length}{" "}
             {cart.length === 1
               ? "item"
@@ -252,7 +251,7 @@ useEffect(() => {
 
               <div
                 key={`${product.id}-${product.size ?? "none"}-${product.color ?? "none"}`}
-                className="rounded-2xl bg-white p-4 shadow-sm sm:p-6"
+                className="rounded-2xl border border-white/15 bg-[#0e1219]/80 liquid-glass backdrop-blur-xl p-4 shadow-xl sm:p-6"
               >
 
                 <div className="flex gap-4 sm:gap-6">
@@ -261,7 +260,7 @@ useEffect(() => {
 
                   <Link
                     href={`/products/${product.id}`}
-                    className="relative h-28 w-24 shrink-0 overflow-hidden rounded-xl bg-gray-100 sm:h-36 sm:w-28"
+                    className="relative h-28 w-24 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-[#080a0f] sm:h-36 sm:w-28"
                   >
                     <Image
                       src={product.image}
@@ -282,19 +281,19 @@ useEffect(() => {
 
                         <Link
                           href={`/products/${product.id}`}
-                          className="line-clamp-2 text-lg font-bold transition hover:text-gray-600 sm:text-xl"
+                          className="line-clamp-2 text-lg font-bold text-white transition hover:text-[#1677FF] sm:text-xl"
                         >
                           {product.name}
                         </Link>
 
                         {/* Variant */}
 
-                        <div className="mt-2 space-y-1 text-sm text-gray-500">
+                        <div className="mt-2 space-y-1 text-sm text-gray-400">
 
                           {product.size && (
                             <p>
                               Size:{" "}
-                              <span className="font-semibold text-gray-800">
+                              <span className="font-semibold text-gray-200">
                                 {product.size}
                               </span>
                             </p>
@@ -303,7 +302,7 @@ useEffect(() => {
                           {product.color && (
                             <p>
                               Color:{" "}
-                              <span className="font-semibold text-gray-800">
+                              <span className="font-semibold text-gray-200">
                                 {product.color}
                               </span>
                             </p>
@@ -323,7 +322,7 @@ useEffect(() => {
                             product.color
                           )
                         }
-                        className="hidden rounded-lg p-2 text-gray-400 transition hover:bg-red-50 hover:text-red-600 sm:block"
+                        className="hidden rounded-lg p-2 text-gray-400 transition hover:bg-red-500/10 hover:text-red-400 sm:block"
                         aria-label="Remove item"
                       >
                         <Trash2 size={19} />
@@ -333,7 +332,7 @@ useEffect(() => {
 
                     {/* Price */}
 
-                    <p className="mt-3 text-lg font-bold sm:text-xl">
+                    <p className="mt-3 text-lg font-bold text-white sm:text-xl">
                       NPR{" "}
                       {(
                         product.price *
@@ -345,7 +344,7 @@ useEffect(() => {
 
                     <div className="mt-4 flex items-center justify-between gap-3">
 
-                      <div className="flex items-center overflow-hidden rounded-lg border">
+                      <div className="flex items-center overflow-hidden rounded-xl border border-white/20 bg-white/5 text-white backdrop-blur-md">
 
                         <button
                           onClick={() =>
@@ -358,13 +357,13 @@ useEffect(() => {
                           disabled={
                             product.quantity <= 1
                           }
-                          className="flex h-10 w-10 items-center justify-center transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:text-gray-300"
+                          className="flex h-10 w-10 items-center justify-center text-gray-300 transition hover:bg-white/10 hover:text-white disabled:cursor-not-allowed disabled:text-gray-600"
                           aria-label="Decrease quantity"
                         >
                           <Minus size={16} />
                         </button>
 
-                        <span className="flex h-10 min-w-10 items-center justify-center border-x px-3 text-sm font-semibold">
+                        <span className="flex h-10 min-w-10 items-center justify-center border-x border-white/10 px-3 text-sm font-semibold text-white">
                           {product.quantity}
                         </span>
 
@@ -376,7 +375,7 @@ useEffect(() => {
                               product.color
                             )
                           }
-                          className="flex h-10 w-10 items-center justify-center transition hover:bg-gray-100"
+                          className="flex h-10 w-10 items-center justify-center text-gray-300 transition hover:bg-white/10 hover:text-white"
                           aria-label="Increase quantity"
                         >
                           <Plus size={16} />
@@ -394,7 +393,7 @@ useEffect(() => {
                             product.color
                           )
                         }
-                        className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-red-500 transition hover:bg-red-50 sm:hidden"
+                        className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-red-400 transition hover:bg-red-500/10 sm:hidden"
                       >
                         <Trash2 size={17} />
                         Remove
@@ -422,21 +421,20 @@ useEffect(() => {
 
               {/* Free Shipping */}
 
-              <div className="rounded-2xl border border-green-200 bg-green-50 p-5">
+              <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 backdrop-blur-md p-5 text-emerald-300">
 
                 {subtotal >=
                 FREE_SHIPPING_LIMIT ? (
 
-                  <p className="font-semibold text-green-700">
-                    🎉 Congratulations! You
-                    unlocked FREE shipping.
+                  <p className="font-semibold text-emerald-300">
+                    🎉 Congratulations! You unlocked FREE shipping.
                   </p>
 
                 ) : (
 
-                  <p className="text-sm font-semibold text-gray-700">
+                  <p className="text-sm font-medium text-gray-300">
                     Spend{" "}
-                    <span className="text-green-700">
+                    <span className="font-semibold text-emerald-400">
                       NPR{" "}
                       {(
                         FREE_SHIPPING_LIMIT -
@@ -452,9 +450,9 @@ useEffect(() => {
 
               {/* Order Summary */}
 
-              <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-7">
+              <div className="rounded-2xl border border-white/15 bg-[#0e1219]/80 liquid-glass backdrop-blur-xl p-6 shadow-xl sm:p-7 text-white">
 
-                <h2 className="text-2xl font-bold">
+                <h2 className="text-2xl font-bold text-white">
                   Order Summary
                 </h2>
 
@@ -462,7 +460,7 @@ useEffect(() => {
 
                 <div className="mt-6">
 
-                  <label className="mb-2 block text-sm font-semibold">
+                  <label className="mb-2 block text-sm font-semibold text-gray-300">
                     Coupon Code
                   </label>
 
@@ -481,14 +479,14 @@ useEffect(() => {
                         applyingCoupon
                       }
                       placeholder="Enter coupon"
-                      className="min-w-0 flex-1 rounded-lg border px-3 py-3 text-sm uppercase outline-none transition focus:border-black disabled:bg-gray-100"
+                      className="min-w-0 flex-1 rounded-xl border border-white/15 bg-[#0b0e14]/90 px-3 py-3 text-sm uppercase text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] disabled:bg-white/5"
                     />
 
                     {discount > 0 ? (
 
                       <button
                         onClick={removeCoupon}
-                        className="rounded-lg border border-red-300 px-4 text-sm font-semibold text-red-600 transition hover:bg-red-50"
+                        className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 text-sm font-semibold text-red-400 transition hover:bg-red-500/20"
                       >
                         Remove
                       </button>
@@ -500,7 +498,7 @@ useEffect(() => {
                         disabled={
                           applyingCoupon
                         }
-                        className="rounded-lg bg-black px-4 text-sm font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="rounded-xl bg-[#1677FF] px-4 text-sm font-semibold text-white transition hover:bg-[#1677FF]/90 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         {applyingCoupon
                           ? "..."
@@ -515,8 +513,8 @@ useEffect(() => {
                     <p
                       className={`mt-3 text-sm font-medium ${
                         discount > 0
-                          ? "text-green-600"
-                          : "text-red-600"
+                          ? "text-emerald-400"
+                          : "text-red-400"
                       }`}
                     >
                       {message}
@@ -529,18 +527,18 @@ useEffect(() => {
 
                 <div className="mt-7 space-y-4">
 
-                  <div className="flex justify-between text-gray-600">
+                  <div className="flex justify-between text-gray-400">
                     <span>
                       Subtotal
                     </span>
 
-                    <span className="font-medium text-gray-900">
+                    <span className="font-semibold text-white">
                       NPR{" "}
                       {subtotal.toLocaleString()}
                     </span>
                   </div>
 
-                  <div className="flex justify-between text-gray-600">
+                  <div className="flex justify-between text-gray-400">
 
                     <span>
                       Shipping
@@ -548,13 +546,13 @@ useEffect(() => {
 
                     {shipping === 0 ? (
 
-                      <span className="font-semibold text-green-600">
+                      <span className="font-semibold text-emerald-400">
                         FREE
                       </span>
 
                     ) : (
 
-                      <span className="font-medium text-gray-900">
+                      <span className="font-semibold text-white">
                         NPR{" "}
                         {shipping.toLocaleString()}
                       </span>
@@ -565,7 +563,7 @@ useEffect(() => {
 
                   {discount > 0 && (
 
-                    <div className="flex justify-between text-green-600">
+                    <div className="flex justify-between text-emerald-400">
 
                       <span>
                         Discount
@@ -583,15 +581,15 @@ useEffect(() => {
 
                   )}
 
-                  <div className="border-t pt-5">
+                  <div className="border-t border-white/10 pt-5">
 
                     <div className="flex items-center justify-between">
 
-                      <span className="text-lg font-semibold">
+                      <span className="text-lg font-semibold text-gray-200">
                         Total
                       </span>
 
-                      <span className="text-2xl font-bold">
+                      <span className="text-2xl font-black text-white">
                         NPR{" "}
                         {finalTotal.toLocaleString()}
                       </span>
@@ -606,15 +604,15 @@ useEffect(() => {
 
                 <Link
                   href="/checkout"
-                  className="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-black py-4 font-semibold text-white transition hover:bg-gray-800"
+                  className="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1677FF] py-4 font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90"
                 >
                   Proceed to Checkout
                   <ArrowRight size={18} />
                 </Link>
 
                 <Link
-                  href="/collections"
-                  className="mt-3 block w-full rounded-xl border py-4 text-center font-semibold transition hover:bg-gray-50"
+                  href="/shop"
+                  className="mt-3 block w-full rounded-xl border border-white/20 bg-white/5 py-4 text-center font-semibold text-white transition hover:bg-white/10"
                 >
                   Continue Shopping
                 </Link>

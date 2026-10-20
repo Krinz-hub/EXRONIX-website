@@ -67,17 +67,17 @@ State is distributed across four distinct mechanisms:
 1. **React Context (`context/`)**:
    - `AuthContext`: Tracks current Supabase user (`User | null`), loading status, and profile synchronization.
    - `CartContext`: Loads customer cart from Supabase `cart` table, handles variant quantities (size/color), and validates against product stock in real time.
-   - `ThemeContext`: Dark/light mode switching, stored in `localStorage` under `zayna-theme` and toggling the `.dark` class on `<html>`.
+   - `ThemeContext`: Dark/light mode switching, stored in `localStorage` under `exronix-theme` and toggling the `.dark` class on `<html>`.
 
 2. **Cross-Component Event Bus (`lib/events.ts`)**:
    - Dispatches native browser events `window.dispatchEvent(new Event("cartUpdated"))` and `"wishlistUpdated"`.
    - Used by components like `Navbar` badges to re-fetch item counts when cart or wishlist modifications occur in child modals or product detail actions.
 
 3. **Local Storage (`window.localStorage`)**:
-   - `zayna-theme`: Theme preference.
-   - `zayna-buy-now`: Temporary item cache when a customer clicks "Buy Now" instead of adding to cart.
-   - `zayna_recently_viewed`: Array of up to 6 recently viewed product records (`lib/recentlyViewed.ts`).
-   - `zayna-categories`: **Fallback/Mock storage** used by `app/admin/categories/page.tsx` because no backend categories table is wired up.
+   - `exronix-theme`: Theme preference.
+   - `exronix-buy-now`: Temporary item cache when a customer clicks "Buy Now" instead of adding to cart.
+   - `exronix_recently_viewed`: Array of up to 6 recently viewed product records (`lib/recentlyViewed.ts`).
+   - `exronix-categories`: **Fallback/Mock storage** used by `app/admin/categories/page.tsx` because no backend categories table is wired up.
 
 4. **Component-Local State (`useState` / `useMemo`)**:
    - Filtering, search text, modal visibility, and checkout form inputs.

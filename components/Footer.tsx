@@ -153,9 +153,16 @@ export default function Footer() {
               support@exronix.store
             </p>
 
-            <p className="mt-2 text-sm text-gray-400 sm:mt-3 sm:text-base">
-              Engineering Support & Custom Orders
-            </p>
+            <div className="mt-3 text-sm text-gray-400">
+              <span className="text-xs uppercase tracking-wider font-semibold text-gray-300 block">Support Phone:</span>
+              <a href="tel:+9876543210" className="hover:text-[#1677FF] transition block">+9876543210</a>
+              <a href="tel:+8976542310" className="hover:text-[#1677FF] transition block">+8976542310</a>
+            </div>
+
+            <div className="mt-3 text-sm text-gray-400">
+              <span className="text-xs uppercase tracking-wider font-semibold text-gray-300 block">Manufacturing & Office:</span>
+              <span>Haryana, panipat</span>
+            </div>
 
             <div className="mt-5 sm:mt-6">
 

@@ -46,7 +46,7 @@ Authorization: Bearer <SUPABASE_USER_ACCESS_TOKEN>
 
 Dispatches two transactional emails via **Resend**:
 1. An order confirmation email to the purchasing customer with order line items and PDF invoice details.
-2. A new order notification email to the store owner (`zaynaofficial07@gmail.com`).
+2. A new order notification email to the store owner (`support@exronix.store`).
 
 - **File Path**: `app/api/send-order-email/route.ts`
 - **HTTP Method**: `POST`
@@ -82,7 +82,8 @@ Dispatches two transactional emails via **Resend**:
 #### Error Response (`500 Internal Server Error`)
 ```json
 {
-  "success": false
+  "success": false,
+  "error": "Email service is not configured."
 }
 ```
 
@@ -120,7 +121,8 @@ Dispatches an order status change notification (e.g. Confirmed, Processing, Ship
 #### Error Response (`500 Internal Server Error`)
 ```json
 {
-  "success": false
+  "success": false,
+  "error": "Email service is not configured."
 }
 ```
 

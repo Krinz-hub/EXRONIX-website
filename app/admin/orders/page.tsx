@@ -153,25 +153,25 @@ export default function OrdersPage() {
   ) {
     switch (status) {
       case "Pending":
-        return "bg-gray-100 text-gray-700 border-gray-300";
+        return "bg-amber-500/15 text-amber-400 border-amber-500/30";
 
       case "Confirmed":
-        return "bg-blue-100 text-blue-700 border-blue-300";
+        return "bg-blue-500/15 text-blue-400 border-blue-500/30";
 
       case "Processing":
-        return "bg-orange-100 text-orange-700 border-orange-300";
+        return "bg-purple-500/15 text-purple-400 border-purple-500/30";
 
       case "Shipped":
-        return "bg-purple-100 text-purple-700 border-purple-300";
+        return "bg-cyan-500/15 text-cyan-400 border-cyan-500/30";
 
       case "Delivered":
-        return "bg-green-100 text-green-700 border-green-300";
+        return "bg-emerald-500/15 text-emerald-400 border-emerald-500/30";
 
       case "Cancelled":
-        return "bg-red-100 text-red-700 border-red-300";
+        return "bg-red-500/15 text-red-400 border-red-500/30";
 
       default:
-        return "bg-gray-100 text-gray-700 border-gray-300";
+        return "bg-white/10 text-gray-300 border-white/20";
     }
   }
 
@@ -211,7 +211,7 @@ export default function OrdersPage() {
   ========================================= */
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-6 text-black md:px-8 md:py-10">
+    <main className="min-h-screen bg-transparent px-4 py-6 text-white md:px-8 md:py-10">
       <div className="mx-auto max-w-7xl">
 
         {/* =====================================
@@ -221,18 +221,18 @@ export default function OrdersPage() {
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 
           <div>
-            <h1 className="text-3xl font-bold md:text-4xl">
+            <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
               Orders Management
             </h1>
 
-            <p className="mt-2 text-sm text-gray-500 md:text-base">
-              Manage and track customer orders.
+            <p className="mt-1 text-sm text-gray-400 md:text-base">
+              Manage and track customer order fulfillment and invoices.
             </p>
           </div>
 
           <Link
             href="/admin"
-            className="w-full rounded-xl bg-black px-5 py-3 text-center font-medium text-white transition hover:bg-gray-800 sm:w-auto"
+            className="w-full rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-center font-semibold text-white transition hover:bg-white/10 sm:w-auto"
           >
             ← Dashboard
           </Link>
@@ -252,7 +252,7 @@ export default function OrdersPage() {
             onChange={(e) =>
               setSearch(e.target.value)
             }
-            className="w-full rounded-xl border bg-white p-3 outline-none transition focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
           />
 
           <select
@@ -260,33 +260,33 @@ export default function OrdersPage() {
             onChange={(e) =>
               setStatusFilter(e.target.value)
             }
-            className="w-full rounded-xl border bg-white p-3 outline-none focus:border-black md:w-52"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white outline-none transition focus:border-[#1677FF] md:w-52"
           >
-            <option value="All">
+            <option value="All" className="bg-[#0b0e14] text-white">
               All Status
             </option>
 
-            <option value="Pending">
+            <option value="Pending" className="bg-[#0b0e14] text-white">
               Pending
             </option>
 
-            <option value="Confirmed">
+            <option value="Confirmed" className="bg-[#0b0e14] text-white">
               Confirmed
             </option>
 
-            <option value="Processing">
+            <option value="Processing" className="bg-[#0b0e14] text-white">
               Processing
             </option>
 
-            <option value="Shipped">
+            <option value="Shipped" className="bg-[#0b0e14] text-white">
               Shipped
             </option>
 
-            <option value="Delivered">
+            <option value="Delivered" className="bg-[#0b0e14] text-white">
               Delivered
             </option>
 
-            <option value="Cancelled">
+            <option value="Cancelled" className="bg-[#0b0e14] text-white">
               Cancelled
             </option>
           </select>
@@ -297,7 +297,7 @@ export default function OrdersPage() {
             RESULTS COUNT
         ===================================== */}
 
-        <div className="mb-4 flex items-center justify-between text-sm text-gray-500">
+        <div className="mb-4 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-gray-400">
           <span>
             {filteredOrders.length}{" "}
             {filteredOrders.length === 1
@@ -312,15 +312,15 @@ export default function OrdersPage() {
 
         {loading ? (
 
-          <div className="rounded-2xl bg-white p-12 text-center shadow flex items-center justify-center">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-12 text-center shadow-xl flex items-center justify-center">
             <LoadingAnimation size="md" text="LOADING ORDERS" subtext="EXRONIX ORDER FULFILLMENT" />
           </div>
 
         ) : filteredOrders.length === 0 ? (
 
-          <div className="rounded-2xl bg-white p-12 text-center shadow">
-            <p className="text-gray-500">
-              No orders found.
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-12 text-center shadow-xl">
+            <p className="text-gray-400">
+              No orders found matching the filter criteria.
             </p>
           </div>
 
@@ -338,7 +338,7 @@ export default function OrdersPage() {
 
                   <div
                     key={order.id}
-                    className="rounded-2xl bg-white p-5 shadow"
+                    className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl text-white"
                   >
 
                     {/* Order Header */}
@@ -346,17 +346,17 @@ export default function OrdersPage() {
                     <div className="flex items-start justify-between gap-4">
 
                       <div>
-                        <p className="text-xs uppercase tracking-wide text-gray-500">
-                          Order
+                        <p className="text-xs uppercase tracking-wider text-gray-400">
+                          Order Reference
                         </p>
 
-                        <h2 className="mt-1 text-xl font-bold">
+                        <h2 className="mt-1 text-xl font-black text-[#1677FF]">
                           #{order.id}
                         </h2>
                       </div>
 
                       <span
-                        className={`rounded-full border px-3 py-1 text-xs font-semibold ${getStatusClass(
+                        className={`rounded-full border px-3 py-1 text-xs font-bold ${getStatusClass(
                           order.status
                         )}`}
                       >
@@ -367,17 +367,17 @@ export default function OrdersPage() {
 
                     {/* Customer */}
 
-                    <div className="mt-5 border-t pt-4">
+                    <div className="mt-5 border-t border-white/10 pt-4">
 
-                      <p className="font-semibold">
+                      <p className="font-semibold text-white">
                         {order.customer}
                       </p>
 
-                      <p className="mt-1 break-all text-sm text-gray-500">
+                      <p className="mt-1 break-all text-xs text-gray-400">
                         {order.email}
                       </p>
 
-                      <p className="mt-1 text-sm text-gray-500">
+                      <p className="mt-1 text-xs text-gray-400">
                         {order.phone}
                       </p>
 
@@ -385,14 +385,14 @@ export default function OrdersPage() {
 
                     {/* Details */}
 
-                    <div className="mt-5 grid grid-cols-2 gap-4 border-t pt-4">
+                    <div className="mt-5 grid grid-cols-2 gap-4 border-t border-white/10 pt-4">
 
                       <div>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-400">
                           Date
                         </p>
 
-                        <p className="mt-1 text-sm font-medium">
+                        <p className="mt-1 text-sm font-medium text-white">
                           {order.created_at
                             ? new Date(
                                 order.created_at
@@ -408,32 +408,32 @@ export default function OrdersPage() {
                       </div>
 
                       <div>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-400">
                           Payment
                         </p>
 
-                        <p className="mt-1 text-sm font-medium">
+                        <p className="mt-1 text-sm font-medium text-white">
                           {order.payment}
                         </p>
                       </div>
 
                       <div>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-400">
                           Total
                         </p>
 
-                        <p className="mt-1 text-lg font-bold">
+                        <p className="mt-1 text-lg font-black text-[#1677FF]">
                           NPR{" "}
                           {order.total.toLocaleString()}
                         </p>
                       </div>
 
                       <div>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-400">
                           Items
                         </p>
 
-                        <p className="mt-1 text-sm font-medium">
+                        <p className="mt-1 text-sm font-medium text-white">
                           {order.items?.reduce(
                             (
                               total,
@@ -453,7 +453,7 @@ export default function OrdersPage() {
 
                     <div className="mt-5">
 
-                      <label className="mb-2 block text-sm font-medium">
+                      <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400">
                         Update Status
                       </label>
 
@@ -465,31 +465,31 @@ export default function OrdersPage() {
                             e.target.value
                           )
                         }
-                        className={`w-full rounded-xl border px-3 py-3 text-sm font-semibold outline-none ${getStatusClass(
+                        className={`w-full rounded-xl border bg-[#0b0e14] px-3 py-2.5 text-xs font-bold outline-none ${getStatusClass(
                           order.status
                         )}`}
                       >
-                        <option>
+                        <option value="Pending" className="bg-[#0b0e14] text-white">
                           Pending
                         </option>
 
-                        <option>
+                        <option value="Confirmed" className="bg-[#0b0e14] text-white">
                           Confirmed
                         </option>
 
-                        <option>
+                        <option value="Processing" className="bg-[#0b0e14] text-white">
                           Processing
                         </option>
 
-                        <option>
+                        <option value="Shipped" className="bg-[#0b0e14] text-white">
                           Shipped
                         </option>
 
-                        <option>
+                        <option value="Delivered" className="bg-[#0b0e14] text-white">
                           Delivered
                         </option>
 
-                        <option>
+                        <option value="Cancelled" className="bg-[#0b0e14] text-white">
                           Cancelled
                         </option>
                       </select>
@@ -502,13 +502,9 @@ export default function OrdersPage() {
 
                       <Link
                         href={`/admin/orders/${order.id}`}
-                        className="flex items-center justify-center rounded-xl bg-blue-500 px-3 py-3 text-white transition hover:bg-blue-600"
+                        className="flex items-center justify-center rounded-xl border border-[#1677FF]/40 bg-[#1677FF]/15 px-3 py-2.5 text-xs font-bold text-[#1677FF] transition hover:bg-[#1677FF]/25"
                       >
-                        👁
-
-                        <span className="ml-1 hidden sm:inline">
-                          View
-                        </span>
+                        👁 View
                       </Link>
 
                       <button
@@ -520,13 +516,9 @@ export default function OrdersPage() {
                             ),
                           })
                         }
-                        className="flex items-center justify-center rounded-xl bg-green-500 px-3 py-3 text-white transition hover:bg-green-600"
+                        className="flex items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/15 px-3 py-2.5 text-xs font-bold text-emerald-400 transition hover:bg-emerald-500/25"
                       >
-                        📄
-
-                        <span className="ml-1 hidden sm:inline">
-                          Invoice
-                        </span>
+                        📄 Invoice
                       </button>
 
                       <button
@@ -535,13 +527,9 @@ export default function OrdersPage() {
                             order.id
                           )
                         }
-                        className="flex items-center justify-center rounded-xl bg-red-500 px-3 py-3 text-white transition hover:bg-red-600"
+                        className="flex items-center justify-center rounded-xl border border-red-500/30 bg-red-500/15 px-3 py-2.5 text-xs font-bold text-red-400 transition hover:bg-red-500/25"
                       >
-                        🗑
-
-                        <span className="ml-1 hidden sm:inline">
-                          Delete
-                        </span>
+                        🗑 Delete
                       </button>
 
                     </div>
@@ -556,43 +544,43 @@ export default function OrdersPage() {
                 DESKTOP TABLE
             ================================= */}
 
-            <div className="hidden overflow-x-auto rounded-2xl bg-white shadow md:block">
+            <div className="hidden overflow-x-auto rounded-3xl border border-white/10 bg-[#0e1219] shadow-2xl md:block">
 
               <table className="min-w-[1000px] w-full">
 
-                <thead className="bg-black text-white">
+                <thead className="border-b border-white/10 bg-[#080a0f] text-xs uppercase tracking-wider text-gray-300">
 
                   <tr>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Order ID
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Customer
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Phone
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Date
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Payment
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Status
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Total
                     </th>
 
-                    <th className="px-4 py-4 text-center">
+                    <th className="px-4 py-4 text-center font-semibold">
                       Actions
                     </th>
 
@@ -600,17 +588,17 @@ export default function OrdersPage() {
 
                 </thead>
 
-                <tbody>
+                <tbody className="divide-y divide-white/5">
 
                   {filteredOrders.map(
                     (order) => (
 
                       <tr
                         key={order.id}
-                        className="border-b transition hover:bg-gray-50"
+                        className="transition hover:bg-white/5"
                       >
 
-                        <td className="px-4 py-4 font-medium">
+                        <td className="px-4 py-4 font-bold text-[#1677FF]">
                           #{order.id}
                         </td>
 
@@ -618,11 +606,11 @@ export default function OrdersPage() {
 
                           <div>
 
-                            <p className="font-medium">
+                            <p className="font-semibold text-white">
                               {order.customer}
                             </p>
 
-                            <p className="mt-1 text-xs text-gray-500">
+                            <p className="mt-0.5 text-xs text-gray-400">
                               {order.email}
                             </p>
 
@@ -630,11 +618,11 @@ export default function OrdersPage() {
 
                         </td>
 
-                        <td className="px-4 py-4">
+                        <td className="px-4 py-4 text-sm text-gray-300">
                           {order.phone}
                         </td>
 
-                        <td className="whitespace-nowrap px-4 py-4">
+                        <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-400">
 
                           {order.created_at
                             ? new Date(
@@ -652,7 +640,7 @@ export default function OrdersPage() {
 
                         </td>
 
-                        <td className="px-4 py-4">
+                        <td className="px-4 py-4 text-sm text-gray-300">
                           {order.payment}
                         </td>
 
@@ -668,32 +656,32 @@ export default function OrdersPage() {
                                 e.target.value
                               )
                             }
-                            className={`rounded-lg border px-3 py-2 text-sm font-semibold outline-none ${getStatusClass(
+                            className={`rounded-xl border bg-[#0b0e14] px-3 py-1.5 text-xs font-bold outline-none ${getStatusClass(
                               order.status
                             )}`}
                           >
 
-                            <option>
+                            <option value="Pending" className="bg-[#0b0e14] text-white">
                               Pending
                             </option>
 
-                            <option>
+                            <option value="Confirmed" className="bg-[#0b0e14] text-white">
                               Confirmed
                             </option>
 
-                            <option>
+                            <option value="Processing" className="bg-[#0b0e14] text-white">
                               Processing
                             </option>
 
-                            <option>
+                            <option value="Shipped" className="bg-[#0b0e14] text-white">
                               Shipped
                             </option>
 
-                            <option>
+                            <option value="Delivered" className="bg-[#0b0e14] text-white">
                               Delivered
                             </option>
 
-                            <option>
+                            <option value="Cancelled" className="bg-[#0b0e14] text-white">
                               Cancelled
                             </option>
 
@@ -701,7 +689,7 @@ export default function OrdersPage() {
 
                         </td>
 
-                        <td className="whitespace-nowrap px-4 py-4 font-semibold">
+                        <td className="whitespace-nowrap px-4 py-4 font-bold text-white">
                           NPR{" "}
                           {order.total.toLocaleString()}
                         </td>
@@ -715,9 +703,9 @@ export default function OrdersPage() {
                             <Link
                               href={`/admin/orders/${order.id}`}
                               title="View Order"
-                              className="rounded-lg bg-blue-500 px-3 py-2 text-white transition hover:bg-blue-600"
+                              className="rounded-xl border border-[#1677FF]/40 bg-[#1677FF]/15 px-3 py-1.5 text-xs font-bold text-[#1677FF] transition hover:bg-[#1677FF]/25"
                             >
-                              👁
+                              👁 View
                             </Link>
 
                             {/* Invoice */}
@@ -732,9 +720,9 @@ export default function OrdersPage() {
                                 })
                               }
                               title="Generate Invoice"
-                              className="rounded-lg bg-green-500 px-3 py-2 text-white transition hover:bg-green-600"
+                              className="rounded-xl border border-emerald-500/30 bg-emerald-500/15 px-3 py-1.5 text-xs font-bold text-emerald-400 transition hover:bg-emerald-500/25"
                             >
-                              📄
+                              📄 Invoice
                             </button>
 
                             {/* Delete */}
@@ -746,9 +734,9 @@ export default function OrdersPage() {
                                 )
                               }
                               title="Delete Order"
-                              className="rounded-lg bg-red-500 px-3 py-2 text-white transition hover:bg-red-600"
+                              className="rounded-xl border border-red-500/30 bg-red-500/15 px-3 py-1.5 text-xs font-bold text-red-400 transition hover:bg-red-500/25"
                             >
-                              🗑
+                              🗑 Delete
                             </button>
 
                           </div>

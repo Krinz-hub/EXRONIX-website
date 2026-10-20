@@ -23,7 +23,7 @@ export default function CategoriesPage() {
 
   useEffect(() => {
     const saved = JSON.parse(
-      localStorage.getItem("zayna-categories") || "[]"
+      localStorage.getItem("exronix-categories") || "[]"
     );
 
     setCategories(saved);
@@ -49,7 +49,7 @@ export default function CategoriesPage() {
     );
 
     localStorage.setItem(
-      "zayna-categories",
+      "exronix-categories",
       JSON.stringify(updated)
     );
 
@@ -65,7 +65,7 @@ export default function CategoriesPage() {
   ).length;
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-6 text-black md:px-8 md:py-10">
+    <main className="min-h-screen bg-transparent px-4 py-6 text-white md:px-8 md:py-10">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
@@ -73,18 +73,18 @@ export default function CategoriesPage() {
         <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-center md:justify-between">
 
           <div>
-            <h1 className="text-3xl font-bold md:text-4xl">
+            <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
               Categories
             </h1>
 
-            <p className="mt-2 text-sm text-gray-500 md:text-base">
+            <p className="mt-2 text-sm text-gray-400 md:text-base">
               Manage all product categories.
             </p>
           </div>
 
           <Link
             href="/admin/categories/add"
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-black px-5 py-3 font-medium text-white transition hover:bg-gray-800 sm:w-auto"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#1677FF] px-5 py-3 font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 sm:w-auto"
           >
             <Plus size={18} />
             Add Category
@@ -98,18 +98,18 @@ export default function CategoriesPage() {
 
           {/* Total */}
 
-          <div className="rounded-2xl bg-white p-4 shadow transition hover:shadow-lg md:p-6">
+          <div className="rounded-2xl border border-white/10 bg-[#0e1219] p-4 shadow-sm transition hover:border-[#1677FF]/40 md:p-6 text-white">
 
             <FolderTree
-              className="mb-3"
+              className="mb-3 text-[#1677FF]"
               size={26}
             />
 
-            <h2 className="text-xs text-gray-500 md:text-sm">
+            <h2 className="text-xs uppercase tracking-wider text-gray-400 font-semibold">
               Total Categories
             </h2>
 
-            <h1 className="mt-2 text-2xl font-bold md:text-4xl">
+            <h1 className="mt-2 text-2xl font-black text-white md:text-4xl">
               {categories.length}
             </h1>
 
@@ -117,13 +117,13 @@ export default function CategoriesPage() {
 
           {/* Active */}
 
-          <div className="rounded-2xl bg-white p-4 shadow transition hover:shadow-lg md:p-6">
+          <div className="rounded-2xl border border-white/10 bg-[#0e1219] p-4 shadow-sm transition hover:border-[#1677FF]/40 md:p-6 text-white">
 
-            <h2 className="text-xs text-gray-500 md:text-sm">
+            <h2 className="text-xs uppercase tracking-wider text-gray-400 font-semibold">
               Active
             </h2>
 
-            <h1 className="mt-2 text-2xl font-bold text-green-600 md:text-4xl">
+            <h1 className="mt-2 text-2xl font-black text-emerald-400 md:text-4xl">
               {activeCategories}
             </h1>
 
@@ -131,13 +131,13 @@ export default function CategoriesPage() {
 
           {/* Inactive */}
 
-          <div className="col-span-2 rounded-2xl bg-white p-4 shadow transition hover:shadow-lg md:col-span-1 md:p-6">
+          <div className="col-span-2 rounded-2xl border border-white/10 bg-[#0e1219] p-4 shadow-sm transition hover:border-[#1677FF]/40 md:col-span-1 md:p-6 text-white">
 
-            <h2 className="text-xs text-gray-500 md:text-sm">
+            <h2 className="text-xs uppercase tracking-wider text-gray-400 font-semibold">
               Inactive
             </h2>
 
-            <h1 className="mt-2 text-2xl font-bold text-red-600 md:text-4xl">
+            <h1 className="mt-2 text-2xl font-black text-red-400 md:text-4xl">
               {inactiveCategories}
             </h1>
 
@@ -161,14 +161,14 @@ export default function CategoriesPage() {
             onChange={(e) =>
               setSearch(e.target.value)
             }
-            className="w-full rounded-xl border bg-white py-3 pl-12 pr-4 outline-none transition focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0e1219] py-3 pl-12 pr-4 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
           />
 
         </div>
 
         {/* Result Count */}
 
-        <div className="mb-4 text-sm text-gray-500">
+        <div className="mb-4 text-sm text-gray-400">
           {filteredCategories.length}{" "}
           {filteredCategories.length === 1
             ? "category"
@@ -182,8 +182,8 @@ export default function CategoriesPage() {
         <div className="space-y-4 md:hidden">
 
           {filteredCategories.length === 0 ? (
-            <div className="rounded-2xl bg-white p-10 text-center shadow">
-              <p className="text-gray-500">
+            <div className="rounded-2xl border border-white/10 bg-[#0e1219] p-10 text-center shadow">
+              <p className="text-gray-400">
                 No categories found.
               </p>
             </div>
@@ -191,7 +191,7 @@ export default function CategoriesPage() {
             filteredCategories.map((category) => (
               <div
                 key={category.id}
-                className="rounded-2xl bg-white p-5 shadow"
+                className="rounded-2xl border border-white/10 bg-[#0e1219] p-5 shadow text-white"
               >
 
                 <div className="flex items-start justify-between gap-4">
@@ -201,7 +201,7 @@ export default function CategoriesPage() {
                       Category
                     </p>
 
-                    <h2 className="mt-1 text-lg font-bold">
+                    <h2 className="mt-1 text-lg font-bold text-white">
                       {category.name}
                     </h2>
                   </div>
@@ -209,8 +209,8 @@ export default function CategoriesPage() {
                   <span
                     className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${
                       category.status === "Active"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-red-100 text-red-700"
+                        ? "border border-emerald-500/30 bg-emerald-500/15 text-emerald-300"
+                        : "border border-red-500/30 bg-red-500/15 text-red-300"
                     }`}
                   >
                     {category.status}
@@ -224,7 +224,7 @@ export default function CategoriesPage() {
 
                   <Link
                     href={`/admin/categories/edit/${category.id}`}
-                    className="flex items-center justify-center gap-2 rounded-xl bg-yellow-500 px-4 py-3 font-medium text-white transition hover:bg-yellow-600"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-amber-500/20 border border-amber-500/30 px-4 py-3 font-medium text-amber-300 transition hover:bg-amber-500/30"
                   >
                     <Pencil size={17} />
                     Edit
@@ -234,7 +234,7 @@ export default function CategoriesPage() {
                     onClick={() =>
                       deleteCategory(category.id)
                     }
-                    className="flex items-center justify-center gap-2 rounded-xl bg-red-500 px-4 py-3 font-medium text-white transition hover:bg-red-600"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-red-500/20 border border-red-500/30 px-4 py-3 font-medium text-red-300 transition hover:bg-red-500/30"
                   >
                     <Trash2 size={17} />
                     Delete
@@ -252,11 +252,11 @@ export default function CategoriesPage() {
         {/* DESKTOP TABLE */}
         {/* ========================= */}
 
-        <div className="hidden overflow-x-auto rounded-2xl bg-white shadow md:block">
+        <div className="hidden overflow-x-auto rounded-2xl border border-white/10 bg-[#0e1219] shadow md:block">
 
-          <table className="w-full min-w-[650px]">
+          <table className="w-full min-w-[650px] text-sm">
 
-            <thead className="bg-black text-white">
+            <thead className="border-b border-white/10 bg-[#080a0f] text-gray-300 text-xs uppercase tracking-wider">
 
               <tr>
 
@@ -276,7 +276,7 @@ export default function CategoriesPage() {
 
             </thead>
 
-            <tbody>
+            <tbody className="divide-y divide-white/5">
 
               {filteredCategories.length === 0 ? (
 
@@ -284,7 +284,7 @@ export default function CategoriesPage() {
 
                   <td
                     colSpan={3}
-                    className="p-10 text-center text-gray-500"
+                    className="p-10 text-center text-gray-400"
                   >
                     No categories found.
                   </td>
@@ -298,21 +298,21 @@ export default function CategoriesPage() {
 
                     <tr
                       key={category.id}
-                      className="border-b transition hover:bg-gray-50"
+                      className="transition hover:bg-white/5"
                     >
 
-                      <td className="px-5 py-5 font-semibold">
+                      <td className="px-5 py-5 font-bold text-white">
                         {category.name}
                       </td>
 
                       <td className="px-5 py-5">
 
                         <span
-                          className={`rounded-full px-3 py-1 text-sm font-semibold ${
+                          className={`rounded-full px-3 py-1 text-xs font-semibold ${
                             category.status ===
                             "Active"
-                              ? "bg-green-100 text-green-700"
-                              : "bg-red-100 text-red-700"
+                              ? "border border-emerald-500/30 bg-emerald-500/15 text-emerald-300"
+                              : "border border-red-500/30 bg-red-500/15 text-red-300"
                           }`}
                         >
                           {category.status}
@@ -327,7 +327,7 @@ export default function CategoriesPage() {
                           <Link
                             href={`/admin/categories/edit/${category.id}`}
                             title="Edit Category"
-                            className="rounded-lg bg-yellow-500 p-3 text-white transition hover:bg-yellow-600"
+                            className="rounded-lg border border-amber-500/30 bg-amber-500/20 p-2.5 text-amber-300 transition hover:bg-amber-500/30"
                           >
                             <Pencil size={18} />
                           </Link>
@@ -339,7 +339,7 @@ export default function CategoriesPage() {
                               )
                             }
                             title="Delete Category"
-                            className="rounded-lg bg-red-500 p-3 text-white transition hover:bg-red-600"
+                            className="rounded-lg border border-red-500/30 bg-red-500/20 p-2.5 text-red-300 transition hover:bg-red-500/30"
                           >
                             <Trash2 size={18} />
                           </button>

@@ -38,7 +38,7 @@ This document catalogues existing architectural weaknesses, incomplete features,
 ### 2.1 Category Management is Completely Mocked
 - **Location**: [`app/admin/categories/add/page.tsx:23-34`](file:///Users/dev/Documents/jja/app/admin/categories/add/page.tsx#L23-L34)
 - **Problem**: When an administrator fills in the "Add Category" form and clicks save, the code displays a success toast and redirects without saving to either Supabase or `localStorage`.
-- **Admin Listing**: [`app/admin/categories/page.tsx`](file:///Users/dev/Documents/jja/app/admin/categories/page.tsx) reads from the browser's `localStorage.getItem("zayna-categories")`. It is not connected to a database table.
+- **Admin Listing**: [`app/admin/categories/page.tsx`](file:///Users/dev/Documents/jja/app/admin/categories/page.tsx) reads from the browser's `localStorage.getItem("exronix-categories")`. It is not connected to a database table.
 - **Empty Service**: [`lib/categories.ts`](file:///Users/dev/Documents/jja/lib/categories.ts) is an empty 0-byte file.
 - **Remediation**: Create a `categories` table in Supabase and wire up standard CRUD methods in `lib/categories.ts`.
 

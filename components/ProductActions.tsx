@@ -111,7 +111,7 @@ export default function ProductActions({
       };
 
       localStorage.setItem(
-        "zayna-buy-now",
+        "exronix-buy-now",
         JSON.stringify(buyNowItem)
       );
 
@@ -172,7 +172,7 @@ export default function ProductActions({
             <button
               onClick={handleBuyNow}
               disabled={buyingNow}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#1677FF] text-[#1677FF] py-4 text-lg font-semibold transition hover:bg-[#1677FF] hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#1677FF] bg-transparent text-[#1677FF] py-3.5 sm:py-4 text-base sm:text-lg font-bold transition hover:bg-[#1677FF] hover:text-white disabled:cursor-not-allowed disabled:opacity-60 shadow-[0_0_20px_rgba(22,119,255,0.2)]"
             >
               {buyingNow ? (
                 <>
@@ -187,7 +187,7 @@ export default function ProductActions({
         ) : (
           <button
             disabled
-            className="w-full cursor-not-allowed rounded-xl bg-gray-400 py-4 text-lg font-semibold text-white"
+            className="w-full cursor-not-allowed rounded-xl bg-white/10 py-4 text-base sm:text-lg font-semibold text-gray-400 border border-white/10"
           >
             Out of Stock
           </button>
@@ -196,28 +196,28 @@ export default function ProductActions({
 
       {/* Trust Section */}
 
-      <div className="mt-10 space-y-4 rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-5">
+      <div className="mt-8 space-y-3.5 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-5 text-gray-300">
         <div className="flex items-center gap-3">
-          <Truck className="h-5 w-5 shrink-0" />
+          <Truck className="h-5 w-5 shrink-0 text-[#1677FF]" />
 
-          <span className="text-sm">
-            Deliver all over Nepal
+          <span className="text-sm font-medium text-gray-300">
+            Express delivery all over Nepal (2-4 business days)
           </span>
         </div>
 
         <div className="flex items-center gap-3">
-          <RotateCcw className="h-5 w-5 shrink-0" />
+          <RotateCcw className="h-5 w-5 shrink-0 text-[#1677FF]" />
 
-          <span className="text-sm">
-            Easy 7-day exchange
+          <span className="text-sm font-medium text-gray-300">
+            Hassle-free 7-day replacement guarantee
           </span>
         </div>
 
         <div className="flex items-center gap-3">
-          <ShieldCheck className="h-5 w-5 shrink-0" />
+          <ShieldCheck className="h-5 w-5 shrink-0 text-[#1677FF]" />
 
-          <span className="text-sm">
-            Secure checkout & COD available
+          <span className="text-sm font-medium text-gray-300">
+            Official 1-Year EXRONIX Warranty & Cash on Delivery (COD)
           </span>
         </div>
       </div>

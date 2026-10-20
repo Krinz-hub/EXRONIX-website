@@ -32,12 +32,12 @@ export default function ProductOptions({
   }
 
   return (
-    <div className="space-y-7">
+    <div className="space-y-6">
 
       {colors.length > 0 && (
         <div>
-          <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+          <div className="mb-2.5 flex items-center justify-between">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-gray-200">
               Select Finish
             </h3>
 
@@ -67,8 +67,8 @@ export default function ProductOptions({
 
       {sizes.length > 0 && (
         <div>
-          <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300">
+          <div className="mb-2.5 flex items-center justify-between">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-gray-200">
               Select Variant / Spec
             </h3>
 

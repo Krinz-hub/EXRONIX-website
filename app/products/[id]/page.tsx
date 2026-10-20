@@ -106,13 +106,13 @@ export default async function ProductPage({
 
   if (!product) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-white px-6">
+      <main className="flex min-h-screen items-center justify-center px-6 text-white">
         <div className="text-center">
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold text-white">
             Product Not Found
           </h1>
 
-          <p className="mt-3 text-gray-500">
+          <p className="mt-3 text-gray-400">
             The product you're looking for
             doesn't exist.
           </p>
@@ -198,14 +198,14 @@ export default async function ProductPage({
         }}
       />
 
-      <main className="w-full overflow-x-hidden bg-white px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-28 lg:px-10 lg:pt-36">
+      <main className="w-full overflow-x-hidden text-white px-4 pb-20 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pt-36">
         <div className="mx-auto max-w-7xl">
 
           {/* =================================================
               PRODUCT SECTION
           ================================================= */}
 
-          <section className="grid w-full min-w-0 grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2 lg:gap-20">
+          <section className="grid w-full min-w-0 grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2 lg:gap-16">
 
             {/* =================================================
                 LEFT — PRODUCT IMAGE GALLERY
@@ -222,17 +222,17 @@ export default async function ProductPage({
                 RIGHT — PRODUCT INFORMATION
             ================================================= */}
 
-            <div className="w-full min-w-0">
+            <div className="w-full min-w-0 flex flex-col justify-center">
 
               {/* Category */}
 
-              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-gray-500 sm:text-xs sm:tracking-[0.35em]">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#1677FF]">
                 {product.category}
               </p>
 
               {/* Product Name */}
 
-              <h1 className="mt-3 break-words text-3xl font-bold leading-tight tracking-tight sm:mt-4 sm:text-4xl lg:text-5xl">
+              <h1 className="mt-2.5 break-words text-3xl font-extrabold leading-tight tracking-tight text-white sm:mt-3 sm:text-4xl lg:text-5xl">
                 {product.name}
               </h1>
 
@@ -242,35 +242,35 @@ export default async function ProductPage({
 
               {/* Price */}
 
-              <p className="mt-5 text-2xl font-bold sm:mt-6 sm:text-3xl lg:text-4xl">
+              <p className="mt-4 text-2xl font-black text-[#1677FF] sm:mt-5 sm:text-3xl lg:text-4xl">
                 NPR{" "}
                 {product.price.toLocaleString()}
               </p>
 
               {/* Description */}
 
-              <p className="mt-5 text-sm leading-7 text-gray-600 sm:mt-6 sm:text-base sm:leading-8">
+              <p className="mt-4 text-sm leading-relaxed text-gray-300 sm:mt-5 sm:text-base sm:leading-7">
                 {product.description}
               </p>
 
               {/* Stock */}
 
-              <div className="mt-6 sm:mt-8">
+              <div className="mt-5 sm:mt-6">
 
                 {product.stock <= 0 ? (
-                  <div className="rounded-xl bg-red-100 px-4 py-3.5 text-sm font-semibold text-red-700 sm:px-5 sm:py-4 sm:text-base">
-                    ❌ Out of Stock
+                  <div className="inline-flex items-center gap-2 rounded-xl bg-red-500/15 border border-red-500/30 px-4 py-2.5 text-sm font-semibold text-red-400">
+                    <span className="h-2 w-2 rounded-full bg-red-500"></span>
+                    Out of Stock
                   </div>
                 ) : product.stock <= 5 ? (
-                  <div className="rounded-xl bg-yellow-100 px-4 py-3.5 text-sm font-semibold text-yellow-700 sm:px-5 sm:py-4 sm:text-base">
-                    🔥 Only{" "}
-                    {product.stock}{" "}
-                    left
+                  <div className="inline-flex items-center gap-2 rounded-xl bg-amber-500/15 border border-amber-500/30 px-4 py-2.5 text-sm font-semibold text-amber-300">
+                    <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    Only {product.stock} units remaining
                   </div>
                 ) : (
-                  <div className="rounded-xl bg-green-100 px-4 py-3.5 text-sm font-semibold text-green-700 sm:px-5 sm:py-4 sm:text-base">
-                    ✅ In Stock (
-                    {product.stock})
+                  <div className="inline-flex items-center gap-2 rounded-xl bg-emerald-500/15 border border-emerald-500/30 px-4 py-2.5 text-sm font-semibold text-emerald-300">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
+                    In Stock ({product.stock} units ready to ship)
                   </div>
                 )}
 
@@ -283,6 +283,24 @@ export default async function ProductPage({
                   product={product}
                 />
               </div>
+
+              {/* Technical Specifications */}
+
+              {product.specs && Object.keys(product.specs).length > 0 && (
+                <div className="mt-8 border-t border-white/10 pt-6">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-200 mb-3">
+                    Technical Specifications
+                  </h3>
+                  <div className="rounded-xl border border-white/10 divide-y divide-white/10 overflow-hidden bg-white/[0.04] backdrop-blur-md">
+                    {Object.entries(product.specs).map(([key, val]) => (
+                      <div key={key} className="flex items-center justify-between px-4 py-2.5 text-xs sm:text-sm">
+                        <span className="font-semibold text-gray-400">{key}</span>
+                        <span className="font-mono text-gray-200 text-right">{val}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
             </div>
           </section>

@@ -115,25 +115,18 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
       <head>
-        {/* Prevent light-mode flash before React loads */}
+        {/* Enforce dark-mode across the application */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function () {
                 try {
-                  var theme =
-                    localStorage.getItem("zayna-theme") || "dark";
-
-                  if (theme === "dark") {
-                    document.documentElement.classList.add("dark");
-                    document.documentElement.style.colorScheme = "dark";
-                  } else {
-                    document.documentElement.classList.remove("dark");
-                    document.documentElement.style.colorScheme = "light";
-                  }
+                  document.documentElement.classList.add("dark");
+                  document.documentElement.style.colorScheme = "dark";
+                  localStorage.setItem("exronix-theme", "dark");
                 } catch (e) {}
               })();
             `,

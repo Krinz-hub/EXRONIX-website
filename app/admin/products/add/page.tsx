@@ -222,19 +222,24 @@ export default function AddProductPage() {
   // =====================================================
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-8 sm:px-6 lg:px-10">
+    <main className="min-h-screen bg-transparent px-4 py-8 text-white sm:px-6 lg:px-10">
       <div className="mx-auto max-w-5xl">
 
         {/* HEADER */}
 
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-3xl font-bold sm:text-4xl">
-            Add Product
-          </h1>
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Add Product
+            </h1>
+            <p className="mt-1 text-sm text-gray-400">
+              Create a new hardware listing in the EXRONIX store catalog.
+            </p>
+          </div>
 
           <Link
             href="/admin/products"
-            className="rounded-lg bg-black px-5 py-3 text-white transition hover:bg-gray-800"
+            className="rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 font-semibold text-white transition hover:bg-white/10"
           >
             Back
           </Link>
@@ -242,13 +247,13 @@ export default function AddProductPage() {
 
         {/* FORM */}
 
-        <div className="rounded-2xl bg-white p-5 shadow sm:p-8">
+        <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-6 shadow-2xl sm:p-10">
           <div className="space-y-6">
 
             {/* PRODUCT NAME */}
 
             <div>
-              <label className="mb-2 block font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Product Name
               </label>
 
@@ -258,15 +263,15 @@ export default function AddProductPage() {
                 onChange={(e) =>
                   setName(e.target.value)
                 }
-                placeholder="Enter product name"
-                className="w-full rounded-lg border border-gray-300 p-3 outline-none transition focus:border-black"
+                placeholder="e.g. EXRONIX Stealth Pro M4"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               />
             </div>
 
             {/* CATEGORY */}
 
             <div>
-              <label className="mb-2 block font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Category
               </label>
 
@@ -275,11 +280,11 @@ export default function AddProductPage() {
                 onChange={(e) =>
                   setCategory(e.target.value)
                 }
-                className="w-full rounded-lg border border-gray-300 p-3 outline-none"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
               >
-                <option>Computer Mice</option>
-                <option>PC Cabinets</option>
-                <option>Headphone Stands</option>
+                <option value="Computer Mice" className="bg-[#0b0e14] text-white">Computer Mice</option>
+                <option value="PC Cabinets" className="bg-[#0b0e14] text-white">PC Cabinets</option>
+                <option value="Headphone Stands" className="bg-[#0b0e14] text-white">Headphone Stands</option>
               </select>
             </div>
 
@@ -288,8 +293,8 @@ export default function AddProductPage() {
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 
               <div>
-                <label className="mb-2 block font-semibold">
-                  Price
+                <label className="mb-2 block text-sm font-semibold text-gray-300">
+                  Price (NPR)
                 </label>
 
                 <input
@@ -299,14 +304,14 @@ export default function AddProductPage() {
                   onChange={(e) =>
                     setPrice(e.target.value)
                   }
-                  placeholder="Enter price"
-                  className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:border-black"
+                  placeholder="e.g. 5499"
+                  className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block font-semibold">
-                  Stock
+                <label className="mb-2 block text-sm font-semibold text-gray-300">
+                  Stock Units
                 </label>
 
                 <input
@@ -316,8 +321,8 @@ export default function AddProductPage() {
                   onChange={(e) =>
                     setStock(e.target.value)
                   }
-                  placeholder="Enter stock quantity"
-                  className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:border-black"
+                  placeholder="e.g. 25"
+                  className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
                 />
               </div>
 
@@ -326,8 +331,8 @@ export default function AddProductPage() {
             {/* SIZES */}
 
             <div>
-              <label className="mb-3 block font-semibold">
-                Sizes
+              <label className="mb-3 block text-sm font-semibold text-gray-300">
+                Sizes / Specs
               </label>
 
               <div className="flex flex-wrap gap-3">
@@ -339,10 +344,10 @@ export default function AddProductPage() {
                       onClick={() =>
                         toggleSize(size)
                       }
-                      className={`rounded-lg border px-5 py-3 transition ${
+                      className={`rounded-xl border px-5 py-2.5 text-sm font-semibold transition ${
                         sizes.includes(size)
-                          ? "bg-black text-white"
-                          : "bg-white text-black hover:bg-gray-100"
+                          ? "border-[#1677FF] bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                          : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:bg-white/10 hover:text-white"
                       }`}
                     >
                       {size}
@@ -355,8 +360,8 @@ export default function AddProductPage() {
             {/* COLORS */}
 
             <div>
-              <label className="mb-3 block font-semibold">
-                Colors
+              <label className="mb-3 block text-sm font-semibold text-gray-300">
+                Colors / Finishes
               </label>
 
               <div className="flex flex-wrap gap-3">
@@ -372,10 +377,10 @@ export default function AddProductPage() {
                     onClick={() =>
                       toggleColor(color)
                     }
-                    className={`rounded-lg border px-5 py-3 transition ${
+                    className={`rounded-xl border px-5 py-2.5 text-sm font-semibold transition ${
                       colors.includes(color)
-                        ? "bg-black text-white"
-                        : "bg-white text-black hover:bg-gray-100"
+                        ? "border-[#1677FF] bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                        : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:bg-white/10 hover:text-white"
                     }`}
                   >
                     {color}
@@ -387,34 +392,33 @@ export default function AddProductPage() {
             {/* PRODUCT IMAGES */}
 
             <div>
-              <label className="mb-2 block font-semibold">
+              <label className="mb-1 block text-sm font-semibold text-gray-300">
                 Product Images
               </label>
 
-              <p className="mb-4 text-sm text-gray-500">
-                Upload up to 4 images. The first image
-                will be the main product image.
+              <p className="mb-4 text-xs text-gray-400">
+                Upload up to 4 images. The first image will be the primary catalog visual.
               </p>
 
               {/* UPLOAD */}
 
               <label
                 htmlFor="product-images"
-                className={`flex min-h-48 w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-gray-50 p-6 text-center transition ${
+                className={`flex min-h-48 w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-white/20 bg-[#080a0f]/80 p-6 text-center transition ${
                   uploading || images.length >= 4
                     ? "cursor-not-allowed opacity-60"
-                    : "cursor-pointer hover:border-black hover:bg-gray-100"
+                    : "cursor-pointer hover:border-[#1677FF]/60 hover:bg-[#1677FF]/5"
                 }`}
               >
                 <div className="flex items-center justify-center">
                   {uploading ? (
                     <LoadingAnimation size="sm" text="" subtext="" />
                   ) : (
-                    <div className="text-5xl">📷</div>
+                    <div className="text-4xl text-gray-400">📷</div>
                   )}
                 </div>
 
-                <p className="mt-4 text-lg font-semibold">
+                <p className="mt-4 text-base font-semibold text-white">
                   {uploading
                     ? "Uploading images..."
                     : images.length >= 4
@@ -422,11 +426,11 @@ export default function AddProductPage() {
                     : "Click to Upload Product Images"}
                 </p>
 
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-1.5 text-xs text-gray-400">
                   JPG, PNG, WEBP • Maximum 4 images
                 </p>
 
-                <p className="mt-1 text-xs text-gray-400">
+                <p className="mt-1 text-xs text-[#1677FF] font-semibold">
                   {images.length}/4 images selected
                 </p>
 
@@ -452,7 +456,7 @@ export default function AddProductPage() {
                     (imageUrl, index) => (
                       <div
                         key={`${imageUrl}-${index}`}
-                        className="relative overflow-hidden rounded-xl border bg-gray-50"
+                        className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#080a0f]"
                       >
                         <img
                           src={imageUrl}
@@ -465,7 +469,7 @@ export default function AddProductPage() {
                         {/* MAIN */}
 
                         {index === 0 && (
-                          <div className="absolute left-2 top-2 rounded-full bg-black px-3 py-1 text-xs font-semibold text-white">
+                          <div className="absolute left-2 top-2 rounded-full bg-[#1677FF] px-2.5 py-0.5 text-xs font-bold text-white shadow">
                             Main
                           </div>
                         )}
@@ -477,7 +481,7 @@ export default function AddProductPage() {
                           onClick={() =>
                             removeImage(index)
                           }
-                          className="absolute right-2 top-2 rounded-full bg-red-500 px-3 py-1 text-sm font-semibold text-white transition hover:bg-red-600"
+                          className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white transition hover:bg-red-700"
                         >
                           ×
                         </button>
@@ -494,7 +498,7 @@ export default function AddProductPage() {
               type="button"
               onClick={saveProduct}
               disabled={saving || uploading}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-green-600 py-4 text-lg font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#1677FF] py-4 text-base font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {saving ? (
                 <>

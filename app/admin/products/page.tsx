@@ -175,7 +175,7 @@ export default function ProductsPage() {
 
   if (loading) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-gray-100 px-6">
+      <main className="flex min-h-screen items-center justify-center bg-transparent px-6">
         <LoadingAnimation size="lg" text="LOADING PRODUCTS" subtext="EXRONIX CATALOG" />
       </main>
     );
@@ -186,7 +186,7 @@ export default function ProductsPage() {
   ========================================= */
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-6 text-black md:px-8 md:py-10">
+    <main className="min-h-screen bg-transparent px-4 py-6 text-white md:px-8 md:py-10">
       <div className="mx-auto max-w-7xl">
 
         {/* =====================================
@@ -194,22 +194,27 @@ export default function ProductsPage() {
         ===================================== */}
 
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <h1 className="text-3xl font-bold md:text-4xl">
-            Products Management
-          </h1>
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+              Products Management
+            </h1>
+            <p className="mt-1 text-sm text-gray-400">
+              Manage inventory levels, hardware catalog specs, and pricing.
+            </p>
+          </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
 
             <Link
               href="/admin"
-              className="w-full rounded-lg bg-black px-5 py-3 text-center text-white transition hover:bg-gray-800 sm:w-auto"
+              className="w-full rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-center font-semibold text-white transition hover:bg-white/10 sm:w-auto"
             >
               Dashboard
             </Link>
 
             <Link
               href="/admin/products/add"
-              className="w-full rounded-lg bg-green-600 px-5 py-3 text-center text-white transition hover:bg-green-700 sm:w-auto"
+              className="w-full rounded-xl bg-[#1677FF] px-5 py-3 text-center font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 sm:w-auto"
             >
               + Add Product
             </Link>
@@ -225,48 +230,48 @@ export default function ProductsPage() {
 
           {/* Total Products */}
 
-          <div className="rounded-xl bg-white p-4 shadow md:p-6">
-            <p className="text-gray-500">
+          <div className="rounded-2xl border border-white/10 bg-[#0e1219] p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
               📦 Total Products
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold">
+            <h2 className="mt-2 text-3xl font-black text-white">
               {totalProducts}
             </h2>
           </div>
 
           {/* In Stock */}
 
-          <div className="rounded-xl bg-white p-4 shadow md:p-6">
-            <p className="text-gray-500">
+          <div className="rounded-2xl border border-white/10 bg-[#0e1219] p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
               🟢 In Stock
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold text-green-600">
+            <h2 className="mt-2 text-3xl font-black text-emerald-400">
               {inStockProducts}
             </h2>
           </div>
 
           {/* Out Of Stock */}
 
-          <div className="rounded-xl bg-white p-4 shadow md:p-6">
-            <p className="text-gray-500">
+          <div className="rounded-2xl border border-white/10 bg-[#0e1219] p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-red-400">
               🔴 Out of Stock
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold text-red-600">
+            <h2 className="mt-2 text-3xl font-black text-red-400">
               {outOfStockProducts}
             </h2>
           </div>
 
           {/* Low Stock */}
 
-          <div className="rounded-xl bg-white p-4 shadow md:p-6">
-            <p className="text-gray-500">
+          <div className="rounded-2xl border border-white/10 bg-[#0e1219] p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-amber-400">
               ⚠ Low Stock
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold text-yellow-600">
+            <h2 className="mt-2 text-3xl font-black text-amber-400">
               {lowStockProducts}
             </h2>
           </div>
@@ -283,12 +288,12 @@ export default function ProductsPage() {
 
           <input
             type="text"
-            placeholder="🔍 Search..."
+            placeholder="🔍 Search catalog..."
             value={search}
             onChange={(e) =>
               setSearch(e.target.value)
             }
-            className="w-full rounded-lg border bg-white p-3 outline-none focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
           />
 
           {/* Category */}
@@ -300,21 +305,21 @@ export default function ProductsPage() {
                 e.target.value
               )
             }
-            className="w-full rounded-lg border bg-white p-3 outline-none focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
           >
-            <option value="All">
+            <option value="All" className="bg-[#0b0e14] text-white">
               All Categories
             </option>
 
-            <option value="Computer Mice">
+            <option value="Computer Mice" className="bg-[#0b0e14] text-white">
               Computer Mice
             </option>
 
-            <option value="PC Cabinets">
+            <option value="PC Cabinets" className="bg-[#0b0e14] text-white">
               PC Cabinets
             </option>
 
-            <option value="Headphone Stands">
+            <option value="Headphone Stands" className="bg-[#0b0e14] text-white">
               Headphone Stands
             </option>
           </select>
@@ -328,21 +333,21 @@ export default function ProductsPage() {
                 e.target.value
               )
             }
-            className="w-full rounded-lg border bg-white p-3 outline-none focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
           >
-            <option value="All">
+            <option value="All" className="bg-[#0b0e14] text-white">
               All Status
             </option>
 
-            <option value="In Stock">
+            <option value="In Stock" className="bg-[#0b0e14] text-white">
               In Stock
             </option>
 
-            <option value="Low Stock">
+            <option value="Low Stock" className="bg-[#0b0e14] text-white">
               Low Stock
             </option>
 
-            <option value="Out of Stock">
+            <option value="Out of Stock" className="bg-[#0b0e14] text-white">
               Out of Stock
             </option>
           </select>
@@ -354,21 +359,21 @@ export default function ProductsPage() {
             onChange={(e) =>
               setSortBy(e.target.value)
             }
-            className="w-full rounded-lg border bg-white p-3 outline-none focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
           >
-            <option value="Latest">
+            <option value="Latest" className="bg-[#0b0e14] text-white">
               Latest
             </option>
 
-            <option value="Price Low">
+            <option value="Price Low" className="bg-[#0b0e14] text-white">
               Price Low
             </option>
 
-            <option value="Price High">
+            <option value="Price High" className="bg-[#0b0e14] text-white">
               Price High
             </option>
 
-            <option value="Stock">
+            <option value="Stock" className="bg-[#0b0e14] text-white">
               Stock
             </option>
           </select>
@@ -379,40 +384,40 @@ export default function ProductsPage() {
             PRODUCTS TABLE
         ===================================== */}
 
-        <div className="overflow-x-auto rounded-2xl bg-white shadow">
+        <div className="overflow-x-auto rounded-2xl border border-white/10 bg-[#0e1219] shadow-xl">
 
           <table className="min-w-[900px] w-full">
 
             {/* TABLE HEADER */}
 
-            <thead className="bg-black text-white">
+            <thead className="border-b border-white/10 bg-[#080a0f] text-xs uppercase tracking-wider text-gray-300">
               <tr>
 
-                <th className="p-4 text-left">
+                <th className="p-4 text-left font-semibold">
                   Image
                 </th>
 
-                <th className="p-4 text-left">
+                <th className="p-4 text-left font-semibold">
                   Name
                 </th>
 
-                <th className="p-4 text-left">
+                <th className="p-4 text-left font-semibold">
                   Category
                 </th>
 
-                <th className="p-4 text-left">
+                <th className="p-4 text-left font-semibold">
                   Price
                 </th>
 
-                <th className="p-4 text-left">
+                <th className="p-4 text-left font-semibold">
                   Stock
                 </th>
 
-                <th className="p-4 text-left">
+                <th className="p-4 text-left font-semibold">
                   Status
                 </th>
 
-                <th className="p-4 text-center">
+                <th className="p-4 text-center font-semibold">
                   Actions
                 </th>
 
@@ -421,16 +426,16 @@ export default function ProductsPage() {
 
             {/* TABLE BODY */}
 
-            <tbody>
+            <tbody className="divide-y divide-white/5">
 
               {filteredProducts.length === 0 ? (
 
                 <tr>
                   <td
                     colSpan={7}
-                    className="p-10 text-center text-gray-500"
+                    className="p-10 text-center text-sm text-gray-400"
                   >
-                    No products available.
+                    No products match the selected criteria.
                   </td>
                 </tr>
 
@@ -441,7 +446,7 @@ export default function ProductsPage() {
 
                     <tr
                       key={product.id}
-                      className="border-b hover:bg-gray-50"
+                      className="transition hover:bg-white/5"
                     >
 
                       {/* IMAGE */}
@@ -450,32 +455,32 @@ export default function ProductsPage() {
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="h-14 w-14 rounded-lg object-cover md:h-16 md:w-16"
+                          className="h-14 w-14 rounded-xl border border-white/10 bg-white/5 object-cover md:h-16 md:w-16"
                         />
                       </td>
 
                       {/* NAME */}
 
-                      <td className="px-3 py-4 font-semibold md:px-4">
+                      <td className="px-3 py-4 font-semibold text-white md:px-4">
                         {product.name}
                       </td>
 
                       {/* CATEGORY */}
 
-                      <td className="px-3 py-4 md:px-4">
+                      <td className="px-3 py-4 text-sm text-gray-300 md:px-4">
                         {product.category}
                       </td>
 
                       {/* PRICE */}
 
-                      <td className="px-3 py-4 md:px-4">
+                      <td className="px-3 py-4 text-sm font-bold text-[#1677FF] md:px-4">
                         NPR{" "}
                         {product.price.toLocaleString()}
                       </td>
 
                       {/* STOCK */}
 
-                      <td className="px-3 py-4 md:px-4">
+                      <td className="px-3 py-4 text-sm font-medium text-gray-300 md:px-4">
                         {product.stock}
                       </td>
 
@@ -484,14 +489,14 @@ export default function ProductsPage() {
                       <td className="px-3 py-4 md:px-4">
 
                         <span
-                          className={`inline-block rounded-full px-3 py-1 text-xs font-semibold md:text-sm ${
+                          className={`inline-block rounded-full border px-3 py-1 text-xs font-semibold ${
                             product.status ===
                             "In Stock"
-                              ? "bg-green-100 text-green-700"
+                              ? "border-emerald-500/30 bg-emerald-500/15 text-emerald-400"
                               : product.status ===
                                 "Low Stock"
-                              ? "bg-yellow-100 text-yellow-700"
-                              : "bg-red-100 text-red-700"
+                              ? "border-amber-500/30 bg-amber-500/15 text-amber-400"
+                              : "border-red-500/30 bg-red-500/15 text-red-400"
                           }`}
                         >
                           {product.status}
@@ -509,20 +514,20 @@ export default function ProductsPage() {
 
                           <Link
                             href={`/admin/products/view/${product.id}`}
-                            className="rounded bg-blue-500 px-3 py-2 text-white hover:bg-blue-600"
+                            className="rounded-xl border border-[#1677FF]/40 bg-[#1677FF]/15 px-3 py-2 text-xs font-semibold text-[#1677FF] transition hover:bg-[#1677FF]/25"
                             title="View Product"
                           >
-                            👁
+                            👁 View
                           </Link>
 
                           {/* EDIT */}
 
                           <Link
                             href={`/admin/products/edit/${product.id}`}
-                            className="rounded-lg bg-yellow-500 px-3 py-2 text-white hover:bg-yellow-600"
+                            className="rounded-xl border border-amber-500/30 bg-amber-500/15 px-3 py-2 text-xs font-semibold text-amber-400 transition hover:bg-amber-500/25"
                             title="Edit Product"
                           >
-                            ✏️
+                            ✏️ Edit
                           </Link>
 
                           {/* DELETE */}
@@ -534,10 +539,10 @@ export default function ProductsPage() {
                                 product.id
                               )
                             }
-                            className="rounded bg-red-500 px-3 py-2 text-white hover:bg-red-600"
+                            className="rounded-xl border border-red-500/30 bg-red-500/15 px-3 py-2 text-xs font-semibold text-red-400 transition hover:bg-red-500/25"
                             title="Delete Product"
                           >
-                            🗑
+                            🗑 Delete
                           </button>
 
                         </div>

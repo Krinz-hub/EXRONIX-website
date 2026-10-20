@@ -35,10 +35,15 @@ SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
 
 # Resend Email Secret (Server-only for transactional emails)
 RESEND_API_KEY=re_your_resend_api_key
+
+# Optional / Default Fallbacks
+NEXT_PUBLIC_SITE_URL=https://www.exronix.store
+EMAIL_FROM=EXRONIX <orders@exronix.store>
+ADMIN_EMAIL=support@exronix.store
 ```
 
 > [!NOTE]
-> `.env.local` is already excluded in `.gitignore` to prevent secret leakage.
+> `.env.local` is already excluded in `.gitignore` to prevent secret leakage. For complete Vercel production deployment setup, see [`docs/DEPLOYMENT.md`](./DEPLOYMENT.md).
 
 ---
 
@@ -87,3 +92,8 @@ Before making significant alterations to checkout, pricing, or auth:
 ### Issue 3: `EBADENGINE Unsupported engine` warnings during `npm install`
 - **Cause**: `@supabase/supabase-js` v2.111.0 specifies `node: ">=22.0.0"`.
 - **Solution**: Upgrade your local Node runtime to Node.js 22 LTS (`nvm use 22`).
+
+### Issue 4: `Error: Missing API key. Pass it to the constructor new Resend("re_123")`
+- **Cause**: Previously caused by top-level Resend instantiation at module evaluation during `next build`.
+- **Solution**: Resend is now initialized inside request handlers (`POST`), returning safe HTTP 500 error responses (`{ "success": false, "error": "Email service is not configured." }`) if `RESEND_API_KEY` is not set at runtime. Ensure `RESEND_API_KEY` is configured in Vercel environment variables for transactional emails to dispatch.
+

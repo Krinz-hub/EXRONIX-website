@@ -158,15 +158,15 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-[#07090e] text-white">
 
       {/* Sidebar */}
 
-      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 bg-black text-white lg:block">
+      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 border-r border-white/10 bg-[#0a0d14] text-white lg:block">
 
         {/* Logo */}
 
-        <div className="border-b border-gray-800 p-8">
+        <div className="border-b border-white/10 p-8">
 
           <h1 className="text-3xl font-black tracking-wider text-white">
             EXRONIX
@@ -192,13 +192,13 @@ export default function AdminLayout({
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center gap-4 rounded-xl px-5 py-4 transition ${
+                className={`flex items-center gap-4 rounded-xl px-5 py-4 font-semibold transition ${
                   active
-                    ? "bg-white text-black"
-                    : "hover:bg-gray-900"
+                    ? "bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                    : "text-gray-400 hover:bg-white/5 hover:text-white"
                 }`}
               >
-                <Icon size={22} />
+                <Icon size={22} className={active ? "text-white" : "text-gray-400"} />
 
                 {item.name}
               </Link>
@@ -211,7 +211,7 @@ export default function AdminLayout({
 
         <button
           onClick={logout}
-          className="absolute bottom-8 left-4 flex w-40 items-center gap-4 rounded-xl bg-red-600 px-5 py-4 transition hover:bg-red-700"
+          className="absolute bottom-8 left-4 flex w-40 items-center gap-4 rounded-xl border border-red-500/30 bg-red-500/10 px-5 py-4 font-bold text-red-400 transition hover:bg-red-500/20"
         >
           <LogOut size={18} />
 
@@ -222,7 +222,7 @@ export default function AdminLayout({
 
       {/* Mobile top bar */}
 
-      <div className="fixed left-0 right-0 top-0 z-30 flex h-16 items-center justify-between bg-black px-5 text-white lg:hidden">
+      <div className="fixed left-0 right-0 top-0 z-30 flex h-16 items-center justify-between border-b border-white/10 bg-[#0a0d14] px-5 text-white lg:hidden">
 
         <div>
           <h1 className="font-black tracking-wider text-white">
@@ -236,7 +236,7 @@ export default function AdminLayout({
 
         <button
           onClick={logout}
-          className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold"
+          className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-bold text-red-400"
         >
           Logout
         </button>

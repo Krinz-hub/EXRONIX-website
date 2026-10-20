@@ -72,7 +72,7 @@ export default function CouponsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-6 text-black md:px-8 md:py-10">
+    <main className="min-h-screen bg-transparent px-4 py-6 text-white md:px-8 md:py-10">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
@@ -80,18 +80,18 @@ export default function CouponsPage() {
         <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-center md:justify-between">
 
           <div>
-            <h1 className="text-3xl font-bold md:text-4xl">
+            <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
               Coupon Management
             </h1>
 
-            <p className="mt-2 text-sm text-gray-500 md:text-base">
-              Create and manage discount coupons.
+            <p className="mt-1 text-sm text-gray-400 md:text-base">
+              Create and manage promotional discounts and coupon codes.
             </p>
           </div>
 
           <button
             onClick={() => setOpenCreate(true)}
-            className="w-full rounded-xl bg-black px-6 py-3 font-medium text-white transition hover:bg-gray-800 sm:w-auto"
+            className="w-full rounded-xl bg-[#1677FF] px-6 py-3 font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 sm:w-auto"
           >
             + Create Coupon
           </button>
@@ -102,25 +102,25 @@ export default function CouponsPage() {
 
         <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-3">
 
-          <div className="rounded-2xl bg-white p-4 shadow md:p-6">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl md:p-6">
 
-            <p className="text-xs text-gray-500 md:text-sm">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
               Total Coupons
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold md:text-4xl">
+            <h2 className="mt-2 text-2xl font-black text-white md:text-4xl">
               {coupons.length}
             </h2>
 
           </div>
 
-          <div className="rounded-2xl bg-white p-4 shadow md:p-6">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl md:p-6">
 
-            <p className="text-xs text-gray-500 md:text-sm">
-              Active
+            <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+              Active Coupons
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold text-green-600 md:text-4xl">
+            <h2 className="mt-2 text-2xl font-black text-emerald-400 md:text-4xl">
               {
                 coupons.filter(
                   (coupon) => coupon.active
@@ -130,13 +130,13 @@ export default function CouponsPage() {
 
           </div>
 
-          <div className="col-span-2 rounded-2xl bg-white p-4 shadow md:col-span-1 md:p-6">
+          <div className="col-span-2 rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl md:col-span-1 md:p-6">
 
-            <p className="text-xs text-gray-500 md:text-sm">
-              Inactive
+            <p className="text-xs font-semibold uppercase tracking-wider text-red-400">
+              Inactive Coupons
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold text-red-600 md:text-4xl">
+            <h2 className="mt-2 text-2xl font-black text-red-400 md:text-4xl">
               {
                 coupons.filter(
                   (coupon) => !coupon.active
@@ -151,19 +151,19 @@ export default function CouponsPage() {
         {/* Loading */}
 
         {loading ? (
-          <div className="rounded-2xl bg-white p-12 text-center shadow flex items-center justify-center">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-12 text-center shadow-xl flex items-center justify-center">
             <LoadingAnimation size="md" text="LOADING COUPONS" subtext="EXRONIX PROMOTIONS" />
           </div>
         ) : coupons.length === 0 ? (
-          <div className="rounded-2xl bg-white p-12 text-center shadow">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-12 text-center shadow-xl">
 
-            <p className="text-gray-500">
-              No coupons yet.
+            <p className="text-gray-400">
+              No promotional coupons registered yet.
             </p>
 
             <button
               onClick={() => setOpenCreate(true)}
-              className="mt-5 rounded-xl bg-black px-6 py-3 text-white transition hover:bg-gray-800"
+              className="mt-5 rounded-xl bg-[#1677FF] px-6 py-3 font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90"
             >
               Create Your First Coupon
             </button>
@@ -180,7 +180,7 @@ export default function CouponsPage() {
               {coupons.map((coupon) => (
                 <div
                   key={coupon.id}
-                  className="rounded-2xl bg-white p-5 shadow"
+                  className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 text-white shadow-xl"
                 >
 
                   {/* Header */}
@@ -189,21 +189,21 @@ export default function CouponsPage() {
 
                     <div>
 
-                      <p className="text-xs uppercase tracking-wide text-gray-400">
+                      <p className="text-xs uppercase tracking-wider text-gray-400">
                         Coupon Code
                       </p>
 
-                      <h2 className="mt-1 break-all text-xl font-bold">
+                      <h2 className="mt-1 break-all text-xl font-black text-[#1677FF]">
                         {coupon.code}
                       </h2>
 
                     </div>
 
                     <span
-                      className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${
+                      className={`shrink-0 rounded-full border px-3 py-1 text-xs font-bold ${
                         coupon.active
-                          ? "bg-green-100 text-green-700"
-                          : "bg-red-100 text-red-700"
+                          ? "border-emerald-500/30 bg-emerald-500/15 text-emerald-400"
+                          : "border-red-500/30 bg-red-500/15 text-red-400"
                       }`}
                     >
                       {coupon.active
@@ -215,14 +215,14 @@ export default function CouponsPage() {
 
                   {/* Details */}
 
-                  <div className="mt-5 grid grid-cols-2 gap-4 border-t pt-4">
+                  <div className="mt-5 grid grid-cols-2 gap-4 border-t border-white/10 pt-4">
 
                     <div>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-400">
                         Discount
                       </p>
 
-                      <p className="mt-1 font-semibold">
+                      <p className="mt-1 font-bold text-white">
                         {coupon.type ===
                         "percentage"
                           ? `${coupon.value}%`
@@ -231,22 +231,22 @@ export default function CouponsPage() {
                     </div>
 
                     <div>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-400">
                         Minimum Order
                       </p>
 
-                      <p className="mt-1 font-semibold">
+                      <p className="mt-1 font-semibold text-white">
                         NPR{" "}
                         {coupon.min_order.toLocaleString()}
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-xs text-gray-500">
-                        Used
+                      <p className="text-xs text-gray-400">
+                        Used Count
                       </p>
 
-                      <p className="mt-1 font-semibold">
+                      <p className="mt-1 font-semibold text-white">
                         {coupon.used_count}
                         {coupon.usage_limit !== null
                           ? ` / ${coupon.usage_limit}`
@@ -255,11 +255,11 @@ export default function CouponsPage() {
                     </div>
 
                     <div>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-400">
                         Expires
                       </p>
 
-                      <p className="mt-1 font-semibold">
+                      <p className="mt-1 font-semibold text-white">
                         {coupon.expires_at
                           ? new Date(
                               coupon.expires_at
@@ -278,18 +278,18 @@ export default function CouponsPage() {
                       onClick={() =>
                         editCoupon(coupon)
                       }
-                      className="rounded-xl bg-blue-500 px-4 py-3 font-medium text-white transition hover:bg-blue-600"
+                      className="rounded-xl border border-amber-500/30 bg-amber-500/15 px-4 py-2.5 text-xs font-bold text-amber-400 transition hover:bg-amber-500/25"
                     >
-                      Edit
+                      ✏️ Edit
                     </button>
 
                     <button
                       onClick={() =>
                         removeCoupon(coupon.id)
                       }
-                      className="rounded-xl bg-red-500 px-4 py-3 font-medium text-white transition hover:bg-red-600"
+                      className="rounded-xl border border-red-500/30 bg-red-500/15 px-4 py-2.5 text-xs font-bold text-red-400 transition hover:bg-red-500/25"
                     >
-                      Delete
+                      🗑 Delete
                     </button>
 
                   </div>
@@ -303,39 +303,39 @@ export default function CouponsPage() {
             {/* DESKTOP TABLE */}
             {/* ========================= */}
 
-            <div className="hidden overflow-x-auto rounded-2xl bg-white shadow md:block">
+            <div className="hidden overflow-x-auto rounded-3xl border border-white/10 bg-[#0e1219] shadow-2xl md:block">
 
               <table className="min-w-[950px] w-full">
 
-                <thead className="bg-black text-white">
+                <thead className="border-b border-white/10 bg-[#080a0f] text-xs uppercase tracking-wider text-gray-300">
 
                   <tr>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Code
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Discount
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Minimum
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Used
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Expiry
                     </th>
 
-                    <th className="px-4 py-4 text-left">
+                    <th className="px-4 py-4 text-left font-semibold">
                       Status
                     </th>
 
-                    <th className="px-4 py-4 text-center">
+                    <th className="px-4 py-4 text-center font-semibold">
                       Actions
                     </th>
 
@@ -343,39 +343,39 @@ export default function CouponsPage() {
 
                 </thead>
 
-                <tbody>
+                <tbody className="divide-y divide-white/5">
 
                   {coupons.map((coupon) => (
 
                     <tr
                       key={coupon.id}
-                      className="border-b transition hover:bg-gray-50"
+                      className="transition hover:bg-white/5"
                     >
 
-                      <td className="px-4 py-4 font-semibold">
+                      <td className="px-4 py-4 font-bold text-[#1677FF]">
                         {coupon.code}
                       </td>
 
-                      <td className="px-4 py-4">
+                      <td className="px-4 py-4 font-semibold text-white">
                         {coupon.type ===
                         "percentage"
                           ? `${coupon.value}%`
                           : `NPR ${coupon.value}`}
                       </td>
 
-                      <td className="px-4 py-4 whitespace-nowrap">
+                      <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-300">
                         NPR{" "}
                         {coupon.min_order.toLocaleString()}
                       </td>
 
-                      <td className="px-4 py-4">
+                      <td className="px-4 py-4 text-sm text-gray-300">
                         {coupon.used_count}
 
                         {coupon.usage_limit !== null &&
                           ` / ${coupon.usage_limit}`}
                       </td>
 
-                      <td className="px-4 py-4 whitespace-nowrap">
+                      <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-400">
                         {coupon.expires_at
                           ? new Date(
                               coupon.expires_at
@@ -386,10 +386,10 @@ export default function CouponsPage() {
                       <td className="px-4 py-4">
 
                         <span
-                          className={`rounded-full px-3 py-1 text-sm font-semibold ${
+                          className={`rounded-full border px-3 py-1 text-xs font-bold ${
                             coupon.active
-                              ? "bg-green-100 text-green-700"
-                              : "bg-red-100 text-red-700"
+                              ? "border-emerald-500/30 bg-emerald-500/15 text-emerald-400"
+                              : "border-red-500/30 bg-red-500/15 text-red-400"
                           }`}
                         >
                           {coupon.active
@@ -407,18 +407,18 @@ export default function CouponsPage() {
                             onClick={() =>
                               editCoupon(coupon)
                             }
-                            className="rounded-lg bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
+                            className="rounded-xl border border-amber-500/30 bg-amber-500/15 px-3 py-1.5 text-xs font-bold text-amber-400 transition hover:bg-amber-500/25"
                           >
-                            Edit
+                            ✏️ Edit
                           </button>
 
                           <button
                             onClick={() =>
                               removeCoupon(coupon.id)
                             }
-                            className="rounded-lg bg-red-500 px-4 py-2 text-white transition hover:bg-red-600"
+                            className="rounded-xl border border-red-500/30 bg-red-500/15 px-3 py-1.5 text-xs font-bold text-red-400 transition hover:bg-red-500/25"
                           >
-                            Delete
+                            🗑 Delete
                           </button>
 
                         </div>

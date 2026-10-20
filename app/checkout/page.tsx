@@ -60,7 +60,7 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     const savedBuyNow =
-      localStorage.getItem("zayna-buy-now");
+      localStorage.getItem("exronix-buy-now");
 
     if (savedBuyNow) {
       try {
@@ -80,7 +80,7 @@ export default function CheckoutPage() {
         );
 
         localStorage.removeItem(
-          "zayna-buy-now"
+          "exronix-buy-now"
         );
       }
     }
@@ -300,7 +300,7 @@ export default function CheckoutPage() {
   useEffect(() => {
     const savedCoupon =
       localStorage.getItem(
-        "zayna-coupon"
+        "exronix-coupon"
       );
 
     if (!savedCoupon) {
@@ -351,7 +351,7 @@ export default function CheckoutPage() {
       );
 
       localStorage.removeItem(
-        "zayna-coupon"
+        "exronix-coupon"
       );
 
       setCouponCode("");
@@ -527,7 +527,7 @@ export default function CheckoutPage() {
 
       const savedCoupon =
         localStorage.getItem(
-          "zayna-coupon"
+          "exronix-coupon"
         );
 
       if (savedCoupon) {
@@ -548,7 +548,7 @@ export default function CheckoutPage() {
         }
 
         localStorage.removeItem(
-          "zayna-coupon"
+          "exronix-coupon"
         );
 
         setCouponCode("");
@@ -628,7 +628,7 @@ export default function CheckoutPage() {
 
       if (buyNowItem) {
         localStorage.removeItem(
-          "zayna-buy-now"
+          "exronix-buy-now"
         );
       } else {
         await clearCart();
@@ -668,7 +668,7 @@ export default function CheckoutPage() {
 
   return (
     <ProtectedRoute>
-      <main className="min-h-screen bg-gray-50 pb-12 pt-24 md:pb-20 md:pt-36">
+      <main className="min-h-screen pb-12 pt-24 md:pb-20 md:pt-36 text-white">
 
         <div className="mx-auto grid max-w-7xl gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
 
@@ -676,9 +676,9 @@ export default function CheckoutPage() {
               SHIPPING
           ================================= */}
 
-          <div className="rounded-2xl bg-white p-5 shadow md:p-8">
+          <div className="rounded-3xl border border-white/15 bg-[#0e1219]/80 liquid-glass backdrop-blur-xl p-5 shadow-2xl md:p-8 text-white">
 
-            <h1 className="mb-6 text-2xl font-bold md:mb-8 md:text-3xl">
+            <h1 className="mb-6 text-2xl font-black tracking-tight text-white md:mb-8 md:text-3xl">
               Checkout
             </h1>
 
@@ -689,7 +689,7 @@ export default function CheckoutPage() {
                 value={form.fullName}
                 onChange={handleChange}
                 placeholder="Full Name"
-                className="w-full rounded-xl border p-3 text-base md:p-4"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-base text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF] md:p-4"
               />
 
               <input
@@ -698,7 +698,7 @@ export default function CheckoutPage() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="Email"
-                className="w-full rounded-xl border p-3 text-base md:p-4"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-base text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF] md:p-4"
               />
 
               <input
@@ -706,7 +706,7 @@ export default function CheckoutPage() {
                 value={form.phone}
                 onChange={handleChange}
                 placeholder="Phone Number"
-                className="w-full rounded-xl border p-3 text-base md:p-4"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-base text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF] md:p-4"
               />
 
               <input
@@ -714,7 +714,7 @@ export default function CheckoutPage() {
                 value={form.address}
                 onChange={handleChange}
                 placeholder="Address"
-                className="w-full rounded-xl border p-3 text-base md:p-4"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-base text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF] md:p-4"
               />
 
               <select
@@ -724,7 +724,7 @@ export default function CheckoutPage() {
                     e.target.value
                   )
                 }
-                className="w-full rounded-xl border p-3 text-base md:p-4"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14] p-3 text-base text-white outline-none transition focus:border-[#1677FF] md:p-4"
               >
                 {shippingRates.map(
                   (rate) => (
@@ -733,6 +733,7 @@ export default function CheckoutPage() {
                       value={
                         rate.province
                       }
+                      className="bg-[#0b0e14] text-white"
                     >
                       {rate.province}
                     </option>
@@ -745,7 +746,7 @@ export default function CheckoutPage() {
                 value={form.city}
                 onChange={handleChange}
                 placeholder="City"
-                className="w-full rounded-xl border p-3 text-base md:p-4"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-base text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF] md:p-4"
               />
 
               <input
@@ -755,49 +756,45 @@ export default function CheckoutPage() {
                 }
                 onChange={handleChange}
                 placeholder="Postal Code"
-                className="w-full rounded-xl border p-3 text-base md:p-4"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-base text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF] md:p-4"
               />
 
             </div>
 
             {/* Payment */}
 
-            <h2 className="mb-4 mt-10 text-xl font-bold">
+            <h2 className="mb-4 mt-10 text-xl font-bold text-white">
               Payment Method
             </h2>
 
-            <div className="mb-6 rounded-xl border border-yellow-300 bg-yellow-50 p-4">
+            <div className="mb-6 rounded-xl border border-amber-500/30 bg-amber-500/10 backdrop-blur-md p-4 text-amber-300">
 
-              <h3 className="font-semibold text-yellow-800">
+              <h3 className="font-semibold text-amber-200">
                 🚧 Online Payments Coming Soon
               </h3>
 
-              <p className="mt-2 text-sm text-yellow-700">
-                We are currently
-                integrating{" "}
-                <strong>
+              <p className="mt-2 text-sm text-amber-300/90">
+                We are currently integrating{" "}
+                <strong className="text-white">
                   eSewa
                 </strong>{" "}
                 and{" "}
-                <strong>
+                <strong className="text-white">
                   Khalti
                 </strong>{" "}
-                for secure online
-                payments.
+                for secure online payments.
               </p>
 
-              <p className="mt-1 text-sm text-yellow-700">
-                For now, please place
-                your order using{" "}
-                <strong>
+              <p className="mt-1 text-sm text-amber-300/90">
+                For now, please place your order using{" "}
+                <strong className="text-white">
                   Cash on Delivery
                 </strong>
                 .
               </p>
 
-              <p className="mt-1 text-xs text-gray-400">
-                Thank you for
-                choosing EXRONIX.
+              <p className="mt-1 text-xs text-amber-400/60">
+                Thank you for choosing EXRONIX.
               </p>
 
             </div>
@@ -806,7 +803,7 @@ export default function CheckoutPage() {
 
               {/* COD */}
 
-              <label className="flex items-start gap-3 rounded-xl border p-4 transition hover:border-black">
+              <label className="flex items-start gap-3 rounded-xl border border-[#1677FF]/40 bg-[#1677FF]/10 p-4 transition hover:border-[#1677FF] cursor-pointer">
 
                 <input
                   type="radio"
@@ -821,16 +818,16 @@ export default function CheckoutPage() {
                         "Cash on Delivery",
                     })
                   }
+                  className="mt-1 accent-[#1677FF]"
                 />
 
                 <div>
-                  <p className="font-semibold">
+                  <p className="font-semibold text-white">
                     Cash on Delivery
                   </p>
 
-                  <p className="text-sm text-gray-500">
-                    Available all over
-                    Nepal
+                  <p className="text-sm text-gray-400">
+                    Available all over Nepal
                   </p>
                 </div>
 
@@ -838,10 +835,10 @@ export default function CheckoutPage() {
 
               {/* eSewa */}
 
-              <label className="flex items-center justify-between rounded-xl border border-dashed bg-gray-100 p-4 opacity-60">
+              <label className="flex items-center justify-between rounded-xl border border-dashed border-white/10 bg-white/[0.02] p-4 opacity-60">
 
                 <div>
-                  <p className="font-semibold">
+                  <p className="font-semibold text-gray-400">
                     eSewa
                   </p>
 
@@ -850,7 +847,7 @@ export default function CheckoutPage() {
                   </p>
                 </div>
 
-                <span className="rounded-full bg-yellow-200 px-3 py-1 text-xs font-semibold text-yellow-800">
+                <span className="rounded-full bg-amber-500/20 border border-amber-500/30 px-3 py-1 text-xs font-semibold text-amber-300">
                   Soon
                 </span>
 
@@ -858,10 +855,10 @@ export default function CheckoutPage() {
 
               {/* Khalti */}
 
-              <label className="flex items-center justify-between rounded-xl border border-dashed bg-gray-100 p-4 opacity-60">
+              <label className="flex items-center justify-between rounded-xl border border-dashed border-white/10 bg-white/[0.02] p-4 opacity-60">
 
                 <div>
-                  <p className="font-semibold">
+                  <p className="font-semibold text-gray-400">
                     Khalti
                   </p>
 
@@ -870,7 +867,7 @@ export default function CheckoutPage() {
                   </p>
                 </div>
 
-                <span className="rounded-full bg-yellow-200 px-3 py-1 text-xs font-semibold text-yellow-800">
+                <span className="rounded-full bg-amber-500/20 border border-amber-500/30 px-3 py-1 text-xs font-semibold text-amber-300">
                   Soon
                 </span>
 
@@ -884,16 +881,16 @@ export default function CheckoutPage() {
               ORDER SUMMARY
           ================================= */}
 
-          <div className="h-fit rounded-2xl bg-white p-5 shadow md:p-8 lg:sticky lg:top-32">
+          <div className="h-fit rounded-3xl border border-white/15 bg-[#0e1219]/80 liquid-glass backdrop-blur-xl p-5 shadow-2xl md:p-8 lg:sticky lg:top-32 text-white">
 
             <div className="mb-6 flex items-center justify-between">
 
-              <h2 className="text-2xl font-bold">
+              <h2 className="text-2xl font-bold text-white">
                 Order Summary
               </h2>
 
               {buyNowItem && (
-                <span className="rounded-full bg-black px-3 py-1 text-xs font-semibold text-white">
+                <span className="rounded-full bg-[#1677FF] px-3 py-1 text-xs font-bold text-white shadow-[0_0_12px_rgba(22,119,255,0.4)]">
                   Buy Now
                 </span>
               )}
@@ -904,16 +901,16 @@ export default function CheckoutPage() {
               (item) => (
                 <div
                   key={`${item.id}-${item.size}-${item.color}`}
-                  className="mb-4 flex items-start justify-between gap-4 border-b pb-4"
+                  className="mb-4 flex items-start justify-between gap-4 border-b border-white/10 pb-4"
                 >
 
                   <div className="min-w-0">
 
-                    <h3 className="font-semibold">
+                    <h3 className="font-semibold text-white">
                       {item.name}
                     </h3>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-400">
                       {item.size ||
                         "N/A"}{" "}
                       •{" "}
@@ -921,14 +918,14 @@ export default function CheckoutPage() {
                         "N/A"}
                     </p>
 
-                    <p className="text-sm">
+                    <p className="text-sm text-gray-400">
                       Qty:{" "}
-                      {item.quantity}
+                      <span className="font-semibold text-gray-200">{item.quantity}</span>
                     </p>
 
                   </div>
 
-                  <p className="shrink-0 font-semibold">
+                  <p className="shrink-0 font-bold text-white">
                     NPR{" "}
                     {(
                       item.price *
@@ -942,18 +939,18 @@ export default function CheckoutPage() {
 
             <div className="mt-8 space-y-3">
 
-              <div className="flex justify-between">
+              <div className="flex justify-between text-gray-400">
                 <span>
                   Subtotal
                 </span>
 
-                <span>
+                <span className="font-semibold text-white">
                   NPR{" "}
                   {subtotal.toLocaleString()}
                 </span>
               </div>
 
-              <div className="flex justify-between gap-4">
+              <div className="flex justify-between gap-4 text-gray-400">
 
                 <span>
                   Shipping (
@@ -962,7 +959,7 @@ export default function CheckoutPage() {
                   )
                 </span>
 
-                <span>
+                <span className="font-semibold text-white">
                   {shipping === 0
                     ? "FREE"
                     : `NPR ${shipping.toLocaleString()}`}
@@ -971,13 +968,13 @@ export default function CheckoutPage() {
               </div>
 
               {estimatedDelivery && (
-                <div className="flex justify-between text-sm text-gray-500">
+                <div className="flex justify-between text-sm text-gray-400">
 
                   <span>
                     Estimated Delivery
                   </span>
 
-                  <span>
+                  <span className="text-gray-300">
                     {estimatedDelivery}
                   </span>
 
@@ -985,14 +982,14 @@ export default function CheckoutPage() {
               )}
 
               {discount > 0 && (
-                <div className="flex justify-between text-green-600">
+                <div className="flex justify-between text-emerald-400">
 
                   <span>
                     Coupon (
                     {couponCode})
                   </span>
 
-                  <span>
+                  <span className="font-semibold">
                     - NPR{" "}
                     {discount.toLocaleString()}
                   </span>
@@ -1000,18 +997,20 @@ export default function CheckoutPage() {
                 </div>
               )}
 
-              <hr />
+              <div className="border-t border-white/10 pt-3">
 
-              <div className="flex justify-between text-xl font-bold">
+                <div className="flex justify-between text-xl font-bold">
 
-                <span>
-                  Total
-                </span>
+                  <span className="text-gray-200">
+                    Total
+                  </span>
 
-                <span>
-                  NPR{" "}
-                  {total.toLocaleString()}
-                </span>
+                  <span className="text-2xl font-black text-white">
+                    NPR{" "}
+                    {total.toLocaleString()}
+                  </span>
+
+                </div>
 
               </div>
 
@@ -1027,7 +1026,7 @@ export default function CheckoutPage() {
                     0 ||
                   isPlacingOrder
                 }
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-black py-3 text-base font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-400 md:py-4 md:text-lg"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1677FF] py-3 text-base font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 active:scale-[0.99] disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-gray-500 md:py-4 md:text-lg"
               >
                 {isPlacingOrder ? (
                   <>

@@ -1,10 +1,24 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+
+    if (!apiKey) {
+      console.error("Missing RESEND_API_KEY: Transactional email service is not configured.");
+
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Email service is not configured.",
+        },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
+
     const {
       customer,
       email,
@@ -70,7 +84,7 @@ export async function POST(req: Request) {
 
     const fromEmail = process.env.EMAIL_FROM || "EXRONIX <orders@exronix.store>";
 
-    await resend.emails.send({
+    const { error: sendError } = await resend.emails.send({
       from: fromEmail,
       to: email,
       subject: title,
@@ -125,15 +139,28 @@ export async function POST(req: Request) {
       `,
     });
 
+    if (sendError) {
+      console.error("Failed to send status update email:", sendError);
+
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Failed to send status update email.",
+        },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json({
       success: true,
     });
   } catch (error) {
-    console.error(error);
+    console.error("Unexpected error in /api/send-status-email:", error);
 
     return NextResponse.json(
       {
         success: false,
+        error: "Failed to send status email.",
       },
       {
         status: 500,

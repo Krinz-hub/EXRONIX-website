@@ -20,9 +20,7 @@ export function saveRecentlyViewed(product: any) {
 export function getRecentlyViewed() {
   if (typeof window === "undefined") return [];
 
-  const data =
-    localStorage.getItem(STORAGE_KEY) ||
-    localStorage.getItem("zayna_recently_viewed");
+  const data = localStorage.getItem(STORAGE_KEY);
 
   return data ? JSON.parse(data) : [];
 }

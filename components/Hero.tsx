@@ -34,7 +34,7 @@ export default function Hero() {
         <div className="mt-8 flex w-full max-w-sm flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
           <Link
             href="/shop"
-            className="flex min-h-12 w-full items-center justify-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-black shadow-lg shadow-black/50 transition duration-300 hover:scale-105 hover:bg-[#1677FF] hover:text-white sm:w-auto sm:px-10 sm:py-4 sm:text-base"
+            className="flex min-h-12 w-full items-center justify-center rounded-full bg-[#1677FF] px-7 py-3 text-sm font-bold text-white shadow-[0_0_25px_rgba(22,119,255,0.4)] transition duration-300 hover:scale-105 hover:bg-[#1677FF]/90 sm:w-auto sm:px-10 sm:py-4 sm:text-base"
           >
             Explore PC Hardware
           </Link>

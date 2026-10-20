@@ -216,7 +216,7 @@ export default function EditProductPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-gray-100 px-6 py-32 flex items-center justify-center">
+      <main className="min-h-screen bg-transparent px-6 py-32 flex items-center justify-center">
         <LoadingAnimation size="lg" text="PREPARING EDITOR" subtext="EXRONIX CATALOG" />
       </main>
     );
@@ -227,20 +227,25 @@ export default function EditProductPage() {
   ========================================= */
 
   return (
-    <main className="min-h-screen bg-gray-100 px-6 py-12">
+    <main className="min-h-screen bg-transparent px-6 py-12 text-white">
       <div className="mx-auto max-w-5xl">
 
         {/* Header */}
 
         <div className="mb-8 flex items-center justify-between">
 
-          <h1 className="text-4xl font-bold">
-            Edit Product
-          </h1>
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Edit Product
+            </h1>
+            <p className="mt-1 text-sm text-gray-400">
+              Update product pricing, stock availability, and specs.
+            </p>
+          </div>
 
           <Link
             href="/admin/products"
-            className="rounded-lg bg-black px-5 py-3 font-semibold text-white transition hover:bg-gray-800"
+            className="rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 font-semibold text-white transition hover:bg-white/10"
           >
             Back
           </Link>
@@ -249,14 +254,14 @@ export default function EditProductPage() {
 
         {/* Form */}
 
-        <div className="rounded-2xl bg-white p-8 shadow">
+        <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-6 shadow-2xl sm:p-10">
 
           <div className="space-y-6">
 
             {/* Product Name */}
 
             <div>
-              <label className="mb-2 block font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Product Name
               </label>
 
@@ -265,7 +270,7 @@ export default function EditProductPage() {
                 onChange={(e) =>
                   setName(e.target.value)
                 }
-                className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
                 placeholder="Product name"
               />
             </div>
@@ -273,7 +278,7 @@ export default function EditProductPage() {
             {/* Category */}
 
             <div>
-              <label className="mb-2 block font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Category
               </label>
 
@@ -282,17 +287,17 @@ export default function EditProductPage() {
                 onChange={(e) =>
                   setCategory(e.target.value)
                 }
-                className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
               >
-                <option value="Computer Mice">
+                <option value="Computer Mice" className="bg-[#0b0e14] text-white">
                   Computer Mice
                 </option>
 
-                <option value="PC Cabinets">
+                <option value="PC Cabinets" className="bg-[#0b0e14] text-white">
                   PC Cabinets
                 </option>
 
-                <option value="Headphone Stands">
+                <option value="Headphone Stands" className="bg-[#0b0e14] text-white">
                   Headphone Stands
                 </option>
               </select>
@@ -303,8 +308,8 @@ export default function EditProductPage() {
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
 
               <div>
-                <label className="mb-2 block font-semibold">
-                  Price
+                <label className="mb-2 block text-sm font-semibold text-gray-300">
+                  Price (NPR)
                 </label>
 
                 <input
@@ -314,13 +319,13 @@ export default function EditProductPage() {
                   onChange={(e) =>
                     setPrice(e.target.value)
                   }
-                  className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:border-black"
+                  className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block font-semibold">
-                  Stock
+                <label className="mb-2 block text-sm font-semibold text-gray-300">
+                  Stock Units
                 </label>
 
                 <input
@@ -330,12 +335,12 @@ export default function EditProductPage() {
                   onChange={(e) =>
                     setStock(e.target.value)
                   }
-                  className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:border-black"
+                  className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
                 />
 
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-xs text-gray-400">
                   Current stock:{" "}
-                  {Number(stock) || 0}
+                  <strong className="text-white">{Number(stock) || 0}</strong>
                 </p>
               </div>
 
@@ -344,7 +349,7 @@ export default function EditProductPage() {
             {/* Description */}
 
             <div>
-              <label className="mb-2 block font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Description
               </label>
 
@@ -354,7 +359,7 @@ export default function EditProductPage() {
                   setDescription(e.target.value)
                 }
                 rows={5}
-                className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
                 placeholder="Product description"
               />
             </div>
@@ -362,7 +367,7 @@ export default function EditProductPage() {
             {/* Image */}
 
             <div>
-              <label className="mb-2 block font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Product Image
               </label>
 
@@ -370,7 +375,7 @@ export default function EditProductPage() {
                 type="file"
                 accept="image/*"
                 onChange={handleImageUpload}
-                className="w-full rounded-lg border border-gray-300 p-3"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-gray-300"
               />
 
               {image && (
@@ -378,7 +383,7 @@ export default function EditProductPage() {
                   <img
                     src={image}
                     alt="Product preview"
-                    className="h-52 w-52 rounded-xl border object-cover"
+                    className="h-52 w-52 rounded-2xl border border-white/10 bg-[#080a0f] object-cover"
                   />
                 </div>
               )}
@@ -387,7 +392,7 @@ export default function EditProductPage() {
             {/* Status */}
 
             <div>
-              <label className="mb-2 block font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Status
               </label>
 
@@ -398,18 +403,18 @@ export default function EditProductPage() {
                     e.target.value as ProductStatus
                   )
                 }
-                className="w-full rounded-lg border border-gray-300 p-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
               >
-                <option value="Active">
+                <option value="Active" className="bg-[#0b0e14] text-white">
                   Active
                 </option>
 
-                <option value="Inactive">
+                <option value="Inactive" className="bg-[#0b0e14] text-white">
                   Inactive
                 </option>
               </select>
 
-              <p className="mt-2 text-sm text-gray-500">
+              <p className="mt-2 text-xs text-gray-400">
                 Stock status is automatically calculated
                 from the stock quantity.
               </p>
@@ -418,7 +423,7 @@ export default function EditProductPage() {
             {/* Sizes */}
 
             <div>
-              <label className="mb-3 block font-semibold">
+              <label className="mb-3 block text-sm font-semibold text-gray-300">
                 Sizes
               </label>
 
@@ -432,10 +437,10 @@ export default function EditProductPage() {
                       onClick={() =>
                         toggleSize(size)
                       }
-                      className={`rounded-lg border px-5 py-2 font-semibold transition ${
+                      className={`rounded-xl border px-5 py-2.5 text-sm font-semibold transition ${
                         sizes.includes(size)
-                          ? "border-black bg-black text-white"
-                          : "border-gray-300 bg-white text-gray-700 hover:border-black"
+                          ? "border-[#1677FF] bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                          : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:bg-white/10 hover:text-white"
                       }`}
                     >
                       {size}
@@ -449,7 +454,7 @@ export default function EditProductPage() {
             {/* Colors */}
 
             <div>
-              <label className="mb-3 block font-semibold">
+              <label className="mb-3 block text-sm font-semibold text-gray-300">
                 Colors
               </label>
 
@@ -469,10 +474,10 @@ export default function EditProductPage() {
                     onClick={() =>
                       toggleColor(color)
                     }
-                    className={`rounded-lg border px-5 py-2 font-semibold transition ${
+                    className={`rounded-xl border px-5 py-2.5 text-sm font-semibold transition ${
                       colors.includes(color)
-                        ? "border-black bg-black text-white"
-                        : "border-gray-300 bg-white text-gray-700 hover:border-black"
+                        ? "border-[#1677FF] bg-[#1677FF] text-white shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                        : "border-white/15 bg-white/5 text-gray-300 hover:border-white/30 hover:bg-white/10 hover:text-white"
                     }`}
                   >
                     {color}
@@ -488,11 +493,16 @@ export default function EditProductPage() {
               type="button"
               onClick={handleUpdate}
               disabled={saving}
-              className="w-full rounded-lg bg-green-600 py-4 text-lg font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-400"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#1677FF] py-4 text-base font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {saving
-                ? "Updating Product..."
-                : "Update Product"}
+              {saving ? (
+                <>
+                  <LoadingAnimation size="xs" />
+                  <span>Updating Product...</span>
+                </>
+              ) : (
+                "Update Product"
+              )}
             </button>
 
           </div>

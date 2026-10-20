@@ -73,18 +73,18 @@ export default function CreateCouponModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
 
-      <div className="w-full max-w-lg rounded-2xl bg-white p-8">
+      <div className="w-full max-w-lg rounded-3xl border border-white/15 bg-[#0e1219]/95 p-6 sm:p-8 text-white shadow-2xl backdrop-blur-2xl liquid-glass">
 
-        <h2 className="mb-6 text-3xl font-bold">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl">
           Create Coupon
         </h2>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
 
           <input
-            placeholder="Coupon Code"
+            placeholder="Coupon Code (e.g. TITAN20)"
             value={form.code}
             onChange={(e) =>
               setForm({
@@ -92,7 +92,7 @@ export default function CreateCouponModal({
                 code: e.target.value.toUpperCase(),
               })
             }
-            className="w-full rounded-xl border p-3"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
           />
 
           <select
@@ -105,14 +105,14 @@ export default function CreateCouponModal({
                   | "fixed",
               })
             }
-            className="w-full rounded-xl border p-3"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
           >
-            <option value="percentage">
-              Percentage
+            <option value="percentage" className="bg-[#0b0e14] text-white">
+              Percentage (%)
             </option>
 
-            <option value="fixed">
-              Fixed Amount
+            <option value="fixed" className="bg-[#0b0e14] text-white">
+              Fixed Amount (NPR)
             </option>
           </select>
 
@@ -126,12 +126,12 @@ export default function CreateCouponModal({
                 value: Number(e.target.value),
               })
             }
-            className="w-full rounded-xl border p-3"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
           />
 
           <input
             type="number"
-            placeholder="Minimum Order"
+            placeholder="Minimum Order (NPR)"
             value={form.min_order}
             onChange={(e) =>
               setForm({
@@ -139,14 +139,12 @@ export default function CreateCouponModal({
                 min_order: Number(e.target.value),
               })
             }
-
-            className="w-full rounded-xl border p-3"
-            
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
           />
 
           <input
             type="number"
-            placeholder="Usage Limit"
+            placeholder="Usage Limit (leave empty for unlimited)"
             onChange={(e) =>
               setForm({
                 ...form,
@@ -156,7 +154,7 @@ export default function CreateCouponModal({
                     : Number(e.target.value),
               })
             }
-            className="w-full rounded-xl border p-3"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
           />
 
           <input
@@ -168,10 +166,10 @@ export default function CreateCouponModal({
                 expires_at: e.target.value,
               })
             }
-            className="w-full rounded-xl border p-3"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
           />
 
-          <label className="flex items-center gap-3">
+          <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-gray-300">
 
             <input
               type="checkbox"
@@ -182,6 +180,7 @@ export default function CreateCouponModal({
                   active: e.target.checked,
                 })
               }
+              className="h-4 w-4 rounded accent-[#1677FF]"
             />
 
             Active Coupon
@@ -190,11 +189,11 @@ export default function CreateCouponModal({
 
         </div>
 
-        <div className="mt-8 flex justify-end gap-4">
+        <div className="mt-8 flex justify-end gap-3">
 
           <button
             onClick={onClose}
-            className="rounded-xl border px-5 py-3"
+            className="rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 font-semibold text-white transition hover:bg-white/10"
           >
             Cancel
           </button>
@@ -202,7 +201,7 @@ export default function CreateCouponModal({
           <button
             disabled={loading}
             onClick={handleSubmit}
-            className="flex items-center justify-center gap-2 rounded-xl bg-black px-6 py-3 text-white disabled:opacity-60"
+            className="flex items-center justify-center gap-2 rounded-xl bg-[#1677FF] px-6 py-2.5 font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 disabled:opacity-60"
           >
             {loading ? (
               <>
@@ -219,5 +218,5 @@ export default function CreateCouponModal({
       </div>
 
     </div>
-    );
-  }
+  );
+}

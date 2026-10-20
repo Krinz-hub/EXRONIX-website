@@ -102,14 +102,14 @@ export default function AddressModal({
   }
 
   const input =
-    "w-full rounded-xl border px-4 py-3 outline-none focus:border-black";
+    "w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF]/50";
 
   return (
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/40 p-4">
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
 
-      <div className="w-full max-w-2xl rounded-3xl bg-white p-8 shadow-2xl">
+      <div className="w-full max-w-2xl rounded-3xl border border-white/15 bg-[#0e1219]/95 p-8 text-white shadow-2xl backdrop-blur-2xl liquid-glass">
 
-        <h2 className="text-3xl font-bold">
+        <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
           {address ? "Edit Address" : "Add Address"}
         </h2>
 
@@ -191,7 +191,7 @@ export default function AddressModal({
 
         <textarea
           rows={4}
-          className="mt-5 w-full rounded-xl border px-4 py-3 outline-none focus:border-black"
+          className="mt-5 w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF]/50"
           placeholder="Street Address"
           value={form.address}
           onChange={(e) =>
@@ -202,7 +202,7 @@ export default function AddressModal({
           }
         />
 
-        <label className="mt-5 flex items-center gap-3">
+        <label className="mt-5 flex cursor-pointer items-center gap-3 text-sm text-gray-300">
           <input
             type="checkbox"
             checked={form.is_default}
@@ -212,6 +212,7 @@ export default function AddressModal({
                 is_default: e.target.checked,
               })
             }
+            className="h-4 w-4 rounded accent-[#1677FF]"
           />
 
           Set as default address
@@ -221,7 +222,7 @@ export default function AddressModal({
 
           <button
             onClick={onClose}
-            className="rounded-xl border px-6 py-3"
+            className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
           >
             Cancel
           </button>
@@ -229,7 +230,7 @@ export default function AddressModal({
           <button
             onClick={handleSave}
             disabled={loading}
-            className="flex items-center justify-center gap-2 rounded-xl bg-black px-8 py-3 font-semibold text-white disabled:opacity-60"
+            className="flex items-center justify-center gap-2 rounded-xl bg-[#1677FF] px-8 py-3 font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 disabled:opacity-60"
           >
             {loading ? (
               <>

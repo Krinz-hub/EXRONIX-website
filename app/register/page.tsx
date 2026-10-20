@@ -50,7 +50,7 @@ export default function RegisterPage() {
     }
 
     const users = JSON.parse(
-      localStorage.getItem("zayna-users") || "[]"
+      localStorage.getItem("exronix-users") || "[]"
     );
 
     const exists = users.find(
@@ -70,7 +70,7 @@ export default function RegisterPage() {
     });
 
     localStorage.setItem(
-      "zayna-users",
+      "exronix-users",
       JSON.stringify(users)
     );
 
@@ -80,20 +80,20 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-50 px-6 py-20">
-      <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl">
+    <main className="flex min-h-screen items-center justify-center px-4 py-28 text-white sm:px-6">
+      <div className="w-full max-w-md rounded-3xl border border-white/15 bg-[#0e1219]/80 liquid-glass backdrop-blur-2xl p-8 sm:p-10 shadow-2xl text-white">
 
-        <h1 className="mb-2 text-center text-4xl font-bold">
+        <h1 className="mb-2 text-center text-3xl sm:text-4xl font-black tracking-tight text-white">
           Create Account
         </h1>
 
-        <p className="mb-8 text-center text-gray-500">
+        <p className="mb-8 text-center text-sm text-gray-400">
           Join EXRONIX — Engineered Beyond Limits
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-5"
+          className="space-y-4"
         >
           <input
             type="text"
@@ -101,7 +101,7 @@ export default function RegisterPage() {
             placeholder="Full Name"
             value={form.name}
             onChange={handleChange}
-            className="w-full rounded-xl border p-4 outline-none focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-4 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF]"
           />
 
           <input
@@ -110,7 +110,7 @@ export default function RegisterPage() {
             placeholder="Email"
             value={form.email}
             onChange={handleChange}
-            className="w-full rounded-xl border p-4 outline-none focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-4 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF]"
           />
 
           <input
@@ -119,7 +119,7 @@ export default function RegisterPage() {
             placeholder="Phone Number"
             value={form.phone}
             onChange={handleChange}
-            className="w-full rounded-xl border p-4 outline-none focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-4 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF]"
           />
 
           <input
@@ -128,7 +128,7 @@ export default function RegisterPage() {
             placeholder="Password"
             value={form.password}
             onChange={handleChange}
-            className="w-full rounded-xl border p-4 outline-none focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-4 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF]"
           />
 
           <input
@@ -137,28 +137,28 @@ export default function RegisterPage() {
             placeholder="Confirm Password"
             value={form.confirmPassword}
             onChange={handleChange}
-            className="w-full rounded-xl border p-4 outline-none focus:border-black"
+            className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-4 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF]"
           />
 
           {error && (
-            <p className="text-sm text-red-500">
+            <p className="text-sm font-medium text-red-400">
               {error}
             </p>
           )}
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-black py-4 text-white transition hover:bg-gray-800"
+            className="w-full rounded-xl bg-[#1677FF] py-4 font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 active:scale-[0.99]"
           >
             Create Account
           </button>
         </form>
 
-        <p className="mt-6 text-center text-gray-500">
+        <p className="mt-6 text-center text-sm text-gray-400">
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-semibold text-black"
+            className="font-bold text-[#1677FF] transition hover:underline"
           >
             Login
           </Link>

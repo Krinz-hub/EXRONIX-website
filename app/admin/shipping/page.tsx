@@ -42,48 +42,48 @@ export default function ShippingPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 p-10">
+    <main className="min-h-screen bg-transparent px-4 py-6 text-white md:px-8 md:py-10">
       <div className="mx-auto max-w-7xl">
 
-        <div className="mb-10">
-          <h1 className="text-5xl font-bold">
+        <div className="mb-8 md:mb-10">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
             Shipping Management
           </h1>
 
-          <p className="mt-2 text-gray-500">
-            Manage shipping prices for each province.
+          <p className="mt-2 text-sm text-gray-400 md:text-base">
+            Manage shipping prices and estimated delivery days for each province.
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-2xl bg-white shadow">
+        <div className="overflow-x-auto rounded-3xl border border-white/10 bg-[#0e1219] shadow-xl">
 
-          <table className="w-full">
+          <table className="w-full border-collapse text-left">
 
-            <thead className="bg-black text-white">
+            <thead className="border-b border-white/10 bg-[#080a0f] text-xs font-semibold uppercase tracking-wider text-gray-300">
               <tr>
-                <th className="p-4 text-left">Province</th>
-                <th className="p-4 text-left">Shipping Price</th>
-                <th className="p-4 text-left">Free Shipping Over</th>
-                <th className="p-4 text-left">Delivery</th>
-                <th className="p-4 text-left">Active</th>
-                <th className="p-4 text-center">Save</th>
+                <th className="px-6 py-4">Province</th>
+                <th className="px-6 py-4">Shipping Price ($)</th>
+                <th className="px-6 py-4">Free Shipping Over ($)</th>
+                <th className="px-6 py-4">Estimated Delivery</th>
+                <th className="px-6 py-4 text-center">Active</th>
+                <th className="px-6 py-4 text-center">Save</th>
               </tr>
             </thead>
 
-            <tbody>
+            <tbody className="divide-y divide-white/5 text-sm text-gray-200">
 
               {rates.map((rate, index) => (
 
                 <tr
                   key={rate.id}
-                  className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                  className="transition hover:bg-white/5"
                 >
 
-                  <td className="p-4 font-semibold">
+                  <td className="px-6 py-4 font-semibold text-white">
                     {rate.province}
                   </td>
 
-                  <td className="p-4">
+                  <td className="px-6 py-4">
                     <input
                       type="number"
                       value={rate.price}
@@ -92,11 +92,11 @@ export default function ShippingPage() {
                         copy[index].price = Number(e.target.value);
                         setRates(copy);
                       }}
-                      className="w-28 rounded-lg border p-2"
+                      className="w-28 rounded-xl border border-white/15 bg-[#0b0e14]/90 px-3 py-2 text-sm text-white outline-none transition focus:border-[#1677FF]"
                     />
                   </td>
 
-                  <td className="p-4">
+                  <td className="px-6 py-4">
                     <input
                       type="number"
                       value={rate.free_shipping_over}
@@ -105,11 +105,11 @@ export default function ShippingPage() {
                         copy[index].free_shipping_over = Number(e.target.value);
                         setRates(copy);
                       }}
-                      className="w-36 rounded-lg border p-2"
+                      className="w-36 rounded-xl border border-white/15 bg-[#0b0e14]/90 px-3 py-2 text-sm text-white outline-none transition focus:border-[#1677FF]"
                     />
                   </td>
 
-                  <td className="p-4">
+                  <td className="px-6 py-4">
                     <input
                       value={rate.estimated_days}
                       onChange={(e) => {
@@ -117,11 +117,11 @@ export default function ShippingPage() {
                         copy[index].estimated_days = e.target.value;
                         setRates(copy);
                       }}
-                      className="rounded-lg border p-2"
+                      className="w-48 rounded-xl border border-white/15 bg-[#0b0e14]/90 px-3 py-2 text-sm text-white outline-none transition focus:border-[#1677FF]"
                     />
                   </td>
 
-                  <td className="p-4">
+                  <td className="px-6 py-4 text-center">
                     <input
                       type="checkbox"
                       checked={rate.active}
@@ -130,14 +130,15 @@ export default function ShippingPage() {
                         copy[index].active = e.target.checked;
                         setRates(copy);
                       }}
+                      className="h-5 w-5 rounded border-white/20 bg-[#0b0e14] accent-[#1677FF] transition cursor-pointer"
                     />
                   </td>
 
-                  <td className="p-4 text-center">
+                  <td className="px-6 py-4 text-center">
                     <button
                       disabled={loading}
                       onClick={() => save(rate)}
-                      className="rounded-lg bg-black px-4 py-2 text-white hover:bg-gray-800"
+                      className="rounded-xl bg-[#1677FF] px-4 py-2 text-sm font-semibold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 disabled:opacity-50"
                     >
                       Save
                     </button>

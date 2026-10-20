@@ -233,12 +233,12 @@ const [changingPassword, setChangingPassword] =
 
   if (!settings) {
     return (
-      <div className="rounded-2xl bg-white p-10 text-center shadow">
-        <h2 className="text-xl font-bold">
+      <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-10 text-center shadow-xl text-white">
+        <h2 className="text-xl font-bold text-white">
           Unable to load settings
         </h2>
 
-        <p className="mt-2 text-gray-500">
+        <p className="mt-2 text-gray-400">
           Please check your store settings table.
         </p>
       </div>
@@ -246,18 +246,18 @@ const [changingPassword, setChangingPassword] =
   }
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto max-w-5xl text-white">
 
       {/* Header */}
 
       <div className="mb-8">
 
-        <h1 className="text-3xl font-bold sm:text-4xl">
+        <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
           Store Settings
         </h1>
 
-        <p className="mt-2 text-gray-500">
-          Manage your EXRONIX store configuration.
+        <p className="mt-2 text-sm text-gray-400 md:text-base">
+          Manage your EXRONIX store configuration and administrative security.
         </p>
 
       </div>
@@ -266,20 +266,20 @@ const [changingPassword, setChangingPassword] =
 
         {/* Store Information */}
 
-        <section className="rounded-2xl bg-white p-5 shadow-sm sm:p-8">
+        <section className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl sm:p-8">
 
           <div className="mb-6 flex items-center gap-3">
 
-            <div className="rounded-xl bg-gray-100 p-3">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-cyan-400">
               <Store size={22} />
             </div>
 
             <div>
-              <h2 className="text-xl font-bold">
+              <h2 className="text-xl font-bold text-white">
                 Store Information
               </h2>
 
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 Basic information about your store.
               </p>
             </div>
@@ -289,7 +289,7 @@ const [changingPassword, setChangingPassword] =
           <div className="grid gap-5 md:grid-cols-2">
 
             <div>
-              <label className="mb-2 block text-sm font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Store Name
               </label>
 
@@ -301,12 +301,12 @@ const [changingPassword, setChangingPassword] =
                     e.target.value
                   )
                 }
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Tagline
               </label>
 
@@ -318,12 +318,12 @@ const [changingPassword, setChangingPassword] =
                     e.target.value
                   )
                 }
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Support Email
               </label>
 
@@ -336,12 +336,12 @@ const [changingPassword, setChangingPassword] =
                     e.target.value
                   )
                 }
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Phone
               </label>
 
@@ -355,7 +355,7 @@ const [changingPassword, setChangingPassword] =
                   )
                 }
                 placeholder="+977..."
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               />
             </div>
 
@@ -365,20 +365,20 @@ const [changingPassword, setChangingPassword] =
 
         {/* Shipping & Orders */}
 
-        <section className="rounded-2xl bg-white p-5 shadow-sm sm:p-8">
+        <section className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl sm:p-8">
 
           <div className="mb-6 flex items-center gap-3">
 
-            <div className="rounded-xl bg-gray-100 p-3">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-cyan-400">
               <Truck size={22} />
             </div>
 
             <div>
-              <h2 className="text-xl font-bold">
+              <h2 className="text-xl font-bold text-white">
                 Shipping & Orders
               </h2>
 
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 Configure shipping and order options.
               </p>
             </div>
@@ -388,7 +388,7 @@ const [changingPassword, setChangingPassword] =
           <div className="grid gap-5 md:grid-cols-3">
 
             <div>
-              <label className="mb-2 block text-sm font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Free Shipping Above
               </label>
 
@@ -404,16 +404,16 @@ const [changingPassword, setChangingPassword] =
                     Number(e.target.value)
                   )
                 }
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               />
 
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-400">
                 Amount in NPR
               </p>
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Shipping Cost
               </label>
 
@@ -427,16 +427,16 @@ const [changingPassword, setChangingPassword] =
                     Number(e.target.value)
                   )
                 }
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               />
 
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-400">
                 Amount in NPR
               </p>
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-semibold">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Exchange Period
               </label>
 
@@ -450,10 +450,10 @@ const [changingPassword, setChangingPassword] =
                     Number(e.target.value)
                   )
                 }
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               />
 
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-400">
                 Number of days
               </p>
             </div>
@@ -462,15 +462,15 @@ const [changingPassword, setChangingPassword] =
 
           {/* COD */}
 
-          <div className="mt-6 flex items-center justify-between rounded-xl border p-4">
+          <div className="mt-6 flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4">
 
             <div>
 
-              <h3 className="font-semibold">
+              <h3 className="font-semibold text-white">
                 Cash on Delivery
               </h3>
 
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 Allow customers to pay when their order arrives.
               </p>
 
@@ -486,16 +486,16 @@ const [changingPassword, setChangingPassword] =
               }
               className={`relative h-7 w-12 rounded-full transition ${
                 settings.cod_enabled
-                  ? "bg-black"
-                  : "bg-gray-300"
+                  ? "bg-[#1677FF]"
+                  : "bg-white/20"
               }`}
             >
 
               <span
-                className={`absolute top-1 h-5 w-5 rounded-full bg-white transition ${
+                className={`absolute top-1 h-5 w-5 rounded-full transition ${
                   settings.cod_enabled
-                    ? "left-6"
-                    : "left-1"
+                    ? "left-6 bg-white"
+                    : "left-1 bg-gray-400"
                 }`}
               />
 
@@ -507,20 +507,20 @@ const [changingPassword, setChangingPassword] =
 
         {/* Store Status */}
 
-        <section className="rounded-2xl bg-white p-5 shadow-sm sm:p-8">
+        <section className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl sm:p-8">
 
           <div className="mb-6 flex items-center gap-3">
 
-            <div className="rounded-xl bg-gray-100 p-3">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-cyan-400">
               <ShoppingBag size={22} />
             </div>
 
             <div>
-              <h2 className="text-xl font-bold">
+              <h2 className="text-xl font-bold text-white">
                 Store Status
               </h2>
 
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 Control whether customers can place orders.
               </p>
             </div>
@@ -531,15 +531,15 @@ const [changingPassword, setChangingPassword] =
 
             {/* Store Open */}
 
-            <div className="flex items-center justify-between rounded-xl border p-4">
+            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4">
 
               <div>
 
-                <h3 className="font-semibold">
+                <h3 className="font-semibold text-white">
                   Store Open
                 </h3>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-400">
                   Customers can browse and place orders.
                 </p>
 
@@ -555,16 +555,16 @@ const [changingPassword, setChangingPassword] =
                 }
                 className={`relative h-7 w-12 rounded-full transition ${
                   settings.store_open
-                    ? "bg-black"
-                    : "bg-gray-300"
+                    ? "bg-[#1677FF]"
+                    : "bg-white/20"
                 }`}
               >
 
                 <span
-                  className={`absolute top-1 h-5 w-5 rounded-full bg-white transition ${
+                  className={`absolute top-1 h-5 w-5 rounded-full transition ${
                     settings.store_open
-                      ? "left-6"
-                      : "left-1"
+                      ? "left-6 bg-white"
+                      : "left-1 bg-gray-400"
                   }`}
                 />
 
@@ -574,15 +574,15 @@ const [changingPassword, setChangingPassword] =
 
             {/* Maintenance */}
 
-            <div className="flex items-center justify-between rounded-xl border p-4">
+            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-4">
 
               <div>
 
-                <h3 className="font-semibold">
+                <h3 className="font-semibold text-white">
                   Maintenance Mode
                 </h3>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-400">
                   Temporarily disable the storefront.
                 </p>
 
@@ -598,16 +598,16 @@ const [changingPassword, setChangingPassword] =
                 }
                 className={`relative h-7 w-12 rounded-full transition ${
                   settings.maintenance_mode
-                    ? "bg-black"
-                    : "bg-gray-300"
+                    ? "bg-[#1677FF]"
+                    : "bg-white/20"
                 }`}
               >
 
                 <span
-                  className={`absolute top-1 h-5 w-5 rounded-full bg-white transition ${
+                  className={`absolute top-1 h-5 w-5 rounded-full transition ${
                     settings.maintenance_mode
-                      ? "left-6"
-                      : "left-1"
+                      ? "left-6 bg-white"
+                      : "left-1 bg-gray-400"
                   }`}
                 />
 
@@ -621,234 +621,234 @@ const [changingPassword, setChangingPassword] =
 
         {/* Admin Account */}
 
-<section className="rounded-2xl bg-white p-5 shadow-sm sm:p-8">
+        <section className="rounded-3xl border border-white/10 bg-[#0e1219] p-5 shadow-xl sm:p-8">
 
-  <div className="mb-6 flex items-center gap-3">
+          <div className="mb-6 flex items-center gap-3">
 
-    <div className="rounded-xl bg-gray-100 p-3">
-      <UserCog size={22} />
-    </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-cyan-400">
+              <UserCog size={22} />
+            </div>
 
-    <div>
-      <h2 className="text-xl font-bold">
-        Admin Account
-      </h2>
+            <div>
+              <h2 className="text-xl font-bold text-white">
+                Admin Account
+              </h2>
 
-      <p className="text-sm text-gray-500">
-        Manage your administrator account.
-      </p>
-    </div>
+              <p className="text-sm text-gray-400">
+                Manage your administrator account.
+              </p>
+            </div>
 
-  </div>
+          </div>
 
-  {/* Account Information */}
+          {/* Account Information */}
 
-  <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
 
-    {/* Email */}
+            {/* Email */}
 
-    <div className="rounded-xl border p-4">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
 
-      <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
 
-        <Mail
-          size={20}
-          className="text-gray-500"
-        />
+                <Mail
+                  size={20}
+                  className="text-cyan-400"
+                />
 
-        <div>
+                <div>
 
-          <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
-            Email
-          </p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                    Email
+                  </p>
 
-          <p className="mt-1 font-semibold break-all">
-            {user?.email || "Not available"}
-          </p>
+                  <p className="mt-1 font-semibold text-white break-all">
+                    {user?.email || "Not available"}
+                  </p>
 
-        </div>
+                </div>
 
-      </div>
+              </div>
 
-    </div>
+            </div>
 
-    {/* Role */}
+            {/* Role */}
 
-    <div className="rounded-xl border p-4">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
 
-      <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
 
-        <ShieldCheck
-          size={20}
-          className="text-gray-500"
-        />
+                <ShieldCheck
+                  size={20}
+                  className="text-emerald-400"
+                />
 
-        <div>
+                <div>
 
-          <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
-            Role
-          </p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                    Role
+                  </p>
 
-          <p className="mt-1 font-semibold">
-            Administrator
-          </p>
+                  <p className="mt-1 font-semibold text-white">
+                    Administrator
+                  </p>
 
-        </div>
+                </div>
 
-      </div>
+              </div>
 
-    </div>
+            </div>
 
-  </div>
+          </div>
 
-  {/* Authentication */}
+          {/* Authentication */}
 
-  <div className="mt-5 flex items-center gap-3 rounded-xl border bg-gray-50 p-4">
+          <div className="mt-5 flex items-center gap-3 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4">
 
-    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-green-100">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500/20">
 
-      <ShieldCheck
-        size={18}
-        className="text-green-600"
-      />
+              <ShieldCheck
+                size={18}
+                className="text-emerald-400"
+              />
 
-    </div>
+            </div>
 
-    <div>
+            <div>
 
-      <p className="font-semibold">
-        Supabase Authentication
-      </p>
+              <p className="font-semibold text-emerald-400">
+                Supabase Authentication
+              </p>
 
-      <p className="text-sm text-gray-500">
-        Your administrator account is securely authenticated.
-      </p>
+              <p className="text-sm text-gray-400">
+                Your administrator account is securely authenticated.
+              </p>
 
-    </div>
+            </div>
 
-  </div>
+          </div>
 
-  {/* Change Password */}
+          {/* Change Password */}
 
-  <div className="mt-8 border-t pt-8">
+          <div className="mt-8 border-t border-white/10 pt-8">
 
-    <div className="mb-6 flex items-center gap-3">
+            <div className="mb-6 flex items-center gap-3">
 
-      <div className="rounded-xl bg-gray-100 p-3">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-cyan-400">
 
-        <Lock size={20} />
+                <Lock size={20} />
 
-      </div>
+              </div>
 
-      <div>
+              <div>
 
-        <h3 className="text-lg font-bold">
-          Change Password
-        </h3>
+                <h3 className="text-lg font-bold text-white">
+                  Change Password
+                </h3>
 
-        <p className="text-sm text-gray-500">
-          Update your administrator password.
-        </p>
+                <p className="text-sm text-gray-400">
+                  Update your administrator password.
+                </p>
 
-      </div>
+              </div>
 
-    </div>
+            </div>
 
-    <div className="space-y-5">
+            <div className="space-y-5">
 
-      {/* Current Password */}
+              {/* Current Password */}
 
-      <div>
+              <div>
 
-        <label className="mb-2 block text-sm font-semibold">
-          Current Password
-        </label>
+                <label className="mb-2 block text-sm font-semibold text-gray-300">
+                  Current Password
+                </label>
 
-        <input
-          type="password"
-          value={currentPassword}
-          onChange={(e) =>
-            setCurrentPassword(e.target.value)
-          }
-          placeholder="Enter current password"
-          autoComplete="current-password"
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
-        />
+                <input
+                  type="password"
+                  value={currentPassword}
+                  onChange={(e) =>
+                    setCurrentPassword(e.target.value)
+                  }
+                  placeholder="Enter current password"
+                  autoComplete="current-password"
+                  className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
+                />
 
-      </div>
+              </div>
 
-      {/* New Password */}
+              {/* New Password */}
 
-      <div>
+              <div>
 
-        <label className="mb-2 block text-sm font-semibold">
-          New Password
-        </label>
+                <label className="mb-2 block text-sm font-semibold text-gray-300">
+                  New Password
+                </label>
 
-        <input
-          type="password"
-          value={newPassword}
-          onChange={(e) =>
-            setNewPassword(e.target.value)
-          }
-          placeholder="Enter new password"
-          autoComplete="new-password"
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
-        />
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) =>
+                    setNewPassword(e.target.value)
+                  }
+                  placeholder="Enter new password"
+                  autoComplete="new-password"
+                  className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
+                />
 
-        <p className="mt-2 text-xs text-gray-500">
-          Use at least 6 characters.
-        </p>
+                <p className="mt-2 text-xs text-gray-400">
+                  Use at least 6 characters.
+                </p>
 
-      </div>
+              </div>
 
-      {/* Confirm Password */}
+              {/* Confirm Password */}
 
-      <div>
+              <div>
 
-        <label className="mb-2 block text-sm font-semibold">
-          Confirm New Password
-        </label>
+                <label className="mb-2 block text-sm font-semibold text-gray-300">
+                  Confirm New Password
+                </label>
 
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) =>
-            setConfirmPassword(e.target.value)
-          }
-          placeholder="Confirm new password"
-          autoComplete="new-password"
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
-        />
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) =>
+                    setConfirmPassword(e.target.value)
+                  }
+                  placeholder="Confirm new password"
+                  autoComplete="new-password"
+                  className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
+                />
 
-      </div>
+              </div>
 
-      {/* Update Password */}
+              {/* Update Password */}
 
-      <div className="flex justify-end">
+              <div className="flex justify-end">
 
-        <button
-          type="button"
-          onClick={handleChangePassword}
-          disabled={changingPassword}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-black px-6 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
-        >
+                <button
+                  type="button"
+                  onClick={handleChangePassword}
+                  disabled={changingPassword}
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#1677FF] px-6 py-3 font-semibold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+                >
 
-          <Lock size={17} />
+                  <Lock size={17} />
 
-          {changingPassword
-            ? "Updating..."
-            : "Update Password"}
+                  {changingPassword
+                    ? "Updating..."
+                    : "Update Password"}
 
-        </button>
+                </button>
 
-      </div>
+              </div>
 
-    </div>
+            </div>
 
-  </div>
+          </div>
 
-</section>
+        </section>
 
       </div>
 
@@ -859,7 +859,7 @@ const [changingPassword, setChangingPassword] =
         <button
           onClick={handleSave}
           disabled={saving}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-black px-8 py-4 font-semibold text-white shadow-lg transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#1677FF] px-8 py-4 font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
         >
 
           <Save size={18} />

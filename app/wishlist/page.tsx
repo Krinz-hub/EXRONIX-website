@@ -154,7 +154,7 @@ export default function WishlistPage() {
 
   return (
     <ProtectedRoute>
-      <main className="min-h-screen bg-gray-100 px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-14">
+      <main className="min-h-screen px-4 pt-32 pb-16 sm:px-6 sm:pt-36 lg:px-10 lg:pb-20 text-white">
         <div className="mx-auto max-w-7xl">
 
           {/* =================================================
@@ -162,12 +162,15 @@ export default function WishlistPage() {
           ================================================= */}
 
           <div className="mb-8 sm:mb-10">
-            <h1 className="text-3xl font-bold sm:text-4xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#1677FF]">
+              SAVED HARDWARE
+            </p>
+            <h1 className="mt-2 text-3xl font-black tracking-tight text-white sm:text-4xl">
               My Wishlist ❤️
             </h1>
 
-            <p className="mt-2 text-sm text-gray-500 sm:text-base">
-              Your saved EXRONIX models and components.
+            <p className="mt-2 text-sm text-gray-400 sm:text-base">
+              Your saved EXRONIX models and precision components.
             </p>
           </div>
 
@@ -176,7 +179,7 @@ export default function WishlistPage() {
           ================================================= */}
 
           {loadingWishlist ? (
-            <div className="rounded-2xl liquid-glass border border-white/15 p-10 text-center backdrop-blur-xl sm:p-16">
+            <div className="rounded-3xl border border-white/15 bg-[#0e1219]/80 liquid-glass p-10 text-center backdrop-blur-xl sm:p-16">
               <LoadingAnimation size="md" text="RETRIEVING WISHLIST" />
             </div>
 
@@ -186,42 +189,23 @@ export default function WishlistPage() {
                 EMPTY WISHLIST
             ================================================= */
 
-            <div className="rounded-2xl bg-white px-5 py-12 text-center shadow sm:p-16">
+            <div className="rounded-3xl border border-white/15 bg-[#0e1219]/80 liquid-glass backdrop-blur-2xl px-5 py-12 text-center text-white shadow-2xl sm:p-16">
 
               <div className="text-6xl sm:text-7xl">
                 💔
               </div>
 
-              <h2 className="mt-5 text-2xl font-bold sm:mt-6 sm:text-3xl">
+              <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl">
                 Your Wishlist is Empty
               </h2>
 
-              <p className="mx-auto mt-3 max-w-md text-sm text-gray-500 sm:text-base">
+              <p className="mx-auto mt-3 max-w-md text-sm text-gray-400 sm:text-base">
                 Save your favourite EXRONIX prints and components here.
               </p>
 
               <Link
-                href="/collections"
-                className="
-                  mt-7
-                  inline-flex
-                  w-full
-                  max-w-xs
-                  items-center
-                  justify-center
-                  rounded-xl
-                  bg-black
-                  px-6
-                  py-3.5
-                  font-semibold
-                  text-white
-                  transition
-                  hover:bg-gray-800
-                  sm:mt-8
-                  sm:w-auto
-                  sm:px-8
-                  sm:py-4
-                "
+                href="/shop"
+                className="mt-8 inline-flex w-full max-w-xs items-center justify-center rounded-xl bg-[#1677FF] px-8 py-4 font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 sm:w-auto"
               >
                 Continue Shopping
               </Link>
@@ -240,15 +224,7 @@ export default function WishlistPage() {
 
                 <div
                   key={`${item.product_id}-${item.products.id}`}
-                  className="
-                    w-full
-                    overflow-hidden
-                    rounded-2xl
-                    bg-white
-                    shadow-sm
-                    transition
-                    hover:shadow-lg
-                  "
+                  className="w-full overflow-hidden rounded-3xl border border-white/15 bg-[#0e1219]/80 liquid-glass backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#1677FF]/40 text-white"
                 >
 
                   {/* =================================================
@@ -259,7 +235,7 @@ export default function WishlistPage() {
                     href={`/products/${item.products.id}`}
                     className="block"
                   >
-                    <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[3/4]">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-white/10 bg-[#080a0f] sm:aspect-[3/4]">
 
                       <Image
                         src={item.products.image}
@@ -270,12 +246,7 @@ export default function WishlistPage() {
                           (max-width: 1024px) 50vw,
                           33vw
                         "
-                        className="
-                          object-cover
-                          transition
-                          duration-500
-                          hover:scale-105
-                        "
+                        className="object-cover transition duration-500 hover:scale-105"
                       />
 
                     </div>
@@ -285,13 +256,13 @@ export default function WishlistPage() {
                       PRODUCT INFO
                   ================================================= */}
 
-                  <div className="p-4 sm:p-6">
+                  <div className="p-5 sm:p-6">
 
-                    <h2 className="line-clamp-2 text-lg font-bold sm:text-xl lg:text-2xl">
+                    <h2 className="line-clamp-2 text-lg font-bold text-white transition hover:text-[#1677FF] sm:text-xl">
                       {item.products.name}
                     </h2>
 
-                    <p className="mt-2 text-base font-semibold sm:text-lg">
+                    <p className="mt-2 text-lg font-black text-white sm:text-xl">
                       NPR{" "}
                       {item.products.price.toLocaleString()}
                     </p>
@@ -304,24 +275,7 @@ export default function WishlistPage() {
 
                       <Link
                         href={`/products/${item.products.id}`}
-                        className="
-                          flex
-                          min-h-11
-                          flex-1
-                          items-center
-                          justify-center
-                          rounded-lg
-                          bg-black
-                          px-3
-                          py-2.5
-                          text-center
-                          text-sm
-                          font-semibold
-                          text-white
-                          transition
-                          hover:bg-gray-800
-                          sm:text-base
-                        "
+                        className="flex min-h-11 flex-1 items-center justify-center rounded-xl bg-[#1677FF] px-4 py-2.5 text-center text-sm font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.35)] transition hover:bg-[#1677FF]/90 sm:text-base"
                       >
                         View Product
                       </Link>
@@ -334,19 +288,7 @@ export default function WishlistPage() {
                           )
                         }
                         aria-label={`Remove ${item.products.name} from wishlist`}
-                        className="
-                          flex
-                          min-h-11
-                          min-w-11
-                          items-center
-                          justify-center
-                          rounded-lg
-                          bg-red-500
-                          px-3
-                          text-white
-                          transition
-                          hover:bg-red-600
-                        "
+                        className="flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-red-500/30 bg-red-500/10 px-3 text-red-400 transition hover:bg-red-500/20"
                       >
                         🗑
                       </button>

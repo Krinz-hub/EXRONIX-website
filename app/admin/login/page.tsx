@@ -109,12 +109,12 @@ export default function AdminLoginPage() {
        */
       if (remember) {
         localStorage.setItem(
-          "zayna-admin-remember",
+          "exronix-admin-remember",
           "true"
         );
       } else {
         localStorage.removeItem(
-          "zayna-admin-remember"
+          "exronix-admin-remember"
         );
       }
 
@@ -138,9 +138,9 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-10 sm:px-6">
+    <main className="flex min-h-screen items-center justify-center px-4 py-10 sm:px-6 text-white">
 
-      <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl sm:p-10">
+      <div className="w-full max-w-md rounded-3xl border border-white/15 bg-[#0e1219]/90 liquid-glass backdrop-blur-2xl p-6 sm:p-10 shadow-2xl text-white">
 
         {/* Logo */}
 
@@ -156,7 +156,7 @@ export default function AdminLoginPage() {
             />
           </div>
 
-          <h1 className="mt-2 text-3xl font-black tracking-wider text-black">
+          <h1 className="mt-2 text-3xl font-black tracking-wider text-white">
             EXRONIX
           </h1>
 
@@ -179,7 +179,7 @@ export default function AdminLoginPage() {
 
             <label
               htmlFor="admin-email"
-              className="mb-2 block font-medium"
+              className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400"
             >
               Email
             </label>
@@ -194,7 +194,7 @@ export default function AdminLoginPage() {
               }
               autoComplete="email"
               disabled={isLoggingIn}
-              className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-black disabled:bg-gray-100"
+              className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] disabled:bg-white/5"
               required
             />
 
@@ -206,7 +206,7 @@ export default function AdminLoginPage() {
 
             <label
               htmlFor="admin-password"
-              className="mb-2 block font-medium"
+              className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400"
             >
               Password
             </label>
@@ -221,7 +221,7 @@ export default function AdminLoginPage() {
               }
               autoComplete="current-password"
               disabled={isLoggingIn}
-              className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-black disabled:bg-gray-100"
+              className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] disabled:bg-white/5"
               required
             />
 
@@ -229,7 +229,7 @@ export default function AdminLoginPage() {
 
           {/* Remember */}
 
-          <label className="flex cursor-pointer items-center gap-3">
+          <label className="flex cursor-pointer items-center gap-3 text-gray-300">
 
             <input
               type="checkbox"
@@ -238,7 +238,7 @@ export default function AdminLoginPage() {
                 setRemember(e.target.checked)
               }
               disabled={isLoggingIn}
-              className="h-4 w-4"
+              className="h-4 w-4 accent-[#1677FF]"
             />
 
             <span className="text-sm">
@@ -252,7 +252,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={isLoggingIn}
-            className="flex w-full items-center justify-center rounded-xl bg-black py-3 text-lg font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex w-full items-center justify-center rounded-xl bg-[#1677FF] py-3.5 text-base font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isLoggingIn
               ? "Verifying..."
@@ -263,7 +263,7 @@ export default function AdminLoginPage() {
 
         {/* Information */}
 
-        <p className="mt-8 text-center text-sm leading-6 text-gray-500">
+        <p className="mt-8 text-center text-sm leading-6 text-gray-400">
           Only authorized administrators can
           access the EXRONIX dashboard.
         </p>

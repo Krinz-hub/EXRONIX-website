@@ -31,8 +31,8 @@ export default function OrderStatusChart({
   delivered,
 }: Props) {
   return (
-    <div className="rounded-2xl bg-white p-6 shadow">
-      <h2 className="mb-6 text-2xl font-bold">
+    <div className="rounded-2xl border border-white/10 bg-[#0e1219] p-6 text-white shadow-sm">
+      <h2 className="mb-6 text-2xl font-bold text-white">
         Order Status
       </h2>
 
@@ -54,8 +54,26 @@ export default function OrderStatusChart({
                 shipped,
                 delivered,
               ],
+              backgroundColor: [
+                "#F59E0B",
+                "#1677FF",
+                "#F97316",
+                "#8B5CF6",
+                "#10B981",
+              ],
+              borderColor: "#0e1219",
+              borderWidth: 2,
             },
           ],
+        }}
+        options={{
+          plugins: {
+            legend: {
+              labels: {
+                color: "#ffffff",
+              },
+            },
+          },
         }}
       />
     </div>

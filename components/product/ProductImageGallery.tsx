@@ -35,7 +35,7 @@ export default function ProductImageGallery({
 
   if (validImages.length === 0) {
     return (
-      <div className="flex aspect-[4/5] w-full items-center justify-center rounded-2xl bg-gray-100 text-gray-500 sm:rounded-3xl">
+      <div className="flex aspect-[4/5] w-full items-center justify-center rounded-2xl border border-white/10 bg-[#0e1219]/70 text-gray-400 sm:rounded-3xl">
         No Image Available
       </div>
     );
@@ -87,7 +87,7 @@ export default function ProductImageGallery({
           MAIN IMAGE CONTAINER
       ================================================= */}
 
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 sm:rounded-3xl">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/15 bg-[#0e1219]/80 liquid-glass shadow-2xl sm:rounded-3xl">
         <Image
           key={validImages[safeSelectedImage]}
           src={validImages[safeSelectedImage]}
@@ -125,14 +125,17 @@ export default function ProductImageGallery({
               items-center
               justify-center
               rounded-full
-              bg-white/90
+              border
+              border-white/20
+              bg-black/60
               text-2xl
               font-medium
-              text-black
+              text-white
               shadow-lg
-              backdrop-blur
+              backdrop-blur-md
               transition
-              hover:bg-white
+              hover:bg-[#1677FF]
+              hover:border-[#1677FF]
               active:scale-95
               sm:h-11
               sm:w-11
@@ -163,14 +166,17 @@ export default function ProductImageGallery({
               items-center
               justify-center
               rounded-full
-              bg-white/90
+              border
+              border-white/20
+              bg-black/60
               text-2xl
               font-medium
-              text-black
+              text-white
               shadow-lg
-              backdrop-blur
+              backdrop-blur-md
               transition
-              hover:bg-white
+              hover:bg-[#1677FF]
+              hover:border-[#1677FF]
               active:scale-95
               sm:h-11
               sm:w-11
@@ -254,15 +260,15 @@ export default function ProductImageGallery({
                       overflow-hidden
                       rounded-xl
                       border-2
-                      bg-gray-100
+                      bg-[#0e1219]/90
                       transition
                       active:scale-95
                       sm:h-24
                       sm:w-20
                       ${
                         isActive
-                          ? "border-black"
-                          : "border-transparent"
+                          ? "border-[#1677FF] shadow-[0_0_15px_rgba(22,119,255,0.4)]"
+                          : "border-white/10 hover:border-white/30"
                       }
                     `}
                   >
@@ -279,7 +285,7 @@ export default function ProductImageGallery({
                     {/* Active border */}
 
                     {isActive && (
-                      <div className="pointer-events-none absolute inset-0 border-2 border-black" />
+                      <div className="pointer-events-none absolute inset-0 border-2 border-[#1677FF]" />
                     )}
                   </button>
                 );
@@ -313,8 +319,8 @@ export default function ProductImageGallery({
                   ${
                     index ===
                     safeSelectedImage
-                      ? "w-5 bg-black"
-                      : "w-1.5 bg-gray-300"
+                      ? "w-5 bg-[#1677FF]"
+                      : "w-1.5 bg-white/20"
                   }
                 `}
               />

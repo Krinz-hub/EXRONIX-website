@@ -170,7 +170,7 @@ export default function AboutPage() {
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
-              href="/collections"
+              href="/shop"
               className="inline-block rounded-xl bg-[#1677FF] px-8 py-4 font-semibold text-white shadow-[0_0_25px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 active:scale-95"
             >
               Explore Printed Products

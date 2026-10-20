@@ -106,17 +106,17 @@ export default function ContactPage() {
               <div>
                 <h3 className="font-bold text-white">Support Phone</h3>
                 <a
-                  href="tel:+9779842958835"
+                  href="tel:+9876543210"
                   className="block text-gray-300 transition hover:text-[#1677FF] hover:underline"
                 >
-                  +977 9842958835
+                  +9876543210
                 </a>
 
                 <a
-                  href="tel:+9779807124306"
+                  href="tel:+8976542310"
                   className="block text-gray-300 transition hover:text-[#1677FF] hover:underline"
                 >
-                  +977 9807124306
+                  +8976542310
                 </a>
               </div>
             </div>
@@ -125,7 +125,7 @@ export default function ContactPage() {
               <MapPin size={28} className="text-[#1677FF] shrink-0" />
               <div>
                 <h3 className="font-bold text-white">Manufacturing & Office</h3>
-                <p className="text-gray-300">Hetauda, Nepal</p>
+                <p className="text-gray-300">Haryana, panipat</p>
               </div>
             </div>
 

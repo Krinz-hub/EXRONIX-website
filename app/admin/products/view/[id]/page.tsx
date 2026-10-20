@@ -92,7 +92,7 @@ export default function ViewProductPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-gray-100 px-4 py-24 text-black md:px-8">
+      <main className="min-h-screen bg-transparent px-4 py-24 text-white md:px-8">
         <div className="mx-auto flex max-w-6xl items-center justify-center">
           <LoadingAnimation size="lg" text="LOADING PRODUCT DETAILS" subtext="EXRONIX CATALOG" />
         </div>
@@ -106,22 +106,22 @@ export default function ViewProductPage() {
 
   if (!product) {
     return (
-      <main className="min-h-screen bg-gray-100 px-4 py-10 text-black md:px-8">
+      <main className="min-h-screen bg-transparent px-4 py-10 text-white md:px-8">
         <div className="mx-auto max-w-6xl">
 
-          <div className="rounded-2xl bg-white p-10 text-center shadow">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-10 text-center shadow-2xl">
 
-            <h1 className="text-3xl font-bold">
+            <h1 className="text-3xl font-extrabold text-white">
               Product Not Found
             </h1>
 
-            <p className="mt-3 text-gray-500">
+            <p className="mt-3 text-gray-400">
               The product you're looking for doesn't exist.
             </p>
 
             <Link
               href="/admin/products"
-              className="mt-6 inline-block rounded-lg bg-black px-6 py-3 font-semibold text-white transition hover:bg-gray-800"
+              className="mt-6 inline-block rounded-xl bg-[#1677FF] px-6 py-3 font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90"
             >
               ← Back to Products
             </Link>
@@ -149,7 +149,7 @@ export default function ViewProductPage() {
   // =========================================
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-6 text-black md:px-8 md:py-10">
+    <main className="min-h-screen bg-transparent px-4 py-6 text-white md:px-8 md:py-10">
 
       <div className="mx-auto max-w-6xl">
 
@@ -160,18 +160,18 @@ export default function ViewProductPage() {
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
           <div>
-            <p className="text-sm font-medium text-gray-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
               Products Management
             </p>
 
-            <h1 className="mt-1 text-3xl font-bold md:text-4xl">
+            <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
               Product Details
             </h1>
           </div>
 
           <Link
             href="/admin/products"
-            className="rounded-lg bg-black px-5 py-3 text-center font-semibold text-white transition hover:bg-gray-800"
+            className="rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 font-semibold text-white transition hover:bg-white/10"
           >
             ← Back
           </Link>
@@ -182,7 +182,7 @@ export default function ViewProductPage() {
             PRODUCT CARD
         ========================= */}
 
-        <div className="rounded-2xl bg-white p-5 shadow sm:p-8">
+        <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-6 shadow-2xl sm:p-10">
 
           <div className="grid gap-10 lg:grid-cols-2">
 
@@ -192,7 +192,7 @@ export default function ViewProductPage() {
 
             <div>
 
-              <div className="overflow-hidden rounded-2xl bg-gray-100">
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#080a0f]">
 
                 {product.image ? (
                   <img
@@ -201,7 +201,7 @@ export default function ViewProductPage() {
                     className="aspect-[4/5] w-full object-cover"
                   />
                 ) : (
-                  <div className="flex aspect-[4/5] items-center justify-center text-gray-400">
+                  <div className="flex aspect-[4/5] items-center justify-center text-gray-500">
                     No Image
                   </div>
                 )}
@@ -219,11 +219,11 @@ export default function ViewProductPage() {
               {/* Name */}
 
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   Product Name
                 </p>
 
-                <h2 className="mt-1 text-3xl font-bold sm:text-4xl">
+                <h2 className="mt-1 text-3xl font-black text-white sm:text-4xl">
                   {product.name}
                 </h2>
               </div>
@@ -231,11 +231,11 @@ export default function ViewProductPage() {
               {/* Category */}
 
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   Category
                 </p>
 
-                <p className="mt-1 text-lg font-semibold">
+                <p className="mt-1 text-lg font-semibold text-[#1677FF]">
                   {product.category}
                 </p>
               </div>
@@ -243,11 +243,11 @@ export default function ViewProductPage() {
               {/* Price */}
 
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   Price
                 </p>
 
-                <p className="mt-1 text-3xl font-bold">
+                <p className="mt-1 text-3xl font-black text-white">
                   NPR {product.price.toLocaleString()}
                 </p>
               </div>
@@ -255,29 +255,29 @@ export default function ViewProductPage() {
               {/* Stock */}
 
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   Stock
                 </p>
 
-                <p className="mt-1 text-2xl font-semibold">
-                  {product.stock}
+                <p className="mt-1 text-2xl font-bold text-white">
+                  {product.stock} units
                 </p>
               </div>
 
               {/* Stock Status */}
 
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   Stock Status
                 </p>
 
                 <span
-                  className={`mt-2 inline-block rounded-full px-4 py-2 text-sm font-semibold ${
+                  className={`mt-2 inline-block rounded-full border px-4 py-1.5 text-xs font-bold ${
                     stockStatus === "In Stock"
-                      ? "bg-green-100 text-green-700"
+                      ? "border-emerald-500/30 bg-emerald-500/15 text-emerald-400"
                       : stockStatus === "Low Stock"
-                      ? "bg-yellow-100 text-yellow-700"
-                      : "bg-red-100 text-red-700"
+                      ? "border-amber-500/30 bg-amber-500/15 text-amber-400"
+                      : "border-red-500/30 bg-red-500/15 text-red-400"
                   }`}
                 >
                   {stockStatus}
@@ -288,11 +288,11 @@ export default function ViewProductPage() {
 
               {product.description && (
                 <div>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                     Description
                   </p>
 
-                  <p className="mt-2 whitespace-pre-line leading-7 text-gray-700">
+                  <p className="mt-2 whitespace-pre-line leading-7 text-gray-300">
                     {product.description}
                   </p>
                 </div>
@@ -301,7 +301,7 @@ export default function ViewProductPage() {
               {/* Sizes */}
 
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   Available Sizes
                 </p>
 
@@ -310,14 +310,14 @@ export default function ViewProductPage() {
                     {product.sizes.map((size) => (
                       <span
                         key={size}
-                        className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold"
+                        className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white"
                       >
                         {size}
                       </span>
                     ))}
                   </div>
                 ) : (
-                  <p className="mt-2 text-gray-400">
+                  <p className="mt-2 text-xs text-gray-500">
                     No sizes added
                   </p>
                 )}
@@ -326,7 +326,7 @@ export default function ViewProductPage() {
               {/* Colors */}
 
               <div>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                   Available Colors
                 </p>
 
@@ -335,14 +335,14 @@ export default function ViewProductPage() {
                     {product.colors.map((color) => (
                       <span
                         key={color}
-                        className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold"
+                        className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold text-white"
                       >
                         {color}
                       </span>
                     ))}
                   </div>
                 ) : (
-                  <p className="mt-2 text-gray-400">
+                  <p className="mt-2 text-xs text-gray-500">
                     No colors added
                   </p>
                 )}
@@ -354,14 +354,14 @@ export default function ViewProductPage() {
 
                 <Link
                   href={`/admin/products/edit/${product.id}`}
-                  className="flex-1 rounded-lg bg-yellow-500 px-6 py-3 text-center font-semibold text-white transition hover:bg-yellow-600"
+                  className="flex-1 rounded-xl bg-[#1677FF] px-6 py-3 text-center font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90"
                 >
                   ✏ Edit Product
                 </Link>
 
                 <Link
                   href="/admin/products"
-                  className="flex-1 rounded-lg border border-gray-300 px-6 py-3 text-center font-semibold transition hover:bg-gray-100"
+                  className="flex-1 rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-center font-semibold text-white transition hover:bg-white/10"
                 >
                   Back to Products
                 </Link>

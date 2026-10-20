@@ -26,8 +26,8 @@ export default function CustomerDetailsPage() {
 
   if (orders.length === 0) {
     return (
-      <main className="flex min-h-screen items-center justify-center">
-        <h1 className="text-3xl font-bold">
+      <main className="flex min-h-screen items-center justify-center bg-transparent text-white">
+        <h1 className="text-3xl font-extrabold text-white">
           Customer not found
         </h1>
       </main>
@@ -45,32 +45,32 @@ export default function CustomerDetailsPage() {
     totalSpent / orders.length;
 
   return (
-    <main className="min-h-screen bg-gray-100 p-10">
+    <main className="min-h-screen bg-transparent p-6 text-white md:p-10">
       <div className="mx-auto max-w-7xl space-y-8">
 
         {/* Header */}
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
           <div>
 
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
               {customer.customer}
             </h1>
 
-            <p className="mt-2 text-gray-500">
+            <p className="mt-2 text-sm text-gray-400">
               {customer.email}
             </p>
 
-            <p className="text-gray-500">
-              {customer.phone}
+            <p className="text-sm text-gray-400">
+              {customer.phone || "No phone registered"}
             </p>
 
           </div>
 
           <Link
             href="/admin/customers"
-            className="rounded-xl bg-black px-6 py-3 text-white hover:bg-gray-800"
+            className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
           >
             ← Back
           </Link>
@@ -81,38 +81,38 @@ export default function CustomerDetailsPage() {
 
         <div className="grid gap-6 md:grid-cols-3">
 
-          <div className="rounded-2xl bg-white p-6 shadow">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-6 shadow-xl">
 
-            <p className="text-gray-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
               📦 Total Orders
             </p>
 
-            <h2 className="mt-3 text-4xl font-bold">
+            <h2 className="mt-3 text-4xl font-black text-white">
               {orders.length}
             </h2>
 
           </div>
 
-          <div className="rounded-2xl bg-white p-6 shadow">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-6 shadow-xl">
 
-            <p className="text-gray-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
               💰 Total Spent
             </p>
 
-            <h2 className="mt-3 text-4xl font-bold">
+            <h2 className="mt-3 text-4xl font-black text-emerald-400">
               NPR {totalSpent.toLocaleString()}
             </h2>
 
           </div>
 
-          <div className="rounded-2xl bg-white p-6 shadow">
+          <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-6 shadow-xl">
 
-            <p className="text-gray-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#1677FF]">
               🛒 Average Order
             </p>
 
-            <h2 className="mt-3 text-4xl font-bold">
-              NPR {averageOrder.toLocaleString()}
+            <h2 className="mt-3 text-4xl font-black text-[#1677FF]">
+              NPR {Math.round(averageOrder).toLocaleString()}
             </h2>
 
           </div>
@@ -121,156 +121,157 @@ export default function CustomerDetailsPage() {
 
         {/* Order History */}
 
-        <div className="rounded-2xl bg-white p-8 shadow">
+        <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-6 shadow-2xl sm:p-8">
 
-          <h2 className="mb-6 text-3xl font-bold">
+          <h2 className="mb-6 text-2xl font-bold text-white">
             Order History
           </h2>
 
-          <table className="w-full">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[600px]">
 
-            <thead className="border-b">
+              <thead className="border-b border-white/10 bg-[#080a0f] text-xs uppercase tracking-wider text-gray-300">
 
-              <tr>
+                <tr>
 
-                <th className="p-4 text-left">
-                  Order
-                </th>
+                  <th className="p-4 text-left font-semibold">
+                    Order ID
+                  </th>
 
-                <th className="p-4 text-left">
-                  Date
-                </th>
+                  <th className="p-4 text-left font-semibold">
+                    Date
+                  </th>
 
-                <th className="p-4 text-left">
-                  Status
-                </th>
+                  <th className="p-4 text-left font-semibold">
+                    Status
+                  </th>
 
-                <th className="p-4 text-left">
-                  Total
-                </th>
-
-              </tr>
-
-            </thead>
-
-            <tbody>
-
-              {orders.map((order) => (
-
-                <tr
-                  key={order.id}
-                  className="border-b hover:bg-gray-50"
-                >
-
-                  <td className="p-4">
-                    #{order.id}
-                  </td>
-
-                  <td className="p-4">
-                    {new Date(
-                      order.created_at
-                    ).toLocaleDateString()}
-                  </td>
-
-                    <td className="p-4">
-
-  <span
-    className={`rounded-full px-3 py-1 text-sm font-semibold ${
-      order.status === "Delivered"
-        ? "bg-green-100 text-green-700"
-        : order.status === "Cancelled"
-        ? "bg-red-100 text-red-700"
-        : order.status === "Shipped"
-        ? "bg-blue-100 text-blue-700"
-        : "bg-yellow-100 text-yellow-700"
-    }`}
-  >
-    {order.status}
-  </span>
-
-</td>
-                
-
-                  
-
-                  <td className="p-4 font-semibold">
-                    NPR {order.total.toLocaleString()}
-                  </td>
+                  <th className="p-4 text-left font-semibold">
+                    Total
+                  </th>
 
                 </tr>
 
-              ))}
+              </thead>
 
-            </tbody>
+              <tbody className="divide-y divide-white/5">
 
-          </table>
+                {orders.map((order) => (
+
+                  <tr
+                    key={order.id}
+                    className="transition hover:bg-white/5"
+                  >
+
+                    <td className="p-4 font-bold text-[#1677FF]">
+                      <Link href={`/admin/orders/${order.id}`} className="hover:underline">
+                        #{order.id}
+                      </Link>
+                    </td>
+
+                    <td className="p-4 text-sm text-gray-400">
+                      {new Date(
+                        order.created_at
+                      ).toLocaleDateString()}
+                    </td>
+
+                    <td className="p-4">
+
+                      <span
+                        className={`rounded-full border px-3 py-1 text-xs font-bold ${
+                          order.status === "Delivered"
+                            ? "border-emerald-500/30 bg-emerald-500/15 text-emerald-400"
+                            : order.status === "Cancelled"
+                            ? "border-red-500/30 bg-red-500/15 text-red-400"
+                            : order.status === "Shipped"
+                            ? "border-cyan-500/30 bg-cyan-500/15 text-cyan-400"
+                            : "border-amber-500/30 bg-amber-500/15 text-amber-400"
+                        }`}
+                      >
+                        {order.status}
+                      </span>
+
+                    </td>
+
+                    <td className="p-4 font-bold text-white">
+                      NPR {order.total.toLocaleString()}
+                    </td>
+
+                  </tr>
+
+                ))}
+
+              </tbody>
+
+            </table>
+          </div>
 
         </div>
 
         {/* Purchased Products */}
 
-        <div className="rounded-2xl bg-white p-8 shadow">
+        <div className="rounded-3xl border border-white/10 bg-[#0e1219] p-6 shadow-2xl sm:p-8">
 
-  <h2 className="mb-8 text-3xl font-bold">
-    Purchased Products
-  </h2>
+          <h2 className="mb-8 text-2xl font-bold text-white">
+            Purchased Products
+          </h2>
 
-  <div className="space-y-6">
+          <div className="divide-y divide-white/5 space-y-6">
 
-    {orders.flatMap((order) =>
-      order.order_items.map((item: any) => (
+            {orders.flatMap((order) =>
+              order.order_items?.map((item: any) => (
 
-        <div
-          key={`${order.id}-${item.id}`}
-          className="flex items-center justify-between border-b pb-6"
-        >
+                <div
+                  key={`${order.id}-${item.id}`}
+                  className="flex items-center justify-between pt-6 first:pt-0"
+                >
 
-          <div className="flex items-center gap-5">
+                  <div className="flex items-center gap-5">
 
-            <img
-              src={item.product_image}
-              alt={item.product_name}
-              className="h-20 w-20 rounded-xl object-cover"
-            />
+                    <img
+                      src={item.product_image}
+                      alt={item.product_name}
+                      className="h-20 w-20 rounded-2xl border border-white/10 bg-[#080a0f] object-cover"
+                    />
 
-            <div>
+                    <div>
 
-              <h3 className="text-lg font-bold">
-                {item.product_name}
-              </h3>
+                      <h3 className="text-base font-bold text-white">
+                        {item.product_name}
+                      </h3>
 
-              <p className="text-gray-500">
-                Size: {item.size || "-"}
-              </p>
+                      <p className="text-xs text-gray-400">
+                        Size: {item.size || "-"}
+                      </p>
 
-              <p className="text-gray-500">
-                Color: {item.color || "-"}
-              </p>
+                      <p className="text-xs text-gray-400">
+                        Color: {item.color || "-"}
+                      </p>
 
-              <p className="text-gray-500">
-                Qty: {item.quantity}
-              </p>
+                      <p className="text-xs text-gray-400">
+                        Qty: {item.quantity}
+                      </p>
 
-            </div>
+                    </div>
 
-          </div>
+                  </div>
 
-          <div className="text-right">
+                  <div className="text-right">
 
-            <p className="text-xl font-bold">
-              NPR {(item.price * item.quantity).toLocaleString()}
-            </p>
+                    <p className="text-lg font-bold text-[#1677FF]">
+                      NPR {(item.price * item.quantity).toLocaleString()}
+                    </p>
+
+                  </div>
+
+                </div>
+
+              ))
+            )}
 
           </div>
 
         </div>
-
-      ))
-    )}
-
-  </div>
-
-</div>
       </div>
     </main>
   );

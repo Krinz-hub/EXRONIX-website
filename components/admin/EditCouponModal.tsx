@@ -104,12 +104,12 @@ export default function EditCouponModal({
   ========================================= */
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
+      <div className="w-full max-w-lg rounded-3xl border border-white/15 bg-[#0e1219]/95 p-6 text-white shadow-2xl backdrop-blur-2xl liquid-glass sm:p-8">
         {/* Header */}
 
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-bold">
+          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
             Edit Coupon
           </h2>
 
@@ -117,7 +117,7 @@ export default function EditCouponModal({
             type="button"
             onClick={onClose}
             disabled={loading}
-            className="rounded-lg px-3 py-2 text-xl text-gray-500 transition hover:bg-gray-100 hover:text-black"
+            className="rounded-lg p-2 text-xl text-gray-400 transition hover:bg-white/10 hover:text-white"
             aria-label="Close"
           >
             ×
@@ -130,7 +130,7 @@ export default function EditCouponModal({
           {/* Coupon Code */}
 
           <div>
-            <label className="mb-1 block text-sm font-semibold text-gray-700">
+            <label className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-300">
               Coupon Code
             </label>
 
@@ -143,7 +143,7 @@ export default function EditCouponModal({
                   code: e.target.value.toUpperCase(),
                 })
               }
-              className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-black"
+              className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               placeholder="SAVE20"
             />
           </div>
@@ -151,7 +151,7 @@ export default function EditCouponModal({
           {/* Coupon Type */}
 
           <div>
-            <label className="mb-1 block text-sm font-semibold text-gray-700">
+            <label className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-300">
               Discount Type
             </label>
 
@@ -165,14 +165,14 @@ export default function EditCouponModal({
                     | "fixed",
                 })
               }
-              className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-black"
+              className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
             >
-              <option value="percentage">
-                Percentage
+              <option value="percentage" className="bg-[#0b0e14] text-white">
+                Percentage (%)
               </option>
 
-              <option value="fixed">
-                Fixed Amount
+              <option value="fixed" className="bg-[#0b0e14] text-white">
+                Fixed Amount (NPR)
               </option>
             </select>
           </div>
@@ -180,7 +180,7 @@ export default function EditCouponModal({
           {/* Discount Value */}
 
           <div>
-            <label className="mb-1 block text-sm font-semibold text-gray-700">
+            <label className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-300">
               Discount Value
             </label>
 
@@ -194,15 +194,15 @@ export default function EditCouponModal({
                   value: Number(e.target.value),
                 })
               }
-              className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-black"
+              className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
             />
           </div>
 
           {/* Minimum Order */}
 
           <div>
-            <label className="mb-1 block text-sm font-semibold text-gray-700">
-              Minimum Order
+            <label className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-300">
+              Minimum Order (NPR)
             </label>
 
             <input
@@ -215,14 +215,14 @@ export default function EditCouponModal({
                   min_order: Number(e.target.value),
                 })
               }
-              className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-black"
+              className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
             />
           </div>
 
           {/* Usage Limit */}
 
           <div>
-            <label className="mb-1 block text-sm font-semibold text-gray-700">
+            <label className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-300">
               Usage Limit
             </label>
 
@@ -239,7 +239,7 @@ export default function EditCouponModal({
                       : Number(e.target.value),
                 })
               }
-              className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-black"
+              className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF]"
               placeholder="Unlimited"
             />
           </div>
@@ -247,7 +247,7 @@ export default function EditCouponModal({
           {/* Expiry Date */}
 
           <div>
-            <label className="mb-1 block text-sm font-semibold text-gray-700">
+            <label className="mb-1 block text-xs font-semibold uppercase tracking-wider text-gray-300">
               Expiry Date
             </label>
 
@@ -260,13 +260,13 @@ export default function EditCouponModal({
                   expires_at: e.target.value,
                 })
               }
-              className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-black"
+              className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 p-3 text-sm text-white outline-none transition focus:border-[#1677FF]"
             />
           </div>
 
           {/* Active */}
 
-          <label className="flex cursor-pointer items-center gap-3 rounded-xl border p-4">
+          <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-gray-300">
             <input
               type="checkbox"
               checked={form.active}
@@ -276,10 +276,10 @@ export default function EditCouponModal({
                   active: e.target.checked,
                 })
               }
-              className="h-5 w-5"
+              className="h-4 w-4 rounded accent-[#1677FF]"
             />
 
-            <span className="font-semibold">
+            <span className="font-semibold text-white">
               Active Coupon
             </span>
           </label>
@@ -292,7 +292,7 @@ export default function EditCouponModal({
             type="button"
             onClick={onClose}
             disabled={loading}
-            className="rounded-xl border border-gray-300 px-5 py-3 font-semibold transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 font-semibold text-white transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50"
           >
             Cancel
           </button>
@@ -301,7 +301,7 @@ export default function EditCouponModal({
             type="button"
             onClick={handleSave}
             disabled={loading}
-            className="flex items-center justify-center gap-2 rounded-xl bg-black px-6 py-3 font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex items-center justify-center gap-2 rounded-xl bg-[#1677FF] px-6 py-2.5 font-bold text-white shadow-[0_0_15px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? (
               <>

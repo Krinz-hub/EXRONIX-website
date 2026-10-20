@@ -489,21 +489,19 @@ async function handleDeleteAccount() {
             max-w-md
             rounded-2xl
             border
-            border-red-200
-            bg-white
+            border-red-500/30
+            bg-[#0e1219]
             p-5
-            text-gray-900
+            text-white
             shadow-2xl
-            dark:border-red-900
-            dark:bg-gray-900
-            dark:text-white
+            backdrop-blur-2xl
           "
         >
-          <h3 className="text-lg font-bold text-red-600">
+          <h3 className="text-lg font-bold text-red-500">
             Delete Account?
           </h3>
 
-          <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">
+          <p className="mt-2 text-sm leading-6 text-gray-300">
             Are you sure you want to permanently
             delete your account? This action
             cannot be undone.
@@ -519,14 +517,14 @@ async function handleDeleteAccount() {
                 flex-1
                 rounded-xl
                 border
-                border-gray-300
+                border-white/20
+                bg-white/5
                 px-4
                 py-3
                 font-medium
+                text-white
                 transition
-                hover:bg-gray-100
-                dark:border-gray-700
-                dark:hover:bg-gray-800
+                hover:bg-white/10
               "
             >
               Cancel
@@ -547,6 +545,7 @@ async function handleDeleteAccount() {
                 py-3
                 font-semibold
                 text-white
+                shadow-[0_0_15px_rgba(239,68,68,0.4)]
                 transition
                 hover:bg-red-700
                 disabled:cursor-not-allowed
@@ -582,8 +581,7 @@ async function handleDeleteAccount() {
         px-4
         pt-6
         pb-12
-        text-gray-900
-        dark:text-white
+        text-white
         md:px-6
         md:pt-10
         md:pb-20
@@ -592,11 +590,11 @@ async function handleDeleteAccount() {
       {/* HEADER */}
 
       <div className="mb-10 md:mb-12">
-        <h1 className="text-3xl font-bold md:text-5xl">
+        <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
           Settings
         </h1>
 
-        <p className="mt-3 text-base text-gray-500 dark:text-gray-400 md:text-lg">
+        <p className="mt-3 text-base text-gray-400 md:text-lg">
           Manage your account preferences and
           personal information.
         </p>
@@ -612,14 +610,11 @@ async function handleDeleteAccount() {
           className="
             rounded-2xl
             border
-            border-gray-200
-            bg-white
+            border-white/10
+            bg-[#0e1219]
             p-5
-            text-gray-900
+            text-white
             shadow-sm
-            dark:border-gray-800
-            dark:bg-gray-900
-            dark:text-white
             md:p-8
           "
         >
@@ -637,10 +632,9 @@ async function handleDeleteAccount() {
                   w-24
                   rounded-full
                   border-2
-                  border-gray-200
+                  border-white/20
                   object-cover
                   shadow-md
-                  dark:border-gray-700
                 "
               />
             ) : (
@@ -652,12 +646,12 @@ async function handleDeleteAccount() {
                   items-center
                   justify-center
                   rounded-full
-                  bg-black
+                  border
+                  border-white/20
+                  bg-white/10
                   text-3xl
                   font-bold
                   text-white
-                  dark:bg-white
-                  dark:text-black
                 "
               >
                 {name
@@ -672,15 +666,13 @@ async function handleDeleteAccount() {
                 cursor-pointer
                 rounded-xl
                 border
-                border-gray-300
+                border-white/20
+                bg-white/5
                 px-5
                 py-2
-                text-gray-900
+                text-white
                 transition
-                hover:bg-gray-100
-                dark:border-gray-700
-                dark:text-white
-                dark:hover:bg-gray-800
+                hover:bg-white/10
                 inline-flex
                 items-center
                 justify-center
@@ -708,11 +700,11 @@ async function handleDeleteAccount() {
             </label>
           </div>
 
-          <h2 className="mt-8 text-2xl font-bold">
+          <h2 className="mt-8 text-2xl font-bold text-white">
             👤 Profile
           </h2>
 
-          <p className="mt-2 text-gray-500 dark:text-gray-400">
+          <p className="mt-2 text-sm text-gray-400">
             Update your personal information.
           </p>
 
@@ -721,7 +713,7 @@ async function handleDeleteAccount() {
             {/* Name */}
 
             <div>
-              <label className="mb-2 block font-medium">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Full Name
               </label>
 
@@ -735,19 +727,16 @@ async function handleDeleteAccount() {
                   w-full
                   rounded-xl
                   border
-                  border-gray-300
-                  bg-white
+                  border-white/15
+                  bg-[#0b0e14]/90
                   px-4
                   py-3
                   text-base
-                  text-gray-900
+                  text-white
+                  placeholder:text-gray-500
                   outline-none
                   transition
-                  focus:border-black
-                  dark:border-gray-700
-                  dark:bg-gray-800
-                  dark:text-white
-                  dark:focus:border-white
+                  focus:border-[#1677FF]
                 "
               />
             </div>
@@ -755,7 +744,7 @@ async function handleDeleteAccount() {
             {/* Email */}
 
             <div>
-              <label className="mb-2 block font-medium">
+              <label className="mb-2 block text-sm font-semibold text-gray-300">
                 Email Address
               </label>
 
@@ -769,15 +758,13 @@ async function handleDeleteAccount() {
                   w-full
                   rounded-xl
                   border
-                  border-gray-300
-                  bg-gray-100
+                  border-white/10
+                  bg-white/5
                   px-4
                   py-3
                   text-base
-                  text-gray-500
-                  dark:border-gray-700
-                  dark:bg-gray-800
-                  dark:text-gray-400
+                  text-gray-400
+                  cursor-not-allowed
                 "
               />
             </div>
@@ -791,18 +778,16 @@ async function handleDeleteAccount() {
               mt-8
               w-full
               rounded-xl
-              bg-black
+              bg-[#1677FF]
               px-8
-              py-3
-              font-semibold
+              py-3.5
+              font-bold
               text-white
+              shadow-[0_0_15px_rgba(22,119,255,0.4)]
               transition
-              hover:bg-gray-800
+              hover:bg-[#1677FF]/90
               disabled:cursor-not-allowed
               disabled:opacity-60
-              dark:bg-white
-              dark:text-black
-              dark:hover:bg-gray-200
               md:w-auto
             "
           >
@@ -820,22 +805,19 @@ async function handleDeleteAccount() {
           className="
             rounded-2xl
             border
-            border-gray-200
-            bg-white
+            border-white/10
+            bg-[#0e1219]
             p-5
-            text-gray-900
+            text-white
             shadow-sm
-            dark:border-gray-800
-            dark:bg-gray-900
-            dark:text-white
             md:p-8
           "
         >
-          <h2 className="text-2xl font-bold">
+          <h2 className="text-2xl font-bold text-white">
             🔒 Security
           </h2>
 
-          <p className="mt-2 text-gray-500 dark:text-gray-400">
+          <p className="mt-2 text-sm text-gray-400">
             Change your password and secure
             your account.
           </p>
@@ -850,14 +832,14 @@ async function handleDeleteAccount() {
               w-full
               rounded-xl
               border
-              border-gray-300
+              border-white/20
+              bg-white/5
               px-6
               py-3
-              font-medium
+              font-semibold
+              text-white
               transition
-              hover:bg-gray-100
-              dark:border-gray-700
-              dark:hover:bg-gray-800
+              hover:bg-white/10
               md:w-auto
             "
           >
@@ -879,22 +861,19 @@ async function handleDeleteAccount() {
           className="
             rounded-2xl
             border
-            border-gray-200
-            bg-white
+            border-white/10
+            bg-[#0e1219]
             p-5
-            text-gray-900
+            text-white
             shadow-sm
-            dark:border-gray-800
-            dark:bg-gray-900
-            dark:text-white
             md:p-8
           "
         >
-          <h2 className="text-2xl font-bold">
+          <h2 className="text-2xl font-bold text-white">
             🔔 Notifications
           </h2>
 
-          <p className="mt-2 text-gray-500 dark:text-gray-400">
+          <p className="mt-2 text-sm text-gray-400">
             Choose which emails you'd like
             to receive.
           </p>
@@ -910,14 +889,19 @@ async function handleDeleteAccount() {
                 items-center
                 justify-between
                 gap-4
+                rounded-xl
+                border
+                border-white/5
+                bg-[#0b0e14]/40
+                p-4
               "
             >
               <div>
-                <p className="font-medium">
+                <p className="font-medium text-white">
                   Order Updates
                 </p>
 
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-400">
                   Receive updates about your
                   orders.
                 </p>
@@ -947,8 +931,7 @@ async function handleDeleteAccount() {
                   h-5
                   w-5
                   cursor-pointer
-                  accent-black
-                  dark:accent-white
+                  accent-[#1677FF]
                 "
               />
             </label>
@@ -962,14 +945,19 @@ async function handleDeleteAccount() {
                 items-center
                 justify-between
                 gap-4
+                rounded-xl
+                border
+                border-white/5
+                bg-[#0b0e14]/40
+                p-4
               "
             >
               <div>
-                <p className="font-medium">
+                <p className="font-medium text-white">
                   Promotional Emails
                 </p>
 
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-400">
                   Receive offers, discounts
                   and new product
                   announcements.
@@ -1000,8 +988,7 @@ async function handleDeleteAccount() {
                   h-5
                   w-5
                   cursor-pointer
-                  accent-black
-                  dark:accent-white
+                  accent-[#1677FF]
                 "
               />
             </label>
@@ -1016,22 +1003,19 @@ async function handleDeleteAccount() {
           className="
             rounded-2xl
             border
-            border-gray-200
-            bg-white
+            border-white/10
+            bg-[#0e1219]
             p-5
-            text-gray-900
+            text-white
             shadow-sm
-            dark:border-gray-800
-            dark:bg-gray-900
-            dark:text-white
             md:p-8
           "
         >
-          <h2 className="text-2xl font-bold">
+          <h2 className="text-2xl font-bold text-white">
             🌙 Appearance
           </h2>
 
-          <p className="mt-2 text-gray-500 dark:text-gray-400">
+          <p className="mt-2 text-sm text-gray-400">
             Choose how EXRONIX looks.
           </p>
 
@@ -1054,8 +1038,8 @@ async function handleDeleteAccount() {
                 transition
                 ${
                   theme === "light"
-                    ? "border-black bg-black text-white"
-                    : "border-gray-200 bg-gray-50 text-black hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                    ? "border-white/40 bg-white/15 text-white"
+                    : "border-white/10 bg-[#0b0e14]/60 text-gray-400 hover:bg-white/5 hover:text-white"
                 }
               `}
             >
@@ -1085,8 +1069,8 @@ async function handleDeleteAccount() {
                 transition
                 ${
                   theme === "dark"
-                    ? "border-white bg-white text-black"
-                    : "border-gray-200 bg-gray-50 text-black hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                    ? "border-[#1677FF] bg-[#1677FF]/20 text-[#1677FF] shadow-[0_0_15px_rgba(22,119,255,0.2)]"
+                    : "border-white/10 bg-[#0b0e14]/60 text-gray-400 hover:bg-white/5 hover:text-white"
                 }
               `}
             >
@@ -1095,7 +1079,7 @@ async function handleDeleteAccount() {
               </span>
 
               <span className="mt-2 block">
-                Dark
+                Dark (Default)
               </span>
             </button>
           </div>
@@ -1118,19 +1102,16 @@ async function handleDeleteAccount() {
             className="
               w-full
               rounded-xl
-              bg-black
+              bg-[#1677FF]
               px-8
               py-4
-              font-semibold
+              font-bold
               text-white
-              shadow-sm
+              shadow-[0_0_20px_rgba(22,119,255,0.4)]
               transition
-              hover:bg-gray-800
+              hover:bg-[#1677FF]/90
               disabled:cursor-not-allowed
               disabled:opacity-50
-              dark:bg-white
-              dark:text-black
-              dark:hover:bg-gray-200
               sm:w-auto
             "
           >
@@ -1148,20 +1129,18 @@ async function handleDeleteAccount() {
           className="
             rounded-2xl
             border
-            border-red-300
-            bg-red-50
+            border-red-500/30
+            bg-red-950/20
             p-5
             shadow-sm
-            dark:border-red-900
-            dark:bg-red-950/30
             md:p-8
           "
         >
-          <h2 className="text-2xl font-bold text-red-600">
+          <h2 className="text-2xl font-bold text-red-500">
             Danger Zone
           </h2>
 
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-sm text-gray-300">
             Permanently delete your account
             and all associated data.
           </p>
@@ -1179,8 +1158,9 @@ async function handleDeleteAccount() {
               bg-red-600
               px-6
               py-3
-              font-semibold
+              font-bold
               text-white
+              shadow-[0_0_15px_rgba(239,68,68,0.3)]
               transition
               hover:bg-red-700
               disabled:cursor-not-allowed
@@ -1193,7 +1173,7 @@ async function handleDeleteAccount() {
               : "Delete Account"}
           </button>
 
-          <p className="mt-3 text-sm text-red-600 dark:text-red-400">
+          <p className="mt-3 text-xs text-red-400">
             This action permanently removes
             your account and cannot be undone.
           </p>

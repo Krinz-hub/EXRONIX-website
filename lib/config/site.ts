@@ -13,6 +13,14 @@ export const siteConfig = {
     support: "support@exronix.com",
     orders: "orders@exronix.com",
   },
+  phone: {
+    primary: "+9876543210",
+    secondary: "+8976542310",
+  },
+  office: {
+    title: "Manufacturing & Office",
+    address: "Haryana, panipat",
+  },
   socials: {
     instagram: "https://instagram.com/exronix",
   },

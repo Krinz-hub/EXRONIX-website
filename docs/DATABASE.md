@@ -191,10 +191,10 @@ Global configuration settings for the storefront.
 | Column | Type | Constraints / Defaults | Description |
 |---|---|---|---|
 | `id` | `bigint` / `integer` | Primary Key | Record identifier (single-row table) |
-| `store_name` | `text` | Default `'Zayna Studio'` | Name of store |
-| `tagline` | `text` | Default `'Wear the Grace'` | Store slogan |
-| `support_email` | `text` | Default `'support@zaynastudio.store'` | Customer care email |
-| `phone` | `text` | Nullable | Customer support phone |
+| `store_name` | `text` | Default `'EXRONIX'` | Name of store |
+| `tagline` | `text` | Default `'ENGINEERED BEYOND LIMITS'` | Store slogan |
+| `support_email` | `text` | Default `'support@exronix.store'` | Customer care email |
+| `phone` | `text` | Default `'+9876543210'` | Customer support phone |
 | `free_shipping_limit` | `numeric` | Default `2500` | Global free shipping threshold |
 | `shipping_cost` | `numeric` | Default `100` | Default fallback shipping fee |
 | `exchange_days` | `integer` | Default `7` | Return / exchange window in days |

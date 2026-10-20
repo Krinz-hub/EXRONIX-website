@@ -61,19 +61,21 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-50 px-6">
+    <main className="flex min-h-screen items-center justify-center px-4 py-28 text-white sm:px-6">
 
-      <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl">
+      <div className="w-full max-w-md rounded-3xl border border-white/15 bg-[#0e1219]/80 liquid-glass backdrop-blur-2xl p-8 sm:p-10 shadow-2xl text-white">
 
         <div className="mb-8 text-center">
 
-          <Lock className="mx-auto mb-4 h-12 w-12" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#1677FF]">
+            <Lock className="h-8 w-8 text-[#1677FF]" />
+          </div>
 
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-black tracking-tight text-white sm:text-4xl">
             Reset Password
           </h1>
 
-          <p className="mt-2 text-gray-500">
+          <p className="mt-2 text-sm text-gray-400">
             Create a new secure password.
           </p>
 
@@ -85,7 +87,7 @@ export default function ResetPasswordPage() {
         >
 
           <div>
-            <label className="mb-2 block font-medium">
+            <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400">
               New Password
             </label>
 
@@ -101,7 +103,7 @@ export default function ResetPasswordPage() {
                 onChange={(e) =>
                   setPassword(e.target.value)
                 }
-                className="w-full rounded-xl border px-4 py-3 pr-12 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 pr-12 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF]"
               />
 
               <button
@@ -109,7 +111,7 @@ export default function ResetPasswordPage() {
                 onClick={() =>
                   setShowPassword(!showPassword)
                 }
-                className="absolute right-4 top-1/2 -translate-y-1/2"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-white"
               >
                 {showPassword ? (
                   <EyeOff size={20} />
@@ -122,7 +124,7 @@ export default function ResetPasswordPage() {
           </div>
 
           <div>
-            <label className="mb-2 block font-medium">
+            <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400">
               Confirm Password
             </label>
 
@@ -140,7 +142,7 @@ export default function ResetPasswordPage() {
                     e.target.value
                   )
                 }
-                className="w-full rounded-xl border px-4 py-3 pr-12 outline-none focus:border-black"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 pr-12 text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-1 focus:ring-[#1677FF]"
               />
 
               <button
@@ -150,7 +152,7 @@ export default function ResetPasswordPage() {
                     !showConfirmPassword
                   )
                 }
-                className="absolute right-4 top-1/2 -translate-y-1/2"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-white"
               >
                 {showConfirmPassword ? (
                   <EyeOff size={20} />
@@ -165,7 +167,7 @@ export default function ResetPasswordPage() {
           <button
             type="submit"
             disabled={loading}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-black py-3 font-semibold text-white transition hover:bg-gray-800 disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#1677FF] py-4 text-base font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 active:scale-[0.99] disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-gray-500"
           >
             {loading ? (
               <>

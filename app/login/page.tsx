@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -17,10 +17,11 @@ export default function LoginPage() {
   const [isSigningIn, setIsSigningIn] = useState(false);
 
   // If already logged in, redirect
-  if (!loading && user) {
-    router.replace("/");
-    return null;
-  }
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace("/");
+    }
+  }, [user, loading, router]);
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -55,28 +56,18 @@ export default function LoginPage() {
     }
   }
 
-  if (loading) {
-    return (
-      <LoadingAnimation
-        fullScreen
-        text="VERIFYING ACCOUNT"
-        subtext="EXRONIX STORE"
-      />
-    );
-  }
-
   return (
-    <main className="flex min-h-[calc(100vh-140px)] items-center justify-center bg-gray-100/90 px-4 py-16 sm:px-6">
+    <main className="flex min-h-[calc(100vh-140px)] items-center justify-center px-4 py-16 sm:px-6">
       <div className="w-full max-w-md">
         {/* Form Card */}
-        <div className="rounded-2xl border border-gray-200/90 bg-white p-7 shadow-xl text-gray-900 sm:p-9 md:p-10">
+        <div className="rounded-3xl border border-white/15 bg-[#0e1219]/80 p-7 shadow-2xl text-white sm:p-9 md:p-10 liquid-glass backdrop-blur-2xl">
           {/* Header */}
           <div className="text-center">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+            <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
               Welcome Back
             </h1>
 
-            <p className="mt-2 text-sm text-gray-600 sm:text-base">
+            <p className="mt-2 text-sm text-gray-400 sm:text-base">
               Sign in to access your EXRONIX account and orders.
             </p>
           </div>
@@ -87,7 +78,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="email"
-                className="mb-2 block text-sm font-semibold text-gray-800"
+                className="mb-2 block text-sm font-semibold text-gray-300"
               >
                 Email Address
               </label>
@@ -98,7 +89,7 @@ export default function LoginPage() {
                 placeholder="name@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none transition focus:border-[#1677FF] focus:ring-2 focus:ring-[#1677FF]/20 sm:text-base"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-2 focus:ring-[#1677FF]/25 sm:text-base"
                 autoComplete="email"
                 required
               />
@@ -109,7 +100,7 @@ export default function LoginPage() {
               <div className="mb-2 flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-semibold text-gray-800"
+                  className="block text-sm font-semibold text-gray-300"
                 >
                   Password
                 </label>
@@ -128,7 +119,7 @@ export default function LoginPage() {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none transition focus:border-[#1677FF] focus:ring-2 focus:ring-[#1677FF]/20 sm:text-base"
+                className="w-full rounded-xl border border-white/15 bg-[#0b0e14]/90 px-4 py-3 text-sm text-white placeholder:text-gray-500 outline-none transition focus:border-[#1677FF] focus:ring-2 focus:ring-[#1677FF]/25 sm:text-base"
                 autoComplete="current-password"
                 required
               />
@@ -138,7 +129,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isSigningIn}
-              className="mt-2 flex min-h-12 w-full items-center justify-center rounded-xl bg-black px-4 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-gray-800 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
+              className="mt-2 flex min-h-12 w-full items-center justify-center rounded-xl bg-[#1677FF] px-4 py-3.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(22,119,255,0.4)] transition hover:bg-[#1677FF]/90 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
             >
               {isSigningIn ? (
                 <span className="flex items-center gap-2">
@@ -151,7 +142,7 @@ export default function LoginPage() {
             </button>
 
             {/* Signup Link */}
-            <p className="mt-6 text-center text-sm text-gray-600">
+            <p className="mt-6 text-center text-sm text-gray-400">
               Don't have an account?{" "}
               <Link
                 href="/signup"

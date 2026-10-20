@@ -47,7 +47,14 @@ export default function RevenueChart({
           {
             label: "Revenue",
             data: revenue,
+            borderColor: "#1677FF",
+            backgroundColor: "rgba(22, 119, 255, 0.15)",
+            pointBackgroundColor: "#1677FF",
+            pointBorderColor: "#ffffff",
+            pointHoverBackgroundColor: "#ffffff",
+            pointHoverBorderColor: "#1677FF",
             borderWidth: 3,
+            fill: true,
             tension: 0.4,
           },
         ],
@@ -57,6 +64,39 @@ export default function RevenueChart({
         plugins: {
           legend: {
             display: false,
+          },
+          tooltip: {
+            backgroundColor: "#0e1219",
+            titleColor: "#ffffff",
+            bodyColor: "#9ca3af",
+            borderColor: "rgba(255, 255, 255, 0.15)",
+            borderWidth: 1,
+            padding: 12,
+            cornerRadius: 12,
+          },
+        },
+        scales: {
+          x: {
+            grid: {
+              color: "rgba(255, 255, 255, 0.05)",
+            },
+            ticks: {
+              color: "#9ca3af",
+              font: {
+                size: 11,
+              },
+            },
+          },
+          y: {
+            grid: {
+              color: "rgba(255, 255, 255, 0.05)",
+            },
+            ticks: {
+              color: "#9ca3af",
+              font: {
+                size: 11,
+              },
+            },
           },
         },
       }}
