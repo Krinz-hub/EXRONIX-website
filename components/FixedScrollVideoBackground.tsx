@@ -73,7 +73,8 @@ export default function FixedScrollVideoBackground() {
     }
 
     if (!isSeekingRef.current && !video.seeking) {
-      if (Math.abs(video.currentTime - target) > 0.015) {
+      const minDiff = progress === 0 || progress === 1 ? 0.0001 : 0.015;
+      if (Math.abs(video.currentTime - target) > minDiff) {
         isSeekingRef.current = true;
         lastSeekTimeRef.current = now;
         try {
@@ -104,19 +105,44 @@ export default function FixedScrollVideoBackground() {
     video.muted = true;
     video.playsInline = true;
 
-    const onMetadata = () => {
+    const initFrame = () => {
       if (video.duration && isFinite(video.duration) && video.duration > 0) {
         durationRef.current = video.duration;
-        setVideoReady(true);
         setHasError(false);
-        syncFrame();
+
+        const progress = computeProgress();
+        const target = Math.min(
+          Math.max(progress * video.duration, 0.001),
+          video.duration - 0.01
+        );
+        targetTimeRef.current = target;
+
+        // Synchronize initial playback position before revealing
+        if (Math.abs(video.currentTime - target) > 0.0001) {
+          isSeekingRef.current = true;
+          lastSeekTimeRef.current = performance.now();
+          try {
+            video.currentTime = target;
+          } catch {
+            isSeekingRef.current = false;
+            setVideoReady(true);
+          }
+        } else {
+          setVideoReady(true);
+        }
       }
     };
 
     const onSeeked = () => {
       isSeekingRef.current = false;
+      // Seek completed — video frame is primed and ready to display
+      setVideoReady(true);
+
       const target = targetTimeRef.current;
-      if (Math.abs(video.currentTime - target) > 0.015) {
+      const progress = computeProgress();
+      const minDiff = progress === 0 || progress === 1 ? 0.0001 : 0.015;
+
+      if (Math.abs(video.currentTime - target) > minDiff) {
         isSeekingRef.current = true;
         lastSeekTimeRef.current = performance.now();
         try {
@@ -131,36 +157,44 @@ export default function FixedScrollVideoBackground() {
       setHasError(true);
     };
 
-    video.addEventListener("loadedmetadata", onMetadata);
-    video.addEventListener("loadeddata", onMetadata);
-    video.addEventListener("canplay", onMetadata);
-    video.addEventListener("durationchange", onMetadata);
+    video.addEventListener("loadedmetadata", initFrame);
+    video.addEventListener("loadeddata", initFrame);
+    video.addEventListener("canplay", initFrame);
+    video.addEventListener("durationchange", initFrame);
     video.addEventListener("seeked", onSeeked);
     video.addEventListener("error", onError);
 
     // Initial check in case cached video already has metadata ready
     if (video.readyState >= 1 && video.duration && isFinite(video.duration)) {
-      onMetadata();
+      initFrame();
     } else {
       // Verification interval during initial hydration
       const timer = setInterval(() => {
         if (video.duration && isFinite(video.duration)) {
-          onMetadata();
+          initFrame();
           clearInterval(timer);
         }
       }, 100);
       setTimeout(() => clearInterval(timer), 3000);
     }
 
+    // Safety timeout: ensure video is revealed after 1s even if browser delayed seeked event
+    const readyFallbackTimer = setTimeout(() => {
+      if (video.readyState >= 1) {
+        setVideoReady(true);
+      }
+    }, 1000);
+
     return () => {
-      video.removeEventListener("loadedmetadata", onMetadata);
-      video.removeEventListener("loadeddata", onMetadata);
-      video.removeEventListener("canplay", onMetadata);
-      video.removeEventListener("durationchange", onMetadata);
+      clearTimeout(readyFallbackTimer);
+      video.removeEventListener("loadedmetadata", initFrame);
+      video.removeEventListener("loadeddata", initFrame);
+      video.removeEventListener("canplay", initFrame);
+      video.removeEventListener("durationchange", initFrame);
       video.removeEventListener("seeked", onSeeked);
       video.removeEventListener("error", onError);
     };
-  }, [syncFrame]);
+  }, [computeProgress]);
 
   // Global listeners: scroll, resize, route changes, DOM mutations
   useEffect(() => {
@@ -218,7 +252,7 @@ export default function FixedScrollVideoBackground() {
       <video
         ref={videoRef}
         src="/videos/bg.mp4"
-        poster="/images/space-hero.jpg"
+        poster="/images/hero-initial-frame.jpg"
         muted
         playsInline
         preload="auto"
@@ -231,7 +265,7 @@ export default function FixedScrollVideoBackground() {
         className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 pointer-events-none ${
           videoReady && !hasError ? "opacity-0" : "opacity-100"
         }`}
-        style={{ backgroundImage: "url('/images/space-hero.jpg')" }}
+        style={{ backgroundImage: "url('/images/hero-initial-frame.jpg')" }}
       />
 
       {/* Subtle Depth and Text Readability Overlays */}

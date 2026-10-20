@@ -132,6 +132,13 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Preload hero initial background image for instantaneous, flash-free rendering */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-initial-frame.jpg"
+          fetchPriority="high"
+        />
       </head>
 
       <body className="min-h-screen bg-[#050608] text-[#F5F7FA] antialiased selection:bg-[#1677FF] selection:text-white">

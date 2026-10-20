@@ -23,7 +23,7 @@ export interface ScrollVideoBackgroundProps {
  */
 export default function ScrollVideoBackground({
   videoSrc = "/videos/bg.mp4",
-  fallbackImageSrc = "/images/space-hero.jpg",
+  fallbackImageSrc = "/images/hero-initial-frame.jpg",
   className = "",
   trackClassName = "relative w-full h-[260vh]",
   children,

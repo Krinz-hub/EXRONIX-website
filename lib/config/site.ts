@@ -26,7 +26,7 @@ export const siteConfig = {
   },
   assets: {
     logo: "/images/exronix-logo.png",
-    heroBackground: "/images/space-hero.jpg",
+    heroBackground: "/images/hero-initial-frame.jpg",
     showcaseProduct: "/images/cyber-shark.jpg",
   },
   logo: "/images/exronix-logo.png",
