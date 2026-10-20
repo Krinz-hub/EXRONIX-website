@@ -1,15 +1,45 @@
 import type { MetadataRoute } from "next";
-import { getProducts } from "@/lib/productService";
+import { createClient } from "@supabase/supabase-js";
+
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.exronix.store";
 
-  const products = await getProducts();
+  const supabaseUrl =
+    process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+  const supabaseKey =
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.SUPABASE_ANON_KEY;
 
-  const productUrls: MetadataRoute.Sitemap = products.map(
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error(
+      "Sitemap generation failed: Missing Supabase environment variables (NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY)."
+    );
+  }
+
+  const supabase = createClient(supabaseUrl, supabaseKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+  });
+
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("id, created_at")
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.error("Failed to fetch products for sitemap:", error);
+    throw new Error(`Sitemap generation failed: ${error.message}`);
+  }
+
+  const productUrls: MetadataRoute.Sitemap = (products ?? []).map(
     (product) => ({
       url: `${baseUrl}/products/${product.id}`,
-      lastModified: new Date(),
+      lastModified: product.created_at ? new Date(product.created_at) : new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     })
